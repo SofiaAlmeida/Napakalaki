@@ -8,7 +8,8 @@ import java.util.ArrayList;
 
 /**
  *
- * @author usuario
+ * @author Sofía Almeida Bruno
+ * @author María Victoria Granados Pozo
  */
 public class PruebaNapakalaki {
 
@@ -35,10 +36,9 @@ public class PruebaNapakalaki {
         BadConsequence bc3 = new BadConsequence("No muerte 3", 2, tes, tes);
         
         
-        System.out.println(bc1.toString());
+        System.out.println(bc1);
         System.out.println(bc2);
         System.out.println(bc3);
-        //¿Es necesario poner el toString?
         // Prueba de los consultores
         System.out.println(bc3.getText());
         System.out.println(bc3.getLevels());
@@ -47,10 +47,14 @@ public class PruebaNapakalaki {
         System.out.println(bc3.getDeath());
         System.out.println(bc3.getSpecificVisibleTreasures());
         System.out.println(bc3.getSpecificHiddenTreasures());
-      
+     
         // Prueba clase Monster
         Monster monster = new Monster("Nombre", 1, bc1, prize);
-        
         System.out.println(monster);
+        //Prueba de los consultores
+        System.out.println(monster.getName());
+        System.out.println(monster.getCombatLevel());
+        System.out.println(monster.getBadConsequence());
+        System.out.println(monster.getPrize());
     }
 }
