@@ -68,7 +68,7 @@ public class Monster {
      * @return objeto String con la información relativa al monstruo
      */
     public String toString() {
-        return "Name = " + name + "\nCombat Level = " + Integer.toString(combatLevel)
+        return  "\nName = " + name + "\nCombat Level = " + Integer.toString(combatLevel)
                 + "\n" + prize.toString() + "\n" + bc.toString();
     }
 }

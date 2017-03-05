@@ -15,79 +15,103 @@ import java.util.Arrays;
 public class PruebaNapakalaki {
 
     static ArrayList<Monster> monstruos = new ArrayList();
+   
+    /**
+     * 
+     * Monstruos con nivel de combate mayor que 10
+     * @param m lista de monstruos de la que evaluar el nivel de combate
+     * @return lista de monstruos cuyo nivel de combate es mayor que 10
+     */
+    public static ArrayList<Monster> combatLevelGt10(ArrayList<Monster> m) {
+        ArrayList<Monster> result = new ArrayList();
+        
+        for(Monster monster : m)
+            if(monster.getCombatLevel() > 10)
+                result.add(monster);
+        
+        return result;
+    }
+    
+    /**
+     * 
+     * Monstruos que no pierden tesoros
+     * @param m lista de monstruos a evaluar
+     * @return lista de monstruos que solo hacen perder niveles
+     */
+    public static ArrayList<Monster> lossLevel(ArrayList<Monster> m) {
+        ArrayList<Monster> result = new ArrayList();
+        
+        for(Monster monster : m)
+            if(monster.getBadConsequence().getNHiddenTreasures() == 0 &&
+               monster.getBadConsequence().getNVisibleTreasures() == 0 &&
+               monster.getBadConsequence().getSpecificHiddenTreasures() == null &&
+               monster.getBadConsequence().getSpecificVisibleTreasures() == null)
+                 
+                   result.add(monster);
+        
+        return result;
+    }
+    
+    /**
+     * 
+     * Monstruos que ganan más de 1 nivel
+     * @param m lista de monstruos a evaluar
+     * @return lista de monstruos que hacen ganar más de 1 nivel
+     */
+    public static ArrayList<Monster> levelGt1(ArrayList<Monster> m) {
+        ArrayList<Monster> result = new ArrayList();
+        
+        for(Monster monster : m)
+            if(monster.getPrize().getLevel() > 1)
+                result.add(monster);
+        
+        return result; 
+    }
+    
+    /**
+     * 
+     * Monstruos que hacen perder el tipo de tesoro pasado como argumento
+     * @param m lista de monstruos a evaluar
+     * @param t tipo de tesoro a encontrar
+     * @return listado de monstruos que incluyen t en su mal rollo
+     */
+    public static ArrayList<Monster> lossTreasure(ArrayList<Monster> m, TreasureKind t) {
+        ArrayList<Monster> result = new ArrayList();
+        
+        for(Monster monster : m)
+            //REVIEW: ¿¿Existe una función de ArrayList para hacerlo directamente??
+            if(isTreasure(monster, t))
+                result.add(monster);
+        
+        return result;
+    }
+    
+    /**
+     * 
+     * Comprueba si el mal rollo de un monstruo contiene el tipo de tesoro indicado
+     * @param m monstruo a evaluar
+     * @param t tipo de tesoro a comparar
+     * @return true si el tesoro está en el mal rollo
+     *         false en caso contrario
+     */
+    private static boolean isTreasure(Monster m, TreasureKind t) {
+        for(TreasureKind treasure : m.getBadConsequence().getSpecificHiddenTreasures()) 
+            if(treasure == t)
+                return true;
+        
+        for(TreasureKind treasure : m.getBadConsequence().getSpecificVisibleTreasures())
+            if(treasure == t)
+                return true;
+        return false;
+    }
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-     /*   
-    // Prueba clase Prize
-        Prize prize = new Prize(1,1);
-        
-        System.out.println(Integer.toString(prize.getTreasures()));
-        System.out.println(Integer.toString(prize.getLevel()));
-        System.out.println(prize.toString());
-    
-    // Prueba del enum TreasureKind
-        TreasureKind tk = TreasureKind.HELMET;
-        
-    // Prueba clase BadConsequence
-        ArrayList<TreasureKind> tes = new ArrayList<TreasureKind>();
-        tes.add(tk);
-        BadConsequence bc1 = new BadConsequence("No muerte",2,3,4);
-        BadConsequence bc2 = new BadConsequence("Muerte", true);
-        BadConsequence bc3 = new BadConsequence("No muerte 3", 2, tes, tes);
-        
-        
-        System.out.println(bc1);
-        System.out.println(bc2);
-        System.out.println(bc3);
-        // Prueba de los consultores
-        System.out.println(bc3.getText());
-        System.out.println(bc3.getLevels());
-        System.out.println(bc3.getNVisibleTreasures());
-        System.out.println(bc3.getNHiddenTreasures());
-        System.out.println(bc3.getDeath());
-        System.out.println(bc3.getSpecificVisibleTreasures());
-        System.out.println(bc3.getSpecificHiddenTreasures());
      
-        // Prueba clase Monster
-        Monster monster = new Monster("Nombre", 1, bc1, prize);
-        System.out.println(monster);
-        //Prueba de los consultores
-        System.out.println(monster.getName());
-        System.out.println(monster.getCombatLevel());
-        System.out.println(monster.getBadConsequence());
-        System.out.println(monster.getPrize());
-        */
-        
-        
-           //Monstruos
         BadConsequence bc;
         Prize prize;
-        /*
-        param: text, nivel, nVisible, nHidden
-        param: ntreasures, level
-        param: combatlevel
-        bc = new BadConsequence("", , , );
-        prize = new Prize( , );
-        monstruos.add(new Monster("", , bc, prize));
-        
-        param: text, death
-        param: ntreasures, level
-        param: combatlevel
-        bc = new BadConsequence("", true);
-        prize = new Prize ( , );
-        monstruos.add(new Monster ("", , bc, prize));
-        
-        param: text, levels, tvisible, thidden
-        param: ntrasures, level
-        param: combatlevel
-        bc = new BadConsequence ("", , 
-                new ArrayList(Arrays.asList(TreasureKind. )),
-                new ArrayList(Array.asList(TreasureKind. )));
-        prize = new Prize ( , );
-        monstruos.add (new Monster ("", , bc, prize));
-       */
         
         bc = new BadConsequence ("Pierdes tu armadura visible y otra oculta", 0, 
                 new ArrayList(Arrays.asList(TreasureKind.ARMOR )),
@@ -161,8 +185,6 @@ public class PruebaNapakalaki {
         prize = new Prize (2, 1);
         monstruos.add (new Monster ("Dameargo", 1, bc, prize));
         
-        
-        
        
         bc = new BadConsequence("Da mucho asquito. Pierdes 3 niveles. ", 3, 0, 0);
         prize = new Prize(2,1);
@@ -205,5 +227,32 @@ public class PruebaNapakalaki {
         prize = new Prize(2,1);
         monstruos.add(new Monster("Bicéfalo", 21, bc, prize));
        
+        
+        // Probamos los métodos de la clase PruebaNapakalaki
+        ArrayList<Monster> m1 = new ArrayList();
+        
+        m1 = combatLevelGt10(monstruos);
+        System.out.println("Monstruos con nivel mayor que 10: \n" + m1);
+        
+        m1 = lossLevel(monstruos); //NO FUNCIONA
+        System.out.println("Monstruos que solo hacen perder niveles: \n" + m1);
+        
+        m1 = levelGt1(monstruos);
+        System.out.println("Monstruos que hacen ganar más de 1 nivel: \n" + m1);
+        
+        m1 = lossTreasure(monstruos, TreasureKind.ARMOR);
+        System.out.println("Monstruos que hacen perder tesoros de tipo armadura:\n" +m1);
+        
+        m1 = lossTreasure(monstruos, TreasureKind.ONEHAND);
+        System.out.println("Monstruos que hacen perder tesoros de una mano:\n" +m1);
+        
+        m1 = lossTreasure(monstruos, TreasureKind.BOTHHANDS);
+        System.out.println("Monstruos que hacen perder tesoros de dos manos:\n" +m1);
+        
+        m1 = lossTreasure(monstruos, TreasureKind.HELMET);
+        System.out.println("Monstruos que hacen perder tesoros de tipo cubrecabeza:\n" +m1);
+        
+        m1 = lossTreasure(monstruos, TreasureKind.SHOES);
+        System.out.println("Monstruos que hacen perder tesoros de tipo calzado:\n" +m1);
     }
 }
