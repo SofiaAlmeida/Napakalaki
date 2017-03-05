@@ -44,8 +44,8 @@ public class PruebaNapakalaki {
         for(Monster monster : m)
             if(monster.getBadConsequence().getNHiddenTreasures() == 0 &&
                monster.getBadConsequence().getNVisibleTreasures() == 0 &&
-               monster.getBadConsequence().getSpecificHiddenTreasures() == null &&
-               monster.getBadConsequence().getSpecificVisibleTreasures() == null)
+               monster.getBadConsequence().getSpecificHiddenTreasures().isEmpty() &&
+               monster.getBadConsequence().getSpecificVisibleTreasures().isEmpty())
                  
                    result.add(monster);
         
