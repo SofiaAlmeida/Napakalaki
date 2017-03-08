@@ -4,13 +4,13 @@ class BadConsequence
 #  def initialize
  # end
  
-  attr_accessor :text
-  attr_accessor :levels
-  attr_accessor :nVisibleTreasures
-  attr_accessor :nHiddenTreasures
-  attr_accessor :death
-  attr_accessor :specificHiddenTreasures
-  attr_accessor :specificVisibleTreasures
+  attr_reader :text
+  attr_reader :levels
+  attr_reader :nVisibleTreasures
+  attr_reader :nHiddenTreasures
+  attr_reader :death
+  attr_reader :specificHiddenTreasures
+  attr_reader :specificVisibleTreasures
   
   #toString
   def to_s

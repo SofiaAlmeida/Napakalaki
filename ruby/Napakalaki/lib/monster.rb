@@ -1,10 +1,10 @@
 #encoding: utf-8
 
 class Monster
-  attr_accessor name
-  attr_accessor combatLevel
-  attr_accessor prize
-  attr_accessor badConsequence
+  attr_reader name
+  attr_reader combatLevel
+  attr_reader prize
+  attr_reader badConsequence
   
   def initialize(name, combatLevel, prize, badConsequence)
     @name = name
