@@ -139,14 +139,14 @@ public class BadConsequence {
     public String toString() {
         if (death)
             return text;
-        else if (getSpecificHiddenTreasures() != null && getSpecificVisibleTreasures() != null)
+        else if (getSpecificHiddenTreasures().isEmpty() && getSpecificVisibleTreasures().isEmpty())
             return text + "\nLevels = " + Integer.toString(levels) + "\nTreasures Visibles = "
-                   + specificVisibleTreasures.toString() + "\nHidden Treasures = "
-                   + specificHiddenTreasures.toString();
+                   + Integer.toString(nVisibleTreasures) + "\nHidden Treasures = "
+                   + Integer.toString(nHiddenTreasures);
         
             else
                 return text + "\nLevels = " + Integer.toString(levels) + "\nTreasures Visibles = "
-                       + Integer.toString(nVisibleTreasures) + "\nHidden Treasures = "
-                       + Integer.toString(nHiddenTreasures);
+                       + specificVisibleTreasures.toString() + "\nHidden Treasures = "
+                       + specificHiddenTreasures.toString();
     }
 }

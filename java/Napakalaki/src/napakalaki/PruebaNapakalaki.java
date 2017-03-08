@@ -140,7 +140,7 @@ public class PruebaNapakalaki {
         bc = new BadConsequence("Pierdes todos tus tesoros visibles. ", 0, Integer.MAX_VALUE, 0);
         prize = new Prize(3,1);
         monstruos.add(new Monster("El gorrón en el umbral", 13, bc, prize));
-        
+        System.out.println(bc);
         
         bc = new BadConsequence("Pierdes la armadura visible. ", 0, 
                 new ArrayList(Arrays.asList(TreasureKind.ARMOR)), new ArrayList());
