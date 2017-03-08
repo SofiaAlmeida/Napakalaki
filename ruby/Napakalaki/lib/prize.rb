@@ -22,7 +22,7 @@ class Prize
   
   #toString
   def to_s
-    "Tesoros ganados: #{@treasures} \n Niveles ganados: #{@level}"
+    "\n\tTesoros ganados: #{@treasures} \n\tNiveles ganados: #{@level}"
   end
 
   
