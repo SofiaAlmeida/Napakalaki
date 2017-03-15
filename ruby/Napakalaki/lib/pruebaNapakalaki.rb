@@ -36,14 +36,14 @@ def levelGt1 (monstruos)
 end
 
 def isTreasure (monstruo, t)
-  encontrado
-  monstruo.badConsequence.specificHiddenTreasure.each{ |treasure| 
+  @encontrado
+  monstruo.badConsequence.specificHiddenTreasures.each{ |treasure| 
     if (treasure == t)
-      encontrado = true 
-    else encontrado = false
+      @encontrado = true 
+    else @encontrado = false
     end
   }
-  encontrado
+  @encontrado
 end
 
 def lossTreasure (monstruos, t)
@@ -163,7 +163,7 @@ class PruebaNapakalaki
   #m1 = levelGt1 (@@monsters)
   #puts m1
   
-  m1 = lossTreasures (@@monsters, TreasureKind::ONEHAND)
+  m1 = lossTreasure(@@monsters, TreasureKind::ONEHAND)
   puts m1
   
 end
