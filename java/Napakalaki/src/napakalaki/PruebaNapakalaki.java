@@ -229,7 +229,7 @@ public class PruebaNapakalaki {
         m1 = combatLevelGt10(monstruos);
         System.out.println("Monstruos con nivel mayor que 10: \n" + m1);
         
-        m1 = lossLevel(monstruos); //NO FUNCIONA
+        m1 = lossLevel(monstruos);
         System.out.println("Monstruos que solo hacen perder niveles: \n" + m1);
         
         m1 = levelGt1(monstruos);
