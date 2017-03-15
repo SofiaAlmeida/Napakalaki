@@ -6,5 +6,5 @@ package napakalaki;
  * @author María Victoria Granados Pozo
  */
 public enum TreasureKind {
-    ARMOR, ONEHAND, BOTHHANDS, HELMET, SHOES;
+    ARMOR, ONEHAND, BOTHHANDS, HELMET, SHOE;
 }

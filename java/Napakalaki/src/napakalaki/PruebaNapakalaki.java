@@ -107,7 +107,7 @@ public class PruebaNapakalaki {
        
         
         bc = new BadConsequence("El primordial bostezo contagioso. Pierdes el calzado visible.", 
-                0, new ArrayList(Arrays.asList(TreasureKind.SHOES)), new ArrayList());
+                0, new ArrayList(Arrays.asList(TreasureKind.SHOE)), new ArrayList());
         prize = new Prize(1,1);
         monstruos.add(new Monster("El sopor de Dunwich", 2, bc, prize));
         
@@ -230,7 +230,7 @@ public class PruebaNapakalaki {
         m1 = lossTreasure(monstruos, TreasureKind.HELMET);
         System.out.println("Monstruos que hacen perder tesoros de tipo cubrecabeza:\n" +m1);
         
-        m1 = lossTreasure(monstruos, TreasureKind.SHOES);
+        m1 = lossTreasure(monstruos, TreasureKind.SHOE);
         System.out.println("Monstruos que hacen perder tesoros de tipo calzado:\n" +m1);
     }
 }
