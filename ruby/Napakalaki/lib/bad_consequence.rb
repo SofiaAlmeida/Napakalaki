@@ -1,5 +1,4 @@
 #encoding: utf-8
-require_relative "treasure_kind.rb"
 
 class BadConsequence
   attr_reader :text
@@ -25,7 +24,7 @@ class BadConsequence
   end
  
   def self.newLevelNumberOfTreasures(aText, someLevels, someVisibleTreasures, someHiddenTreasures)
-    new(aText, someLevels, someVisibleTreasures, someHiddenTreasures, nil,nil,false)
+    new(aText, someLevels, someVisibleTreasures, someHiddenTreasures, [], [], false)
   end
 
   def self.newLevelSpecificTreasures(aText, someLevels, someSpecificVisibleTreasures, someSpecificHiddenTreasures)
@@ -33,19 +32,12 @@ class BadConsequence
   end
   
   def self.newDeath(aText)
-    new(aText, 0, 0, 0, nil, nil, true)
+    new(aText, 0, 0, 0, [], [], true)
   end
 
   
   #toString
   def to_s
-    # No sé cómo haremos los constructores...
-    #Dejo esto por aquí para que nos sirva de base luego, pero supongo que habrá 
-    #que poner algún if-else igual que en java
-   # "Texto: #{@text} \nNiveles: #{@levels} \n Tesoros visibles: #{@nVisibleTreasures} \n
-   #  Tesoros ocultos: #{@nHiddenTreasures} \n Muerte: #{@death} \n Tesoros ocultos específicos:
-   # #{@specificHiddenTreasures} \n Tesoros visibles específicos: #{@specificVisibleTreasures}"
-    
     if @death==false
       if @specificVisibleTreasures.nil? and @specificHiddenTreasures.nil? #La linea de abajo hay que ponerla así sino hace un salto de linea mas
         "\n\tTexto: #{@text} \n\tNiveles: #{@levels} \n\tTesoros visibles: #{@nVisibleTreasures}\n\tTesoros ocultos: #{@nHiddenTreasures}"
