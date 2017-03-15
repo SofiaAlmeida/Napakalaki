@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * @author victoria
  */
 public class Player {
+    //public static int final MAXLEVEL = 10;
     private String name;
     private int level;
     private boolean dead = true;
@@ -13,6 +14,7 @@ public class Player {
     private BadConsequence pendingBadConquence;
     private ArrayList<Treasure> hiddenTreasures;
     private ArrayList<Treasure> visibleTreasures;
+    private Player enemy;
     
     
     /**
@@ -97,7 +99,7 @@ public class Player {
     }
     
     /**
-     * 
+     * REVIEW
      * 
      * @param tKind 
      * @return 
@@ -113,11 +115,145 @@ public class Player {
      * @param tKind tipo de tesoro a comparar
      * @return número 
      */
-    private int howManyVisible (TreasureKind tKind){
+    private int howManyVisibleTreasures (TreasureKind tKind){
         int contador=0;
         for (Treasure t: visibleTreasures)
             if (t.getType() == tKind)
                 ++contador;        
         return contador;
+    }
+    
+    /**
+     * 
+     * Cambia el estado a muerto si se pierden todos los tesoros
+     */
+    private void dieIfNoTreasures(){
+        if (hiddenTreasures.isEmpty() && visibleTreasures.isEmpty()){
+            dead = true;
+        }
+    }
+    
+    /**
+     * 
+     * Consultor de dead
+     * @return true si está muerto
+     *         false en caso contrario
+     */
+    public boolean isDead(){
+        return dead;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    /*public ArrayList<Treasure> getHiddenTreasures(){
+        
+    }*/
+    
+     /**
+     * 
+     * @return 
+     */
+    /*public ArrayList<Treasure> getVisibleTreasures(){
+        
+    }*/
+    
+    /**
+     * 
+     * @param m
+     * @return 
+     */
+    /*public CombatResult combat (Monster m){
+        
+    }*/
+    
+    /**
+     * 
+     * @param t 
+     */
+    public void makeTreasureVisible (Treasure t){
+        
+    }
+    
+    /**
+     * 
+     * @param t 
+     */
+    public void discardVisibleTreasure (Treasure t){
+        
+    }
+    
+    /**
+     * 
+     * @param t 
+     */
+    public void discardHiddenTreasure (Treasure t){
+        
+    }
+    
+    public boolean validState(){
+        if (pendingBadConquence.isEmpty() && hiddenTreasures.size())
+            return true;
+        else 
+            return false;
+    }
+    
+    public void initTreasures(){
+        
+    }
+    
+    /**
+     * 
+     * Consultor del nivel
+     * @return nivel del jugador
+     */
+    public int getLevel(){
+        return level;
+    }
+    
+    /*public Treasure stealTreasure(){
+        
+    }*/
+    
+    /**
+     * 
+     * 
+     * @param enemy 
+     */
+    public void setEnemy(Player enemy){
+        this.enemy = enemy;
+    }
+    
+    private boolean giveMeATreasure(){
+        
+    }
+    
+    public boolean canISteal (){
+        return canISteal;
+    }
+    
+    /**
+     * 
+     * Consulta si le pueden robar un tesoro
+     * @return true si el jugador tiene tesoros ocultos
+     *         false en caso contrario
+     */
+    private boolean canYouGiveMeATreasure (){
+        if (!hiddenTreasures.isEmpty())
+            return true;
+        return false;
+    }
+    
+    /**
+     * 
+     * Si el jugador roba un tesoro cambia canISteal
+     */
+    private void haveStolen(){
+        canISteal = false;
+    }
+    
+    public void discardAllTreasures(){
+        
     }
 }

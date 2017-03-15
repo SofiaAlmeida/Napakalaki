@@ -50,9 +50,9 @@ public class Monster {
      * Consultor del premio
      * @return Premio que se obtiene al ganar al monstruo
      */
-    public Prize getPrize() {
+    /*public Prize getPrize() {
         return prize;
-    }
+    }*/
     
     /**
      * 
@@ -67,8 +67,26 @@ public class Monster {
      * 
      * @return objeto String con la información relativa al monstruo
      */
-    public String toString() {
+    /*public String toString() {
         return  "\nName = " + name + "\nCombat Level = " + Integer.toString(combatLevel)
                 + "\n" + prize.toString() + "\n" + bc.toString();
+    }*/
+    
+    /**
+     * 
+     * Devuelve el número de niveles ganados porporcionados por su buen rollo
+     * @return número de niveles ganados
+     */
+    public int getLevelsGained(){
+        return prize.getLevel();
+    }
+    
+    /**
+     * 
+     * Devuelve el número de tesoros ganados proporcionados por su buen rollo
+     * @return número de tesoros ganados
+     */
+    public int getTreasuresGained(){
+        return prize.getTreasures();
     }
 }
