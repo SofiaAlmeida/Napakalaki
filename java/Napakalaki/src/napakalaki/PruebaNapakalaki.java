@@ -74,31 +74,13 @@ public class PruebaNapakalaki {
         ArrayList<Monster> result = new ArrayList();
         
         for(Monster monster : m)
-            //REVIEW: ¿¿Existe una función de ArrayList para hacerlo directamente??
-            if(isTreasure(monster, t))
+            if(monster.getBadConsequence().getSpecificHiddenTreasures().contains(t)
+               || monster.getBadConsequence().getSpecificVisibleTreasures().contains(t))  
                 result.add(monster);
         
         return result;
     }
     
-    /**
-     * 
-     * Comprueba si el mal rollo de un monstruo contiene el tipo de tesoro indicado
-     * @param m monstruo a evaluar
-     * @param t tipo de tesoro a comparar
-     * @return true si el tesoro está en el mal rollo
-     *         false en caso contrario
-     */
-    private static boolean isTreasure(Monster m, TreasureKind t) {
-        for(TreasureKind treasure : m.getBadConsequence().getSpecificHiddenTreasures()) 
-            if(treasure == t)
-                return true;
-        
-        for(TreasureKind treasure : m.getBadConsequence().getSpecificVisibleTreasures())
-            if(treasure == t)
-                return true;
-        return false;
-    }
     
     /**
      * @param args the command line arguments
@@ -108,6 +90,7 @@ public class PruebaNapakalaki {
         BadConsequence bc;
         Prize prize;
         
+        //Añadimos los monstruos
         bc = new BadConsequence ("Pierdes tu armadura visible y otra oculta", 0, 
                 new ArrayList(Arrays.asList(TreasureKind.ARMOR )),
                 new ArrayList(Arrays.asList(TreasureKind.ARMOR)));
