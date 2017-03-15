@@ -137,7 +137,7 @@ public class PruebaNapakalaki {
         monstruos.add(new Monster("Demonios de Magaluf", 2, bc, prize));
         
         
-        bc = new BadConsequence("Pierdes todos tus tesoros visibles. ", 0, Integer.MAX_VALUE, 0);
+        bc = new BadConsequence("Pierdes todos tus tesoros visibles. ", 0, 5, 0);
         prize = new Prize(3,1);
         monstruos.add(new Monster("El gorrón en el umbral", 13, bc, prize));
         System.out.println(bc);
