@@ -4,7 +4,20 @@ require_relative "treasure_kind.rb"
 require_relative "bad_consequence"
 require_relative "monster.rb"
 
-def combatLevelGt10 (monstruos)
+class PruebaNapakalaki
+=begin 
+  Pruebas previas
+  prize = Prize.new(TreasureKind::ONEHAND, 2)
+  bc = BadConsequence.newLevelNumberOfTreasures("Muerte", 1, 2, 3)
+  monster = Monster.new("Nombre", 3, prize, bc)
+  
+  puts bc
+  puts bc
+  puts prize.to_s
+  puts monster.to_s
+=end
+  
+  def self.combatLevelGt10(monstruos)
   result = Array.new
   monstruos.each { |monstruo| if (monstruo.combatLevel > 10)
       result << monstruo
@@ -13,20 +26,21 @@ def combatLevelGt10 (monstruos)
   result
 end
 
-def lossLevel (monstruos) 
+def self.lossLevel(monstruos) 
   result = Array.new
   monstruos.each { |monstruo| 
     if (monstruo.badConsequence.nHiddenTreasures == 0 and 
         monstruo.badConsequence.nVisibleTreasures == 0 and
-        monstruo.badConsequence.specificHiddenTreasures == [] and
-        monstruo.badConsequence.specificVisibleTreasures == []) #Comparar con lista vacía??
-          result << monstruo
+        monstruo.badConsequence.specificHiddenTreasures.empty? and
+        monstruo.badConsequence.specificVisibleTreasures.empty?) 
+          
+      result << monstruo
     end
   }
   result
 end
  
-def levelGt1 (monstruos)
+def self.levelGt1(monstruos)
   result = Array.new
   monstruos.each { |monstruo| if (monstruo.prize.level > 1)
       result << monstruo
@@ -35,39 +49,20 @@ def levelGt1 (monstruos)
   result
 end
 
-def isTreasure (monstruo, t)
-  @encontrado
-  monstruo.badConsequence.specificHiddenTreasures.each{ |treasure| 
-    if (treasure == t)
-      @encontrado = true 
-    else @encontrado = false
-    end
-  }
-  @encontrado
-end
-
-def lossTreasure (monstruos, t)
+def self.lossTreasure(monstruos, t)
   result = Array.new
   monstruos.each { |monstruo|
-    if (isTreasure(monstruo, t))
+    if (monstruo.badConsequence.specificHiddenTreasures.include? t)
       result << monstruo
     end
   }
+  result
 end
-
-class PruebaNapakalaki
-  prize = Prize.new(TreasureKind::ONEHAND, 2)
-  bc = BadConsequence.newLevelNumberOfTreasures("Muerte", 1, 2, 3)
-  monster = Monster.new("Nombre", 3, prize, bc)
   
-  #puts bc
-  #puts bc
-  #puts prize.to_s
-  #puts monster.to_s
-  
-  
+  #-----------------------------------------------------------------------------
+  #         MONSTRUOS
+  #-----------------------------------------------------------------------------
   @@monsters = Array.new
-  
     
   prize = Prize.new(2,1)
   badConsequence = BadConsequence.newLevelSpecificTreasures("Pierdes tu armadura visible y otra oculta", 
@@ -76,7 +71,7 @@ class PruebaNapakalaki
   
   prize = Prize.new(1,1)
   badConsequence = BadConsequence.newLevelSpecificTreasures("Embobados con el lindo primigenio te descartas de tu casco visible", 
-  0, [TreasureKind::HELMET], []) ## Lista vacía??
+  0, [TreasureKind::HELMET], []) 
   @@monsters<< Monster.new("Tenochtitlan", 2, prize, badConsequence)
     
   prize = Prize.new(1,1)
@@ -153,16 +148,18 @@ class PruebaNapakalaki
     3, [TreasureKind::ONEHAND, TreasureKind::ONEHAND, TreasureKind::BOTHHANDS], [])
   @@monsters << Monster.new("Bicéfalo", 21, prize, badConsequence)
   
-  m1 = Array.new
-  #m1 = combatLevelGt10 (@@monsters)
-  #puts m1
+  #-----------------------------------------------------------------------------
   
-  m1 = lossLevel (@@monsters)
+  m1 = Array.new
+  m1 = combatLevelGt10(@@monsters)
   puts m1
   
-  #m1 = levelGt1 (@@monsters)
-  #puts m1
+  m1 = lossLevel(@@monsters)
+  puts m1
   
+  m1 = levelGt1(@@monsters)
+  puts m1
+
   m1 = lossTreasure(@@monsters, TreasureKind::ONEHAND)
   puts m1
   
