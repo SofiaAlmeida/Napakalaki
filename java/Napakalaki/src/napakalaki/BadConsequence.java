@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * @author María Victoria Granados Pozo
  */
 public class BadConsequence {
+    static final int MAXTREASURES = 10;
     private String text;
     private int levels;
     private int nVisibleTreasures;
@@ -16,56 +17,12 @@ public class BadConsequence {
     private ArrayList<TreasureKind> specificHiddenTreasures;
     private ArrayList<TreasureKind> specificVisibleTreasures;
     
-    /**
-     * 
-     * Constructor: número tesoros
-     * @param text Descripción del mal rollo
-     * @param levels Número de niveles que se pierden
-     * @param nVisible Número de tesoros visible que se pierden
-     * @param nHidden Número de tesoros ocultos que se pierden
-     */
-    public BadConsequence(String text, int levels, int nVisible, int nHidden) {
-        this.text = text;
-        this.levels = levels;
-        nVisibleTreasures = nVisible;
-        nHiddenTreasures = nHidden;
-        death = false;
-        specificHiddenTreasures = new ArrayList();
-        specificVisibleTreasures = new ArrayList();
-    }        
     
-    /**
-     * 
-     * Constructor: Muerte
-     * @param text Descripción del mal rollo
-     * @param death Boolean que indica si el mal rollo es muerte
-     */
-    public BadConsequence(String text, boolean death) {
-        this.text = text;
-        this.death = death;
-        this.levels = 0;
-        nVisibleTreasures = 0;
-        nHiddenTreasures = 0;
-        specificHiddenTreasures = new ArrayList();
-        specificVisibleTreasures = new ArrayList();
-    }
-        
-    /**
-     * 
-     * Constructor: Listas
-     * @param text Descripción del mal rollo
-     * @param levels Número de niveles que se pierden
-     * @param tVisible Tesoros visibles que se pierden
-     * @param tHidden Tesores ocultos que se pierden
-     */
-    public BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible,
-            ArrayList<TreasureKind> tHidden) {
-        this.text = text;
-        this.levels = levels;
-        specificVisibleTreasures = tVisible;
-        specificHiddenTreasures = tHidden;
-        this.levels = 0;
-        this.death = false;       
+    
+    public boolean isEmpty (){
+        if (nVisibleTreasures == 0 && nHiddenTreasures == 0 && getSpecificHiddenTreasures().isEmpty() && getSpecificVisibleTreasures().isEmpty())
+            return true;
+        return false;
     }
     
     /**
@@ -73,9 +30,9 @@ public class BadConsequence {
      * Consultor del texto
      * @return texto con la información del mal rollo
      */
-    public String getText() {
+    /*public String getText() {
         return text;
-    }
+    }*/
     
     /**
      * 
@@ -110,8 +67,17 @@ public class BadConsequence {
      * @return true si se muere
      *         false si no se muere
      */
-    public boolean getDeath() {
+    /*public boolean getDeath() {
         return death;
+    }*/
+    
+    /**
+     * 
+     * Consultor de tesoros ocultos
+     * @return tesoros específicos ocultos que se pierden
+     */
+    public ArrayList<TreasureKind> getSpecificHiddenTreasures() {
+        return specificHiddenTreasures;
     }
     
     /**
@@ -125,18 +91,83 @@ public class BadConsequence {
     
     /**
      * 
-     * Consultor de tesoros ocultos
-     * @return tesoros específicos ocultos que se pierden
+     * 
+     * @param t Tesoro
      */
-    public ArrayList<TreasureKind> getSpecificHiddenTreasures() {
-        return specificHiddenTreasures;
+    public void substractVisibleTreasure (Treasure t){
+        
+    }
+    
+    public void substractHiddenTreasure (Treasure t){
+        
+    }
+    /**
+     * 
+     * Constructor: número tesoros
+     * @param text Descripción del mal rollo
+     * @param levels Número de niveles que se pierden
+     * @param nVisible Número de tesoros visible que se pierden
+     * @param nHidden Número de tesoros ocultos que se pierden
+     */
+    public BadConsequence(String text, int levels, int nVisible, int nHidden) {
+        this.text = text;
+        this.levels = levels;
+        nVisibleTreasures = nVisible;
+        nHiddenTreasures = nHidden;
+        death = false;
+        specificHiddenTreasures = new ArrayList();
+        specificVisibleTreasures = new ArrayList();
+    }        
+    
+    /**
+     * 
+     * Constructor: Listas
+     * @param text Descripción del mal rollo
+     * @param levels Número de niveles que se pierden
+     * @param tVisible Tesoros visibles que se pierden
+     * @param tHidden Tesores ocultos que se pierden
+     */
+    public BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible,
+            ArrayList<TreasureKind> tHidden) {
+        this.text = text;
+        this.levels = levels;
+        specificVisibleTreasures = tVisible;
+        specificHiddenTreasures = tHidden;
+        this.levels = 0;
+        this.death = false;       
     }
     
     /**
      * 
+     * Constructor: Muerte
+     * @param text Descripción del mal rollo
+     * @param death Boolean que indica si el mal rollo es muerte
+     */
+    public BadConsequence(String text, boolean death) {
+        this.text = text;
+        this.death = death;
+        this.levels = 0;
+        nVisibleTreasures = 0;
+        nHiddenTreasures = 0;
+        specificHiddenTreasures = new ArrayList();
+        specificVisibleTreasures = new ArrayList();
+    }
+        
+   
+    /**
+     * 
+     * @param v
+     * @param h
+     * @return 
+     */
+    /*public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
+        
+    }*/
+    /**
+     * 
      * @return String con información del mal rollo
      */
-    public String toString() {
+    /*public String toString() {
         if (death)
             return text;
         else if (getSpecificHiddenTreasures().isEmpty() && getSpecificVisibleTreasures().isEmpty())
@@ -148,5 +179,6 @@ public class BadConsequence {
                 return text + "\nLevels = " + Integer.toString(levels) + "\nTreasures Visibles = "
                        + specificVisibleTreasures.toString() + "\nHidden Treasures = "
                        + specificHiddenTreasures.toString();
-    }
+    }*/
+    
 }

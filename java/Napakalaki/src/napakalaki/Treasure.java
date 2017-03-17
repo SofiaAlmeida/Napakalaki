@@ -41,6 +41,11 @@ public class Treasure {
         return bonus;
     }
     
+    /**
+     * 
+     * Consultor del tipo de tesoro
+     * @return tipo de tesoro
+     */
     public TreasureKind getType(){
         return type;
     }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author victoria
  */
 public class Player {
-    //public static int final MAXLEVEL = 10;
+    static final int MAXLEVEL = 10;
     private String name;
     private int level;
     private boolean dead = true;
@@ -193,7 +193,7 @@ public class Player {
     }
     
     public boolean validState(){
-        if (pendingBadConquence.isEmpty() && hiddenTreasures.size())
+        if (pendingBadConquence.isEmpty() && hiddenTreasures.size()<= 4)
             return true;
         else 
             return false;
@@ -225,9 +225,9 @@ public class Player {
         this.enemy = enemy;
     }
     
-    private boolean giveMeATreasure(){
+    /*private boolean giveMeATreasure(){
         
-    }
+    }*/
     
     public boolean canISteal (){
         return canISteal;
