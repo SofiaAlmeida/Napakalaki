@@ -1,6 +1,10 @@
 #encoding: utf-8
 
+#Sofía Almeida Bruno
+#María Victoria Granados Pozo
+
 class BadConsequence
+=begin
   attr_reader :text
   attr_reader :levels
   attr_reader :nVisibleTreasures
@@ -9,8 +13,10 @@ class BadConsequence
   attr_reader :specificHiddenTreasures
   attr_reader :specificVisibleTreasures
   
-   @specificHiddenTreasures = Array.new
-   @specificVisibleTreasures = Array.new
+  attr_reader :@specificHiddenTreasures = Array.new
+  attr_reader :@specificVisibleTreasures = Array.new
+=end
+  MAXTREASURES = 10
   
   def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures, 
       someSpecificVisibleTreasures, someSpecificHiddenTreasures, death)
@@ -35,6 +41,45 @@ class BadConsequence
     new(aText, 0, 0, 0, [], [], true)
   end
 
+  def isEmpty
+    if ( @nHiddenTreasures == 0 and @nVisibleTreasures == 0 and
+        @specificHiddenTreasures.empty? and @specificVisibleTreasures.empty?) 
+        empty = true
+    else 
+        empty = false
+    end
+    empty
+  end
+  
+  def getLevels
+    @levels
+  end
+  
+  def getNVisibleTreasures
+    @nVisibleTreasures
+  end
+  
+  def getNHiddenTreasures
+    @nHiddenTreasures
+  end
+  
+  def getSpecificHiddenTreasures
+    @specificHiddenTreasures
+  end
+  
+=begin
+  def subtractVisibleTreasure(t)
+    
+  end
+  
+  def subtractHiddenTreasure(t)
+    
+  end
+  
+  def adjustToFitTreasureLists (v, h)
+    
+  end
+=end
   
   #toString
   def to_s
@@ -51,5 +96,6 @@ class BadConsequence
     
   end
   
-  private_class_method :new # Comprobar posición
+  private_class_method :new
 end
+
