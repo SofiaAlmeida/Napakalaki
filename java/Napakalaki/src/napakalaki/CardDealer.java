@@ -1,6 +1,7 @@
 package napakalaki;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  *
@@ -170,7 +171,7 @@ public class CardDealer {
      * Baraja el mazo de cartas de tesoros sin usar
      */
     private void shuffleTreasures(){
-        
+        Collections.shuffle(unusedTreasures);
     }
     
     /**
@@ -178,7 +179,7 @@ public class CardDealer {
      * Baraja el mazo de cartas de monstruos sin usar
      */
     private void shuffleMonster(){
-        
+        Collections.shuffle(unusedMonsters);
     }
     
     /**
