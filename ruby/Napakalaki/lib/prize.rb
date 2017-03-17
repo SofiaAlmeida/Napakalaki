@@ -1,5 +1,8 @@
 #encoding: utf-8
 
+#Sofía Almeida Bruno
+#María Victoria Granados Pozo
+
 class Prize
   def initialize(treasures, level)
     @treasures = treasures
@@ -7,23 +10,24 @@ class Prize
   end
   
   #Forma 1 consultores
-  attr_reader :treasures
-  attr_reader :level
+  #attr_reader :treasures
+  #attr_reader :level
   
   #Forma 2 consultores
-  def treasures
+  def getTreasures
     @treasures
   end
   
-  def level
+  def getLevels
     @level
   end
-  # Una vez hayas visto las dos anteriores elige la que te parezca conveniente
   
   #toString
+
   def to_s
     "\n\tTesoros ganados: #{@treasures} \n\tNiveles ganados: #{@level}"
   end
+
 
   
 end
