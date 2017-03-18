@@ -17,7 +17,12 @@ public class BadConsequence {
     private ArrayList<TreasureKind> specificVisibleTreasures;
     
   
-    //TODO: documentación, según lo que tenga que hacer
+    /**
+     * 
+     * Indica si se pierden o no tesoros
+     * @return true si  no se pierden tesoros
+     *         false en caso contrario
+     */
     public boolean isEmpty() {
         if (nVisibleTreasures == 0 && nHiddenTreasures == 0 && getSpecificHiddenTreasures().isEmpty() && getSpecificVisibleTreasures().isEmpty())
             return true;

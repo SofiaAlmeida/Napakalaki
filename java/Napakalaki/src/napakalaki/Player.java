@@ -202,8 +202,10 @@ public class Player {
     
     /**
      * 
-     * 
-     * @return 
+     * Comprueba si el estado de un jugador es válido
+     * @return true si el jugador no tiene ningún mal rollo que cumplir
+     *              y no tiene más de cuatro tesoros ocultos
+     *         false en caso contrario
      */
     public boolean validState() {
         if (pendingBadConsequence.isEmpty() && hiddenTreasures.size()<= 4)
@@ -269,7 +271,7 @@ public class Player {
     
     /**
      * 
-     * Si el jugador roba un tesoro cambia canISteal
+     * Si el jugador roba un tesoro cambia el valor de canISteal
      */
     private void haveStolen() {
         canISteal = false;
