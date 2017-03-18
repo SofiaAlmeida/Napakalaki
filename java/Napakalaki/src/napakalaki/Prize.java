@@ -7,17 +7,17 @@ package napakalaki;
  */
 public class Prize {
     private int treasures;
-    private int level;
+    private int levels;
     
     /**
      * 
      * Constructor
-     * @param treasures número de tesoros ganados
-     * @param level número de niveles ganados
+     * @param t número de tesoros ganados
+     * @param l número de niveles ganados
      */
-    public Prize(int treasures, int level) {
-        this.treasures = treasures;
-        this.level = level;
+    public Prize(int t, int l) {
+        treasures = t;
+        levels = l;
     }
     
     /**
@@ -34,8 +34,8 @@ public class Prize {
      * Consultor de niveles
      * @return número de niveles ganados
      */
-    public int getLevel() {
-        return level;
+    public int getLevels() {
+        return levels;
     }
     
     /**

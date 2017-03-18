@@ -70,7 +70,7 @@ public class Monster {
      * @return número de niveles ganados
      */
     public int getLevelsGained() {
-        return prize.getLevel();
+        return prize.getLevels();
     }
     
     /**
