@@ -1,4 +1,3 @@
-
 package napakalaki;
 import java.util.ArrayList;
 
@@ -19,7 +18,7 @@ public class BadConsequence {
     
     
     
-    public boolean isEmpty (){
+    public boolean isEmpty () {
         if (nVisibleTreasures == 0 && nHiddenTreasures == 0 && getSpecificHiddenTreasures().isEmpty() && getSpecificVisibleTreasures().isEmpty())
             return true;
         return false;

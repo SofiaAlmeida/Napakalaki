@@ -1,17 +1,18 @@
-
 package napakalaki;
 import java.util.ArrayList;
+
 /**
  *
- * @author victoria
+ * @author Sofía Almeida Bruno
+ * @author María Victoria Granados Pozo
  */
 public class Player {
     static final int MAXLEVEL = 10;
     private String name;
     private int level;
-    private boolean dead = true;
-    private boolean canISteal = true;
-    private BadConsequence pendingBadConquence;
+    private boolean dead;
+    private boolean canISteal;
+    private BadConsequence pendingBadConsequence;
     private ArrayList<Treasure> hiddenTreasures;
     private ArrayList<Treasure> visibleTreasures;
     private Player enemy;
@@ -22,37 +23,44 @@ public class Player {
      * Constructor
      * @param name Nombre del jugador
      */
-    public Player (String name){
+    public Player(String name) {
         this.name = name;
         level = 0;
+        dead = true;
+        canISteal = true;
+        pendingBadConsequence = null;
+        hiddenTreasures = new ArrayList();
+        enemy = null; 
     }
+    
      /**
       * 
       * Consultor del nombre
       * @return nombre del jugador
       */
-    public String getName(){
+    public String getName() {
         return name;
     }
+    
      /**
       * 
       * Da vida al jugador
       */
-    private void bringToLife(){
+    private void bringToLife() {
         dead = false;
     }
     
-    //REVIEW WARMING
     /**
      * 
      * Consultor del nivel de combate
      * @return nivel de combate
      */
-    private int getCombatLevel(){
-        for(Treasure treasure: visibleTreasures){
-           level += treasure.getBonus();
+    private int getCombatLevel() {
+        int combatLevel = level;
+        for(Treasure treasure: visibleTreasures) {
+           combatLevel += treasure.getBonus();
         }
-        return level;
+        return combatLevel;
     }
     
     /**
@@ -60,7 +68,7 @@ public class Player {
      * Incrementa niveles
      * @param l Número de niveles a incrementar 
      */
-    private void incrementLevels(int l){
+    private void incrementLevels(int l) {
         level += l;
     }
     
@@ -69,17 +77,17 @@ public class Player {
      * Decrementa niveles
      * @param l Número de niveles a decrementar 
      */
-    private void decrementLevels(int l){
+    private void decrementLevels(int l) {
         level -= l;
     }
     
     /**
      * 
-     * Asigna la mala consecuencia pendiente 
+     * Asigna el mal rollo pendiente 
      * @param b 
      */
-    private void setPendingBadConsequence (BadConsequence b){
-        pendingBadConquence = b;
+    private void setPendingBadConsequence(BadConsequence b) {
+        pendingBadConsequence = b;
     }
     
     /**
@@ -87,26 +95,25 @@ public class Player {
      * Aplica el premio del monstruo
      * @param m monstruo del que aplicar el premio
      */
-    private void applyPrize (Monster m){  
+    private void applyPrize(Monster m) {  
     }
     
     /**
      * 
-     * Aplica la mala consecuencia del monstruo
-     * @param m monstruo del que aplicar el premio
+     * Aplica el mal rollo del monstruo
+     * @param m monstruo del que aplicar el mal rollo
      */
-    private void applyBadConsequence (Monster m){
+    private void applyBadConsequence(Monster m) {
     }
     
     /**
-     * REVIEW
      * 
-     * @param tKind 
+     * @param t
      * @return 
      */
-    /*private boolean canMakeTreasureVisible (TreasureKind tKind){
-        
-    }*/
+    private boolean canMakeTreasureVisible(Treasure t) {
+         
+    }
     
     //REVIEW Ver si existe función que te diga el número de aparencia de un elemento en un array
     /**
