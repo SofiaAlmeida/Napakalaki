@@ -10,21 +10,21 @@ public class Monster {
     private int combatLevel;
    
     private Prize prize;
-    private BadConsequence bc;
+    private BadConsequence badConsequence;
     
     /**
      * 
      * Constructor 
-     * @param name Nombre del monstruo
-     * @param level Nivel de combate del mostruo 
-     * @param bc Mal rollo del monstruo
-     * @param prize Premio al ganar al monstruo
+     * @param n Nombre del monstruo
+     * @param l Nivel de combate del mostruo 
+     * @param b Mal rollo del monstruo
+     * @param p Premio al ganar al monstruo
      */
-    public Monster(String name, int level, BadConsequence bc, Prize prize) {
-        this.name = name;
-        combatLevel = level;
-        this.bc = bc;
-        this.prize = prize;
+    public Monster(String n, int l, BadConsequence b, Prize p) {
+        name = n;
+        combatLevel = l;
+        badConsequence = b;
+        prize = p;
     }
     
     /**
@@ -45,6 +45,7 @@ public class Monster {
         return combatLevel;
     }
     
+    //REVIEW: no sale en el diagrama de clases, ¿lo borramos?
     /**
      * 
      * Consultor del premio
@@ -60,24 +61,15 @@ public class Monster {
      * @return Mal rollo aplicado al perder contra el monstruo
      */
     public BadConsequence getBadConsequence() {
-        return bc;
+        return badConsequence;
     }
-
-    /**
-     * 
-     * @return objeto String con la información relativa al monstruo
-     */
-    /*public String toString() {
-        return  "\nName = " + name + "\nCombat Level = " + Integer.toString(combatLevel)
-                + "\n" + prize.toString() + "\n" + bc.toString();
-    }*/
     
     /**
      * 
      * Devuelve el número de niveles ganados porporcionados por su buen rollo
      * @return número de niveles ganados
      */
-    public int getLevelsGained(){
+    public int getLevelsGained() {
         return prize.getLevel();
     }
     
@@ -86,7 +78,17 @@ public class Monster {
      * Devuelve el número de tesoros ganados proporcionados por su buen rollo
      * @return número de tesoros ganados
      */
-    public int getTreasuresGained(){
+    public int getTreasuresGained() {
         return prize.getTreasures();
     }
+    
+    //No sale en el diagrama de clases, pero seguramente lo utilizaremos para comprobar
+    /**
+     * 
+     * @return objeto String con la información relativa al monstruo
+     */
+    /*public String toString() {
+        return  "\nName = " + name + "\nCombat Level = " + Integer.toString(combatLevel)
+                + "\n" + prize.toString() + "\n" + bc.toString();
+    }*/
 }
