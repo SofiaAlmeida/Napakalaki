@@ -7,71 +7,82 @@ import java.util.ArrayList;
  * @author María Victoria Granados Pozo
  */
 public class Napakalaki {
-    private static final Napakalaki instance = new Napakalaki();
+    private static final Napakalaki instance = new Napakalaki(); //REVIEW: en el diagrama UML pone = null, pero en el pdf pone esto, no se
+                                                                 //qué habrá que poner
     private CardDealer dealer;
     private ArrayList<Player> players;
     private Player currentPlayer;
     private Monster currentMonster;
     
-    private Napakalaki(){
-       /* currentPlayer = null;
+    /**
+     * 
+     * Constructor por defecto
+     */
+    private Napakalaki() {
+       /* 
+        dealer = null;
+        currentPlayer = null;
         currentMonster = null;
         players = new ArrayList();*/
     }
     
-    private void initPlayers(ArrayList<String> names){
+    /**
+     * 
+     * @param names 
+     */
+    private void initPlayers(ArrayList<String> names) {
         
     }
     
-    /*private Player nextPlayer(){
+    /*private Player nextPlayer() {
         
     }
     
-    private boolean nextTurnAllowed(){
+    private boolean nextTurnAllowed() {
         
     }
     
-    private void setEnemies(){
+    private void setEnemies() {
         
     }
     
-    public Napakalaki getInstance(){
+    public static Napakalaki getInstance() {
         
     }
     
-    public CombatResult developCombat(){
+    public CombatResult developCombat() {
         
     }
     
-    public void discardVisibleTreasures(ArrayList<Treasure> treasures){
+    public void discardVisibleTreasures(ArrayList<Treasure> treasures) {
         
     }
     
-    public void discardHiddenTreasures(ArrayList<Treasure> treasures){
+    public void discardHiddenTreasures(ArrayList<Treasure> treasures) {
         
     }
     
-    public void makeTreasuresVisible(ArrayList<Treasure> treasures){
+    public void makeTreasuresVisible(ArrayList<Treasure> treasures) {
         
     }
     
-    public void initGame(ArrayList<String> players){
+    public void initGame(ArrayList<String> players) {
         
     }*/
     
-    /*public Player getCurrentPlayer(){
+    /*public Player getCurrentPlayer() {
         
     }
     
-    public Monster getCurrentMonster(){
+    public Monster getCurrentMonster() {
         
     }
     
-    public boolean nextTurn(){
+    public boolean nextTurn() {
         
     }
     
-    public boolean endOfGame (CombatResult result){
+    public boolean endOfGame (CombatResult result) {
         
     }*/
 }
