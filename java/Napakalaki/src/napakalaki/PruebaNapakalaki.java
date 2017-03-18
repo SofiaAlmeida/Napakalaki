@@ -57,7 +57,7 @@ public class PruebaNapakalaki {
         ArrayList<Monster> result = new ArrayList();
         
         for(Monster monster : m)
-            if(monster.getPrize().getLevel() > 1)
+            if(monster.getTreasuresGained() > 1)
                 result.add(monster);
         
         return result; 

@@ -35,11 +35,11 @@ public class PruebasVarias {
         System.out.println(bc2);
         System.out.println(bc3);
         // Prueba de los consultores
-        System.out.println(bc3.getText());
+        //System.out.println(bc3.getText());
         System.out.println(bc3.getLevels());
         System.out.println(bc3.getNVisibleTreasures());
         System.out.println(bc3.getNHiddenTreasures());
-        System.out.println(bc3.getDeath());
+        //System.out.println(bc3.getDeath());
         System.out.println(bc3.getSpecificVisibleTreasures());
         System.out.println(bc3.getSpecificHiddenTreasures());
      
@@ -50,7 +50,7 @@ public class PruebasVarias {
         System.out.println(monster.getName());
         System.out.println(monster.getCombatLevel());
         System.out.println(monster.getBadConsequence());
-        System.out.println(monster.getPrize());
+        //System.out.println(monster.getPrize());
     
         
         
