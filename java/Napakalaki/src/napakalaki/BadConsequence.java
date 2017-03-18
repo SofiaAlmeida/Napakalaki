@@ -16,13 +16,14 @@ public class BadConsequence {
     private ArrayList<TreasureKind> specificHiddenTreasures;
     private ArrayList<TreasureKind> specificVisibleTreasures;
     
-    
-    
-    public boolean isEmpty () {
+  
+    //TODO: documentación, según lo que tenga que hacer
+    public boolean isEmpty() {
         if (nVisibleTreasures == 0 && nHiddenTreasures == 0 && getSpecificHiddenTreasures().isEmpty() && getSpecificVisibleTreasures().isEmpty())
             return true;
         return false;
     }
+    //NOTE: podríamos llamar a esta función en la función de PruebaNapakalaki
     
     /**
      * 
@@ -93,24 +94,29 @@ public class BadConsequence {
      * 
      * @param t Tesoro
      */
-    public void substractVisibleTreasure (Treasure t){
+    public void substractVisibleTreasure(Treasure t) {
         
     }
     
-    public void substractHiddenTreasure (Treasure t){
+    /**
+     * 
+     * 
+     * @param t 
+     */
+    public void substractHiddenTreasure(Treasure t) {
         
     }
     /**
      * 
      * Constructor: número tesoros
-     * @param text Descripción del mal rollo
-     * @param levels Número de niveles que se pierden
+     * @param t Descripción del mal rollo
+     * @param l Número de niveles que se pierden
      * @param nVisible Número de tesoros visible que se pierden
      * @param nHidden Número de tesoros ocultos que se pierden
      */
-    public BadConsequence(String text, int levels, int nVisible, int nHidden) {
-        this.text = text;
-        this.levels = levels;
+    public BadConsequence(String t, int l, int nVisible, int nHidden) {
+        text = t;
+        levels = l;
         nVisibleTreasures = nVisible;
         nHiddenTreasures = nHidden;
         death = false;
@@ -126,14 +132,13 @@ public class BadConsequence {
      * @param tVisible Tesoros visibles que se pierden
      * @param tHidden Tesores ocultos que se pierden
      */
-    public BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible,
-            ArrayList<TreasureKind> tHidden) {
-        this.text = text;
-        this.levels = levels;
-        specificVisibleTreasures = tVisible;
-        specificHiddenTreasures = tHidden;
-        this.levels = 0;
-        this.death = false;       
+    public BadConsequence(String t, int l, ArrayList<TreasureKind> v, ArrayList<TreasureKind> h) {
+        text = t;
+        levels = l;
+        specificVisibleTreasures = v;
+        specificHiddenTreasures = h;
+        levels = 0;
+        death = false;       
     }
     
     /**
@@ -142,8 +147,8 @@ public class BadConsequence {
      * @param text Descripción del mal rollo
      * @param death Boolean que indica si el mal rollo es muerte
      */
-    public BadConsequence(String text, boolean death) {
-        this.text = text;
+    public BadConsequence(String t, boolean death) {
+        this.text = t;
         this.death = death;
         this.levels = 0;
         nVisibleTreasures = 0;
@@ -159,7 +164,7 @@ public class BadConsequence {
      * @param h
      * @return 
      */
-    /*public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
+    /*public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h) {
         
     }*/
     /**
