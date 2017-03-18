@@ -111,22 +111,23 @@ public class Player {
      * @param t
      * @return 
      */
-    private boolean canMakeTreasureVisible(Treasure t) {
+    /*private boolean canMakeTreasureVisible(Treasure t) {
          
-    }
+    }*/
     
-    //REVIEW Ver si existe función que te diga el número de aparencia de un elemento en un array
     /**
      * 
      * Número de tesoros visibles de un determinado tipo
      * @param tKind tipo de tesoro a comparar
      * @return número 
      */
-    private int howManyVisibleTreasures (TreasureKind tKind){
+    private int howManyVisibleTreasures(TreasureKind tKind) {
         int contador=0;
         for (Treasure t: visibleTreasures)
             if (t.getType() == tKind)
-                ++contador;        
+                ++contador;      
+        //REVIEW: probar si la línea a continuación funciona
+        //return Collections.frequency(visibleTreasures, tKind);
         return contador;
     }
     
@@ -134,8 +135,8 @@ public class Player {
      * 
      * Cambia el estado a muerto si se pierden todos los tesoros
      */
-    private void dieIfNoTreasures(){
-        if (hiddenTreasures.isEmpty() && visibleTreasures.isEmpty()){
+    private void dieIfNoTreasures() {
+        if (hiddenTreasures.isEmpty() && visibleTreasures.isEmpty()) {
             dead = true;
         }
     }
@@ -146,7 +147,7 @@ public class Player {
      * @return true si está muerto
      *         false en caso contrario
      */
-    public boolean isDead(){
+    public boolean isDead() {
         return dead;
     }
     
@@ -154,7 +155,7 @@ public class Player {
      * 
      * @return 
      */
-    /*public ArrayList<Treasure> getHiddenTreasures(){
+    /*public ArrayList<Treasure> getHiddenTreasures() {
         
     }*/
     
@@ -162,7 +163,7 @@ public class Player {
      * 
      * @return 
      */
-    /*public ArrayList<Treasure> getVisibleTreasures(){
+    /*public ArrayList<Treasure> getVisibleTreasures() {
         
     }*/
     
@@ -171,7 +172,7 @@ public class Player {
      * @param m
      * @return 
      */
-    /*public CombatResult combat (Monster m){
+    /*public CombatResult combat(Monster m) {
         
     }*/
     
@@ -179,7 +180,7 @@ public class Player {
      * 
      * @param t 
      */
-    public void makeTreasureVisible (Treasure t){
+    public void makeTreasureVisible(Treasure t) {
         
     }
     
@@ -187,7 +188,7 @@ public class Player {
      * 
      * @param t 
      */
-    public void discardVisibleTreasure (Treasure t){
+    public void discardVisibleTreasure(Treasure t) {
         
     }
     
@@ -199,14 +200,22 @@ public class Player {
         
     }
     
-    public boolean validState(){
-        if (pendingBadConquence.isEmpty() && hiddenTreasures.size()<= 4)
+    /**
+     * 
+     * 
+     * @return 
+     */
+    public boolean validState() {
+        if (pendingBadConsequence.isEmpty() && hiddenTreasures.size()<= 4)
             return true;
         else 
             return false;
     }
     
-    public void initTreasures(){
+    /**
+     * 
+     */
+    public void initTreasures() {
         
     }
     
@@ -215,11 +224,11 @@ public class Player {
      * Consultor del nivel
      * @return nivel del jugador
      */
-    public int getLevel(){
+    public int getLevels() {
         return level;
     }
     
-    /*public Treasure stealTreasure(){
+    /*public Treasure stealTreasure() {
         
     }*/
     
@@ -228,15 +237,21 @@ public class Player {
      * 
      * @param enemy 
      */
-    public void setEnemy(Player enemy){
+    public void setEnemy(Player enemy) {
         this.enemy = enemy;
     }
     
-    /*private boolean giveMeATreasure(){
+    /*private Treasure giveMeATreasure() {
         
     }*/
     
-    public boolean canISteal (){
+    /**
+     * 
+     * Consultor de canISteal
+     * @return true si el jugador puede robar una carta
+     *         false en caso contrario
+     */
+    public boolean canISteal() {
         return canISteal;
     }
     
@@ -246,21 +261,25 @@ public class Player {
      * @return true si el jugador tiene tesoros ocultos
      *         false en caso contrario
      */
-    private boolean canYouGiveMeATreasure (){
-        if (!hiddenTreasures.isEmpty())
-            return true;
-        return false;
+    private boolean canYouGiveMeATreasure() {
+        if (hiddenTreasures.isEmpty())
+            return false;
+        return true;
     }
     
     /**
      * 
      * Si el jugador roba un tesoro cambia canISteal
      */
-    private void haveStolen(){
+    private void haveStolen() {
         canISteal = false;
     }
     
-    public void discardAllTreasures(){
+    /**
+     * 
+     * 
+     */
+    public void discardAllTreasures() {
         
     }
 }
