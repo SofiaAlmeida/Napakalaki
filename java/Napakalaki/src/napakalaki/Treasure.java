@@ -17,7 +17,7 @@ public class Treasure {
      * @param bonus puntuación adicional del tesoro
      * @param t tipo de tesoro
      */
-    public Treasure(String n, int bonus, TreasureKind t){
+    public Treasure(String n, int bonus, TreasureKind t) {
         name = n;
         this.bonus = bonus;
         type = t;
@@ -28,7 +28,7 @@ public class Treasure {
      * Consultor del nombre
      * @return nombre de la carta de tesoros
      */
-    public String getName(){
+    public String getName() {
         return name;
     }
     
@@ -37,7 +37,7 @@ public class Treasure {
      * Consultor del bonus 
      * @return bonus del tesoro
      */
-    public int getBonus(){
+    public int getBonus() {
         return bonus;
     }
     
@@ -46,7 +46,7 @@ public class Treasure {
      * Consultor del tipo de tesoro
      * @return tipo de tesoro
      */
-    public TreasureKind getType(){
+    public TreasureKind getType() {
         return type;
     }
 }
