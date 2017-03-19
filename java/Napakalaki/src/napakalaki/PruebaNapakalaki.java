@@ -91,6 +91,8 @@ public class PruebaNapakalaki {
         Prize prize;
         
         //Añadimos los monstruos
+        //------------------MONSTRUOS Y PRUEBAS FUNCIONES-----------------------
+        /*
         bc = new BadConsequence ("Pierdes tu armadura visible y otra oculta", 0, 
                 new ArrayList(Arrays.asList(TreasureKind.ARMOR )),
                 new ArrayList(Arrays.asList(TreasureKind.ARMOR)));
@@ -232,5 +234,12 @@ public class PruebaNapakalaki {
         
         m1 = lossTreasure(monstruos, TreasureKind.SHOE);
         System.out.println("Monstruos que hacen perder tesoros de tipo calzado:\n" +m1);
+        */
+        
+        //Prueba clase Player
+        Player jugador = new Player ("Nombreeee");
+        System.out.println("\n\n\nplayeeeer");
+        System.out.println(jugador.howManyVisibleTreasures(TreasureKind.HELMET));
+        
     }
 }

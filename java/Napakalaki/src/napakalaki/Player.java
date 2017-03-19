@@ -1,5 +1,6 @@
 package napakalaki;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -30,6 +31,7 @@ public class Player {
         canISteal = true;
         pendingBadConsequence = null;
         hiddenTreasures = new ArrayList();
+        visibleTreasures = new ArrayList();
         enemy = null; 
     }
     
@@ -69,7 +71,11 @@ public class Player {
      * @param l Número de niveles a incrementar 
      */
     private void incrementLevels(int l) {
-        level += l;
+        if (l > 0)
+            if (level+l <= MAXLEVEL)
+                level += l;
+            else
+                level = MAXLEVEL;
     }
     
     /**
@@ -78,7 +84,11 @@ public class Player {
      * @param l Número de niveles a decrementar 
      */
     private void decrementLevels(int l) {
-        level -= l;
+        if (l > 0)
+            if (level-l > 0)
+                level -= l;
+            else
+                level = 1;
     }
     
     /**
@@ -95,16 +105,16 @@ public class Player {
      * Aplica el premio del monstruo
      * @param m monstruo del que aplicar el premio
      */
-    private void applyPrize(Monster m) {  
-    }
+    /*private void applyPrize(Monster m) {  
+    }*/
     
     /**
      * 
      * Aplica el mal rollo del monstruo
      * @param m monstruo del que aplicar el mal rollo
      */
-    private void applyBadConsequence(Monster m) {
-    }
+    /*private void applyBadConsequence(Monster m) {
+    }*/
     
     /**
      * 
@@ -121,14 +131,13 @@ public class Player {
      * @param tKind tipo de tesoro a comparar
      * @return número 
      */
-    private int howManyVisibleTreasures(TreasureKind tKind) {
+    public int howManyVisibleTreasures(TreasureKind tKind) {
         int contador=0;
         for (Treasure t: visibleTreasures)
             if (t.getType() == tKind)
-                ++contador;      
-        //REVIEW: probar si la línea a continuación funciona
-        //return Collections.frequency(visibleTreasures, tKind);
+                ++contador;
         return contador;
+        
     }
     
     /**
@@ -136,9 +145,8 @@ public class Player {
      * Cambia el estado a muerto si se pierden todos los tesoros
      */
     private void dieIfNoTreasures() {
-        if (hiddenTreasures.isEmpty() && visibleTreasures.isEmpty()) {
+        if (hiddenTreasures.isEmpty() && visibleTreasures.isEmpty())
             dead = true;
-        }
     }
     
     /**
@@ -180,25 +188,25 @@ public class Player {
      * 
      * @param t 
      */
-    public void makeTreasureVisible(Treasure t) {
+    /*public void makeTreasureVisible(Treasure t) {
         
-    }
+    }*/
     
     /**
      * 
      * @param t 
      */
-    public void discardVisibleTreasure(Treasure t) {
+    /*public void discardVisibleTreasure(Treasure t) {
         
-    }
+    }*/
     
     /**
      * 
      * @param t 
      */
-    public void discardHiddenTreasure (Treasure t){
+    /*public void discardHiddenTreasure (Treasure t){
         
-    }
+    }*/
     
     /**
      * 
@@ -217,9 +225,9 @@ public class Player {
     /**
      * 
      */
-    public void initTreasures() {
+    /*public void initTreasures() {
         
-    }
+    }*/
     
     /**
      * 
@@ -281,7 +289,7 @@ public class Player {
      * 
      * 
      */
-    public void discardAllTreasures() {
+    /*public void discardAllTreasures() {
         
-    }
+    }*/
 }
