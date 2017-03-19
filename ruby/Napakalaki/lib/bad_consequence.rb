@@ -67,6 +67,10 @@ class BadConsequence
     @specificHiddenTreasures
   end
   
+  def getSpecificVisibleTreasures
+    @specificVisibleTreasures
+  end
+  
 =begin
   def subtractVisibleTreasure(t)
     
