@@ -17,7 +17,7 @@ public class PruebasVarias {
         Prize prize = new Prize(1,1);
         
         System.out.println(Integer.toString(prize.getTreasures()));
-        System.out.println(Integer.toString(prize.getLevel()));
+        //System.out.println(Integer.toString(prize.getLevel()));
         System.out.println(prize.toString());
     
     // Prueba del enum TreasureKind
@@ -52,6 +52,10 @@ public class PruebasVarias {
         System.out.println(monster.getBadConsequence());
         //System.out.println(monster.getPrize());
     
+    //Prueba clase Player
+        Player jugador = new Player ("Nombreeee");
+        System.out.println("\n\n\nplayeeeer");
+        System.out.println(jugador.howManyVisibleTreasures(TreasureKind.HELMET));
         
         
     //---------------PLANTILLA MONSTRUOS---------------
