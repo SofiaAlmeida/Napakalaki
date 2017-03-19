@@ -11,10 +11,10 @@ class Monster
   attr_reader :badConsequence
 =end
   def initialize(n, l, b, p)
-    @name = name
-    @combatLevel = combatLevel
-    @prize = prize
-    @badConsequence = badConsequence
+    @name = n
+    @combatLevel = l
+    @prize = p
+    @badConsequence = b
   end
   
   def getName
