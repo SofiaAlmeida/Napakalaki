@@ -18,7 +18,7 @@ class Player
   end
   
   def self.Player(name)
-    new(name, 0, true, true, nil, nil, nil, nil)
+    new(name, 0, true, true, nil, [], [], nil)
   end
   
   def getName
