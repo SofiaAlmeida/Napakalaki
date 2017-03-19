@@ -22,7 +22,7 @@ class PruebaNapakalaki
   
   def self.combatLevelGt10(monstruos)
   result = Array.new
-  monstruos.each { |monstruo| if (monstruo.combatLevel > 10)
+  monstruos.each { |monstruo| if (monstruo.getCombatLevel > 10)
       result << monstruo
     end
   }
@@ -32,10 +32,10 @@ end
 def self.lossLevel(monstruos) 
   result = Array.new
   monstruos.each { |monstruo| 
-    if (monstruo.badConsequence.nHiddenTreasures == 0 and 
-        monstruo.badConsequence.nVisibleTreasures == 0 and
-        monstruo.badConsequence.specificHiddenTreasures.empty? and
-        monstruo.badConsequence.specificVisibleTreasures.empty?) 
+    if (monstruo.getBadConsequence.getNHiddenTreasures == 0 and 
+        monstruo.getBadConsequence.getNVisibleTreasures == 0 and
+        monstruo.getBadConsequence.getSpecificHiddenTreasures.empty? and
+        monstruo.getBadConsequence.getSpecificVisibleTreasures.empty?) 
           
       result << monstruo
     end
@@ -45,7 +45,7 @@ end
  
 def self.levelGt1(monstruos)
   result = Array.new
-  monstruos.each { |monstruo| if (monstruo.prize.level > 1)
+  monstruos.each { |monstruo| if (monstruo.getLevelsGained > 1)
       result << monstruo
     end
   }
@@ -55,7 +55,7 @@ end
 def self.lossTreasure(monstruos, t)
   result = Array.new
   monstruos.each { |monstruo|
-    if (monstruo.badConsequence.specificHiddenTreasures.include? t)
+    if (monstruo.getBadConsequence.getSpecificHiddenTreasures.include? t)
       result << monstruo
     end
   }
