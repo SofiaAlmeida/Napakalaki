@@ -4,7 +4,7 @@
 #María Victoria Granados Pozo
 
 class Treasure
-  def initialize (n, bonus, t)
+  def initialize(n, bonus, t)
     @name = n
     @bonus = bonus
     @type = t

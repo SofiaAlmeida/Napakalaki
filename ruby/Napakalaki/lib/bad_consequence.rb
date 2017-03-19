@@ -4,19 +4,7 @@
 #María Victoria Granados Pozo
 
 class BadConsequence
-=begin
-  attr_reader :text
-  attr_reader :levels
-  attr_reader :nVisibleTreasures
-  attr_reader :nHiddenTreasures
-  attr_reader :death
-  attr_reader :specificHiddenTreasures
-  attr_reader :specificVisibleTreasures
-  
-  attr_reader :@specificHiddenTreasures = Array.new
-  attr_reader :@specificVisibleTreasures = Array.new
-=end
-  MAXTREASURES = 10
+  @@MAXTREASURES = 10
   
   def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures, 
       someSpecificVisibleTreasures, someSpecificHiddenTreasures, death)
@@ -42,8 +30,8 @@ class BadConsequence
   end
 
   def isEmpty
-    if ( @nHiddenTreasures == 0 and @nVisibleTreasures == 0 and
-        @specificHiddenTreasures.empty? and @specificVisibleTreasures.empty?) 
+    if @nHiddenTreasures == 0 and @nVisibleTreasures == 0 and
+       @specificHiddenTreasures.empty? and @specificVisibleTreasures.empty?
         empty = true
     else 
         empty = false
@@ -80,7 +68,7 @@ class BadConsequence
     
   end
   
-  def adjustToFitTreasureLists (v, h)
+  def adjustToFitTreasureLists(v, h)
     
   end
 =end
