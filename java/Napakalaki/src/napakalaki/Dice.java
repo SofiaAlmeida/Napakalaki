@@ -7,14 +7,14 @@ import java.util.Random;
  * @author María Victoria Granados Pozo
  */
 public class Dice {
-    private static final Dice instance = new Dice(); //REVIEW
+    private static Dice instance = null;
     
     /**
      * 
      * Constructor vacío
      */
     private Dice() {
-       
+       instance = new Dice();
     }
     
     public static Dice getInstance() {

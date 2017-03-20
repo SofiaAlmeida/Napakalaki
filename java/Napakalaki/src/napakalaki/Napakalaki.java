@@ -7,8 +7,7 @@ import java.util.ArrayList;
  * @author María Victoria Granados Pozo
  */
 public class Napakalaki {
-    private static final Napakalaki instance = new Napakalaki(); //REVIEW: en el diagrama UML pone = null, pero en el pdf pone esto, no se
-                                                                 //qué habrá que poner
+    private static Napakalaki instance = null;
     private CardDealer dealer;
     private ArrayList<Player> players;
     private Player currentPlayer;
@@ -19,11 +18,11 @@ public class Napakalaki {
      * Constructor por defecto
      */
     private Napakalaki() {
-       /* 
+        instance = new Napakalaki();
         dealer = null;
         currentPlayer = null;
         currentMonster = null;
-        players = new ArrayList();*/
+        players = new ArrayList();
     }
     
     /**

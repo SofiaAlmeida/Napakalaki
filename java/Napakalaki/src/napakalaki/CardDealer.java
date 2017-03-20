@@ -9,7 +9,7 @@ import java.util.Collections;
  * @author María Victoria Granados Pozo
  */
 public class CardDealer {
-    private static final CardDealer instance = new CardDealer(); //REVIEW: inicializar así o a null? ¿Quizá a null en el constructor?
+    private static CardDealer instance = new CardDealer(); //REVIEW: inicializar así o a null? ¿Quizá a null en el constructor?
     private ArrayList<Monster> unusedMonsters;
     private ArrayList<Monster> usedMonsters;
     private ArrayList<Treasure> unusedTreasures;
@@ -20,6 +20,7 @@ public class CardDealer {
      * Constructor vacío
      */
     private CardDealer() {
+        instance = new CardDealer();
         unusedMonsters = new ArrayList();
         usedMonsters = new ArrayList();
         unusedTreasures = new ArrayList();
