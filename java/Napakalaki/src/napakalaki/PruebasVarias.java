@@ -55,7 +55,7 @@ public class PruebasVarias {
     //Prueba clase Player
         Player jugador = new Player ("Nombreeee");
         System.out.println("\n\n\nplayeeeer");
-        System.out.println(jugador.howManyVisibleTreasures(TreasureKind.HELMET));
+        //System.out.println(jugador.howManyVisibleTreasures(TreasureKind.HELMET));
         
         
     //---------------PLANTILLA MONSTRUOS---------------

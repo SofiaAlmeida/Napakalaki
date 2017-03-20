@@ -42,8 +42,8 @@ public class Prize {
      * 
      * @return String con la información del objeto
      */
-    /*public String toString() {
+    public String toString() {
         return "Treasures = " + Integer.toString(treasures) +
-                "\nLevels = " + Integer.toString(level);
-    }*/
+                "\nLevels = " + Integer.toString(levels);
+    }
 }

@@ -1,6 +1,9 @@
 package napakalaki;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
+import java.util.Collections;
+
 
 /**
  *
@@ -236,10 +239,102 @@ public class PruebaNapakalaki {
         System.out.println("Monstruos que hacen perder tesoros de tipo calzado:\n" +m1);
         */
         
-        //Prueba clase Player
+    //Prueba clase Player
         Player jugador = new Player ("Nombreeee");
         System.out.println("\n\n\nplayeeeer");
-        System.out.println(jugador.howManyVisibleTreasures(TreasureKind.HELMET));
+        //System.out.println(jugador.howManyVisibleTreasures(TreasureKind.HELMET));
+        //---------------PRUEBAS DE LAS CLASES---------------
+    // Prueba clase Prize
+        Prize prize1 = new Prize(1,1);
         
+        System.out.println(Integer.toString(prize1.getTreasures()));
+        //System.out.println(Integer.toString(prize.getLevel()));
+        System.out.println(prize1.toString());
+    
+    // Prueba del enum TreasureKind
+        TreasureKind tk = TreasureKind.HELMET;
+        
+    // Prueba clase BadConsequence
+        ArrayList<TreasureKind> tes = new ArrayList();
+        tes.add(tk);
+        BadConsequence bc1 = new BadConsequence("No muerte",2,3,4);
+        BadConsequence bc2 = new BadConsequence("Muerte", true);
+        BadConsequence bc3 = new BadConsequence("No muerte 3", 2, tes, tes);
+        
+        
+        System.out.println(bc1);
+        System.out.println(bc2);
+        System.out.println(bc3);
+        // Prueba de los consultores
+        //System.out.println(bc3.getText());
+        System.out.println(bc3.getLevels());
+        System.out.println(bc3.getNVisibleTreasures());
+        System.out.println(bc3.getNHiddenTreasures());
+        //System.out.println(bc3.getDeath());
+        System.out.println(bc3.getSpecificVisibleTreasures());
+        System.out.println(bc3.getSpecificHiddenTreasures());
+     
+    // Prueba clase Monster
+        Monster monster = new Monster("Nombre", 1, bc1, prize1);
+        System.out.println(monster);
+        //Prueba de los consultores
+        System.out.println(monster.getName());
+        System.out.println(monster.getCombatLevel());
+        System.out.println(monster.getBadConsequence());
+        //System.out.println(monster.getPrize());
+      
+    //---------------PLANTILLA MONSTRUOS---------------
+        
+        /*
+        param: text, nivel, nVisible, nHidden
+        param: ntreasures, level
+        param: combatlevel
+        bc = new BadConsequence("", , , );
+        prize = new Prize( , );
+        monstruos.add(new Monster("", , bc, prize));
+        
+        param: text, death
+        param: ntreasures, level
+        param: combatlevel
+        bc = new BadConsequence("", true);
+        prize = new Prize ( , );
+        monstruos.add(new Monster ("", , bc, prize));
+        
+        param: text, levels, tvisible, thidden
+        param: ntrasures, level
+        param: combatlevel
+        bc = new BadConsequence ("", , 
+                new ArrayList(Arrays.asList(TreasureKind. )),
+                new ArrayList(Array.asList(TreasureKind. )));
+        prize = new Prize ( , );
+        monstruos.add (new Monster ("", , bc, prize));
+       */
+        
+        System.out.println("PRUEBA NÚMERO ALEATORIO");
+        for (int i=0; i<50; i++){
+            Random rand = new Random();
+            int num = rand.nextInt(5 + 1) + 1;
+            System.out.println(num);
+        }
+        ArrayList<Monster> unusedMonsters = new ArrayList();
+        bc = new BadConsequence("Pierdes la armadura visible. ", 0, 
+                new ArrayList(Arrays.asList(TreasureKind.ARMOR)), new ArrayList());
+        prize = new Prize(2,1);
+        unusedMonsters.add(new Monster("H.P. Munchcraft", 6, bc, prize));
+        
+        
+        bc = new BadConsequence("Sientes bichos bajo la ropa. Descarta la armadura visible.", 
+                0, new ArrayList(Arrays.asList(TreasureKind.ARMOR)), new ArrayList());
+        prize = new Prize(1,1);
+        unusedMonsters.add(new Monster("Necrófago", 13, bc, prize));
+              
+        
+        bc = new BadConsequence("Pierdes 5 niveles y 3 tesoros visibles", 5, 3, 0);
+        prize = new Prize(3, 2);
+        unusedMonsters.add(new Monster("El rey de rosado", 11, bc, prize));
+        
+        System.out.println(unusedMonsters);
+        Collections.shuffle(unusedMonsters);
+        System.out.println(unusedMonsters);
     }
 }

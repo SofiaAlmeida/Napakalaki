@@ -176,7 +176,7 @@ public class BadConsequence {
      * 
      * @return String con información del mal rollo
      */
-    /*public String toString() {
+    public String toString() {
         if (death)
             return text;
         else if (getSpecificHiddenTreasures().isEmpty() && getSpecificVisibleTreasures().isEmpty())
@@ -188,6 +188,6 @@ public class BadConsequence {
                 return text + "\nLevels = " + Integer.toString(levels) + "\nTreasures Visibles = "
                        + specificVisibleTreasures.toString() + "\nHidden Treasures = "
                        + specificHiddenTreasures.toString();
-    }*/
+    }
     
 }

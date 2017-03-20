@@ -23,7 +23,7 @@ public class Dice {
     
     public int nextNumber() {
         Random rand = new Random();
-        int num = rand.nextInt(5 + 1) + 1;
+        int num = rand.nextInt(5 + 1) + 1; //(max-1+min)+min
         return num;
     }
 }

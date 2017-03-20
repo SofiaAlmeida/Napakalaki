@@ -131,7 +131,7 @@ public class Player {
      * @param tKind tipo de tesoro a comparar
      * @return número 
      */
-    public int howManyVisibleTreasures(TreasureKind tKind) {
+    private int howManyVisibleTreasures(TreasureKind tKind) {
         int contador=0;
         for (Treasure t: visibleTreasures)
             if (t.getType() == tKind)
