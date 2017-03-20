@@ -1,20 +1,21 @@
 #encoding: utf-8
-#
+
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
 
-#No se si se pone así lo de clase singleton
 include Singleton
+
 class Napakalaki
   def initialize 
+    @@instance = nil
     @currentMonster
     @dealer
-    @instance
     @players
     @currentPlayer
   end
-  def getInstance
-    
+  
+  def self.getInstance
+    @@instance
   end
   
   def developCombat
@@ -38,11 +39,11 @@ class Napakalaki
   end
   
   def getCurrentPlayer
-    
+    @currentPlayer
   end
   
   def getCurrentMonster
-    
+    @currentMonster
   end
   
   def nextTurn
@@ -52,6 +53,5 @@ class Napakalaki
   def endOfGame(result)
     
   end
-  
   
 end

@@ -4,7 +4,7 @@
 #María Victoria Granados Pozo
 
 class Player
-  MAXLEVEL = 10
+  @@MAXLEVEL = 10
   def initialize(name, level, dead, canISteal, pendingbc, ht, vt, enemy)
     @name = name
     @level = level
@@ -18,7 +18,7 @@ class Player
   end
   
   def self.Player(name)
-    new(name, 0, true, true, nil, [], [], nil)
+    new(name, 1, true, true, nil, [], [], nil)
   end
   
   def getName
@@ -55,7 +55,7 @@ class Player
   
   def validState
     state = false 
-    if (@pendingBadConsequence.isEmpty and @hiddenTreasueres.length <= 4)
+    if @pendingBadConsequence.isEmpty and @hiddenTreasures.length <= 4
       state = true           
     end
     state
@@ -78,7 +78,7 @@ class Player
   end
   
   #Si el jugador ha robado un tesoro a su enemigo (true)
-  def CanISteal
+  def canISteal
     @canISteal
   end
   
@@ -108,8 +108,8 @@ class Player
     
   end
   
-  def setPendingBadConsequence(bc)
-    @pendingBadConsequence = bc
+  def setPendingBadConsequence(b)
+    @pendingBadConsequence = b
     
   end
   
@@ -126,12 +126,13 @@ class Player
   end
   
   def howManyVisibleTreasures(tKind)
-    @visibleTreasures.count(tKind)
+    @visibleTreasures.count{|t| t.getType == tKind}
   end
   
-  #Llamar cuando se pierden todos los tesoros
   def dieIfNoTreasures
-    @dead = true
+    if hiddenTreasures.empty? and visibleTreasures.empty?
+      @dead = true
+    end
   end
     
   def giveMeATreasure
@@ -152,5 +153,5 @@ class Player
     @canISteal = false
     
   end
-  
+
 end

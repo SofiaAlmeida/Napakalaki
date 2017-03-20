@@ -4,16 +4,12 @@
 #María Victoria Granados Pozo
 
 class Prize
-  def initialize(treasures, level)
-    @treasures = treasures
-    @level = level
+  def initialize(t, l)
+    @treasures = t
+    @level = l
   end
-  
-  #Forma 1 consultores
-  #attr_reader :treasures
-  #attr_reader :level
-  
-  #Forma 2 consultores
+
+
   def getTreasures
     @treasures
   end
@@ -23,11 +19,8 @@ class Prize
   end
   
   #toString
-
   def to_s
     "\n\tTesoros ganados: #{@treasures} \n\tNiveles ganados: #{@level}"
   end
-
-
   
 end
