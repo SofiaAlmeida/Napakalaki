@@ -8,10 +8,10 @@ include Singleton
 class Napakalaki
   def initialize 
     @@instance = nil
-    @currentMonster
-    @dealer
-    @players
-    @currentPlayer
+    @currentMonster = nil
+    @dealer = nil
+    @players = nil
+    @currentPlayer = nil
   end
   
   def self.getInstance
