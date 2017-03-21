@@ -7,6 +7,7 @@ require_relative "napakalaki.rb"
 require_relative "dice.rb"
 require_relative "treasure.rb"
 require_relative "player.rb"
+require_relative "card_dealer.rb"
 
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
@@ -218,5 +219,9 @@ end
 
   puts monster
 =end
+
 end
+
+m=CardDealer.instance
+
 
