@@ -84,7 +84,7 @@ class Player
     
   end
   
-  #private 
+  private 
   def bringToLife
      @dead = false
      

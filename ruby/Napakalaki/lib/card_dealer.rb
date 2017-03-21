@@ -171,8 +171,5 @@ class CardDealer
   
   
   private_class_method :new
-  
-  j = CardDealer.instance
-  j.initTreasureCardDeck
-  puts @unusedTreasures
+
 end
