@@ -3,6 +3,10 @@ require_relative "prize.rb"
 require_relative "treasure_kind.rb"
 require_relative "bad_consequence"
 require_relative "monster.rb"
+require_relative "napakalaki.rb"
+require_relative "dice.rb"
+require_relative "treasure.rb"
+require_relative "player.rb"
 
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
@@ -152,7 +156,9 @@ end
   @@monsters << Monster.new("Bicéfalo", 21, badConsequence, prize)
   
   #-----------------------------------------------------------------------------
-  
+  #                            PRUEBAS FUNCIONES
+  #-----------------------------------------------------------------------------
+=begin
   m1 = Array.new
   m1 = combatLevelGt10(@@monsters)
   puts m1
@@ -165,6 +171,41 @@ end
 
   m1 = lossTreasure(@@monsters, TreasureKind::ONEHAND)
   puts m1
+=end
+
+=begin
+  #-----------------------------------------------------------------------------
+  #                          PRUEBAS NAPAKALAKI
+  #-----------------------------------------------------------------------------
+  n = Napakalaki.instance
+  puts (n.getCurrentPlayer.nil? ? "si" : "no")
   
+  #-----------------------------------------------------------------------------
+  #                          PRUEBAS DICE
+  #-----------------------------------------------------------------------------
+  d = Dice.instance
+  puts d.nextNumber
+  
+  #-----------------------------------------------------------------------------
+  #                          PRUEBAS TREASURE
+  #-----------------------------------------------------------------------------
+  t = Treasure.new("Prueba Tesoro", 2, TreasureKind::ARMOR)
+  puts "Tesoro: #{t.getName}, nivel: #{t.getBonus}, tipo: #{t.getType}"
+=end
+  #-----------------------------------------------------------------------------
+  #                          PRUEBAS PLAYER
+  #-----------------------------------------------------------------------------
+  p = Player.new("Jugador")
+  puts "Jugador: " 
+  puts "Antes: #{p.isDead}"
+  p.bringToLife
+  puts "Bring to life: #{p.isDead}"
+  
+  puts "Get combat level: #{p.getCombatLevel}"
+  puts "IncrementLevel #{p.incrementLevels(4)}"
+  puts "IncrementLevel #{p.incrementLevels(6)}"
+  puts "DecrementLevel #{p.decrementLevels(3)}"
+  puts "DecrementLevel #{p.decrementLevels(11)}"
+  puts "ValidState #{p.validState}"
 end
 

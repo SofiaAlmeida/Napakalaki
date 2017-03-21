@@ -1,17 +1,12 @@
 #encoding: utf-8
-
+require "singleton"
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
 
-include Singleton
-
 class Dice
-  def initialize
-    @@instance = nil
-  end
+  include Singleton
   
-  def self.getInstance
-    @@instance
+  def initialize
   end
   
   def nextNumber

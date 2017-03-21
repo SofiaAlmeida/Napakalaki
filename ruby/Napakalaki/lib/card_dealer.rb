@@ -1,22 +1,17 @@
 #encoding: utf-8
-
+require "singleton"
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
 
-include Singleton
 
 class CardDealer
+  include Singleton
   
   def initialize
-    @@instance = nil
     @unusedMonsters = Array.new
     @usedMonsters = Array.new
     @unusedTreasures = Array.new 
     @usedTreasures = Array.new
-  end
-  
-  def getInstance
-    @instance
   end
   
   def nextTreasure

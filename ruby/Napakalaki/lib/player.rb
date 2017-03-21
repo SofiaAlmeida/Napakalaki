@@ -1,24 +1,20 @@
 #encoding: utf-8
-#
+
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
 
 class Player
   @@MAXLEVEL = 10
-  def initialize(name, level, dead, canISteal, pendingbc, ht, vt, enemy)
-    @name = name
-    @level = level
-    @dead = dead
-    @canISteal = canISteal
-    @pendingBadConsequence = pendingbc
-    @hiddenTreasueres = ht
-    @visibleTreasures = vt
-    @enemy = enemy
     
-  end
-  
-  def self.Player(name)
-    new(name, 1, true, true, nil, [], [], nil)
+  def initialize(name)
+    @name = name
+    @level = 1
+    @dead = true
+    @canISteal = true
+    @pendingBadConsequence = nil
+    @hiddenTreasueres = Array.new
+    @visibleTreasures = Array.new
+    @enemy = nil
   end
   
   def getName
@@ -53,6 +49,8 @@ class Player
     
   end
   
+  # Devuelve true cuando el jugador no tiene ningún mal rollo que cumplir y no 
+  # tiene más de 4 tesoros, false en caso contrario
   def validState
     state = false 
     if @pendingBadConsequence.isEmpty and @hiddenTreasures.length <= 4
@@ -77,7 +75,7 @@ class Player
     @enemy = enemy
   end
   
-  #Si el jugador ha robado un tesoro a su enemigo (true)
+  # Devuelve si el jugador ha robado un tesoro a su enemigo (true)
   def canISteal
     @canISteal
   end
@@ -86,12 +84,13 @@ class Player
     
   end
   
-  private 
+  #private 
   def bringToLife
      @dead = false
      
   end
   
+  # Nivel de combate = nivel + bonus de tesoros
   def getCombatLevel
     combatLevel = @level
     @visibleTreasures.each { |treasure|  combatLevel += treasure.getBonus}
@@ -99,12 +98,24 @@ class Player
   end
   
   def incrementLevels(l)
-    @level += l
+    if l > 0
+      if @level + l > @@MAXLEVEL
+        @level = @@MAXLEVEL
+      else
+        @level += l
+      end
+    end
     
   end
   
   def decrementLevels(l)
-    @level -= l
+    if l > 0
+      if @level - l < 1
+        @level = 1
+      else
+        @level -= l
+      end
+    end   
     
   end
   
@@ -129,17 +140,19 @@ class Player
     @visibleTreasures.count{|t| t.getType == tKind}
   end
   
+  # Cambia el estado del jugador a muerto
   def dieIfNoTreasures
     if hiddenTreasures.empty? and visibleTreasures.empty?
       @dead = true
     end
+    
   end
     
   def giveMeATreasure
     
   end
   
-  #True si el jugador tiene tesoros para ser robados
+  # True si el jugador tiene tesoros para ser robados
   def canYouGiveMeATreasure
     aux = false
     if (@hiddenTreasures.length > 0)
@@ -148,7 +161,7 @@ class Player
     aux
   end
   
-  #Llamar cuando el jugador roba un tesoro
+  # Llamar cuando el jugador roba un tesoro
   def haveStolen
     @canISteal = false
     

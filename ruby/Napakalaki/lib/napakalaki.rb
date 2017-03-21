@@ -1,21 +1,16 @@
 #encoding: utf-8
-
+require "singleton"
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
 
-include Singleton
-
 class Napakalaki
+  include Singleton
+  
   def initialize 
-    @@instance = nil
     @currentMonster = nil
     @dealer = nil
     @players = nil
     @currentPlayer = nil
-  end
-  
-  def self.getInstance
-    @@instance
   end
   
   def developCombat
