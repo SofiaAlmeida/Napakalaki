@@ -21,4 +21,9 @@ class Treasure
   def getType
     @type
   end
+  
+  def to_s
+    "Nombre: #{@name} \nBonus: #{@bonus} \nTipo: #{@type}"
+  end
+  
 end

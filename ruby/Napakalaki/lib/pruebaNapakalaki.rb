@@ -83,7 +83,7 @@ end
     
   prize = Prize.new(1,1)
   badConsequence = BadConsequence.newLevelSpecificTreasures("El primordial bostezo contagioso. Pierdes el calzado visible", 
-  0, [TreasureKind::SHOES], [])
+  0, [TreasureKind::SHOE], [])
   @@monsters<< Monster.new("El sopor de Dunwich", 2, badConsequence, prize)
   
   prize = Prize.new(4,1)
@@ -191,7 +191,7 @@ end
   #-----------------------------------------------------------------------------
   t = Treasure.new("Prueba Tesoro", 2, TreasureKind::ARMOR)
   puts "Tesoro: #{t.getName}, nivel: #{t.getBonus}, tipo: #{t.getType}"
-=end
+
   #-----------------------------------------------------------------------------
   #                          PRUEBAS PLAYER
   #-----------------------------------------------------------------------------
@@ -207,5 +207,16 @@ end
   puts "DecrementLevel #{p.decrementLevels(3)}"
   puts "DecrementLevel #{p.decrementLevels(11)}"
   puts "ValidState #{p.validState}"
+
+  #-----------------------------------------------------------------------------
+  #                          PRUEBAS MONSTER
+  #-----------------------------------------------------------------------------
+  prize = Prize.new(2,1)
+  badConsequence = BadConsequence.newLevelSpecificTreasures("Pierdes tu armadura visible y otra oculta", 
+  0, [TreasureKind::ARMOR], [TreasureKind::ARMOR])
+  monster = Monster.new("Byakhess de bonanza", 8, badConsequence, prize)
+
+  puts monster
+=end
 end
 

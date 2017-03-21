@@ -167,4 +167,10 @@ class Player
     
   end
 
+  def to_s
+    "\nNombre: #{@name} \nLevel: #{@level} \nMuerte: #{@dead}\nPuede robar: #{@canISteal}\n" +
+    "Mal rollo pendiente: #{@pendingBadConsequence} \nTesoros ocultos: #{@hiddenTreasures}\n" +
+    "Tesoros visibles: #{@visibleTreasures} \nEnemigo: #{@enemy.getName}" 
+  end
+  
 end

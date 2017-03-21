@@ -72,11 +72,10 @@ class BadConsequence
     
   end
 =end
-  
-  #toString
+
   def to_s
     if @death==false
-      if @specificVisibleTreasures.nil? and @specificHiddenTreasures.nil? #La linea de abajo hay que ponerla así sino hace un salto de linea mas
+      if @specificVisibleTreasures.nil? and @specificHiddenTreasures.nil? 
         "\n\tTexto: #{@text} \n\tNiveles: #{@levels} \n\tTesoros visibles: #{@nVisibleTreasures}\n\tTesoros ocultos: #{@nHiddenTreasures}"
       else
         "\n\tTexto: #{@text} \n\tNiveles: #{@levels} \n\tTesoros ocultos específicos:

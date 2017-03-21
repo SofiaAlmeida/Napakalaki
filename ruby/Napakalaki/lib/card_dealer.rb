@@ -162,11 +162,11 @@ class CardDealer
   end
   
   def shuffleTreasures
-    @unusedTreasures.shuffle
+    @unusedTreasures.shuffle!
   end
   
   def shuffleMonster
-    @unusedMonsters.shuffle
+    @unusedMonsters.shuffle!
   end
   
   
