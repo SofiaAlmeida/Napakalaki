@@ -17,6 +17,10 @@ class Player
     @enemy = nil
   end
   
+  def getMaxLevel
+    @@MAXLEVEL
+  end
+  
   def getName
     @name
   end

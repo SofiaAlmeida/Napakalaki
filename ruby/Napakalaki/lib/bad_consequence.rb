@@ -29,6 +29,10 @@ class BadConsequence
     new(aText, 0, 0, 0, [], [], true)
   end
 
+  def self.getMaxTreasure
+    @@MAXTREASURES
+  end
+  
   def isEmpty
     if @nHiddenTreasures == 0 and @nVisibleTreasures == 0 and
        @specificHiddenTreasures.empty? and @specificVisibleTreasures.empty?
