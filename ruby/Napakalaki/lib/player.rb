@@ -140,7 +140,7 @@ class Player
     @visibleTreasures.count{|t| t.getType == tKind}
   end
   
-  # Cambia el estado del jugador a muerto
+  # Cambia el estado del jugador a muerto sino tiene ningún tesoro
   def dieIfNoTreasures
     if hiddenTreasures.empty? and visibleTreasures.empty?
       @dead = true

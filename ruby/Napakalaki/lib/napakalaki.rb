@@ -7,10 +7,10 @@ class Napakalaki
   include Singleton
   
   def initialize 
-    @currentMonster = nil
-    @dealer = nil
-    @players = nil
-    @currentPlayer = nil
+    @currentMonster = Array.new
+    @dealer = CardDealer.instance
+    @players = Array.new
+    @currentPlayer = Array.new
   end
   
   def developCombat
