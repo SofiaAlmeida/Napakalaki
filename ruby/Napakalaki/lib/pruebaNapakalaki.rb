@@ -12,6 +12,7 @@ require_relative "card_dealer.rb"
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
 
+module NapakalakiGame
 class PruebaNapakalaki
 =begin 
   Pruebas previas
@@ -221,7 +222,5 @@ end
 =end
 
 end
-
-m=CardDealer.instance
-
+end
 

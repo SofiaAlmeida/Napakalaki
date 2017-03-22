@@ -3,10 +3,12 @@
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
 
-module TreasureKind
-  ARMOR = :armor
-  ONEHAND = :onehand
-  BOTHHANDS = :bothhands
-  HELMET = :helmet
-  SHOE = :shoe
+module NapakalakiGame
+  module TreasureKind
+    ARMOR = :armor
+    ONEHAND = :onehand
+    BOTHHANDS = :bothhands
+    HELMET = :helmet
+    SHOE = :shoe
+  end
 end

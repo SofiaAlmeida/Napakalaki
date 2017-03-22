@@ -2,9 +2,10 @@
 
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
-
-module CombatResult
-  WINGAME = :wingame
-  WIN = :win
-  LOSE = :lose
+module NapakalakiGame
+  module CombatResult
+    WINGAME = :wingame
+    WIN = :win
+    LOSE = :lose
+  end
 end
