@@ -1,5 +1,6 @@
 package NapakalakiGame;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -24,28 +25,68 @@ public class Napakalaki {
         currentMonster = null;
         players = new ArrayList();
     }
-    
+
     /**
      * 
      * @param names 
      */
     private void initPlayers(ArrayList<String> names) {
-        
+        for (String name : names)
+            players.add(new Player(name));
     }
     
-    /*private Player nextPlayer() {
-        
+    /**
+     * 
+     * Dedice que jugador es el siguiente en jugar
+     * @return el siguiente jugador
+     */
+    private Player nextPlayer() {
+        int posicion;
+        if (currentPlayer == null){
+            Random rand = new Random();
+            posicion = rand.nextInt(players.size());
+        }
+        else{
+            posicion = players.indexOf(currentPlayer); //Devuelve solo la primera ocurrencia
+            if (posicion == players.size() -1)
+                posicion = 0;
+            else
+                posicion ++;
+        }
+        currentPlayer = players.get(posicion);
+        return currentPlayer;        
     }
     
+    /**
+     * 
+     * Comprueba si el jugador activo cumpla con las reglas del jugador para 
+     * terminar el turno
+     * @return true si el jugador cumple las reglas
+     *         false en otro caso
+     */
     private boolean nextTurnAllowed() {
-        
+        if (currentPlayer == null)
+            return true;
+        else
+            return currentPlayer.validState();
     }
     
+    /**
+     * 
+     * Asigna enemigo a cada jugador
+     */
     private void setEnemies() {
-        
+        int posicion;
+        for (Player player : players){
+            do{
+                Random rand = new Random();
+                posicion = rand.nextInt(players.size());
+            }while (posicion == players.indexOf(player));
+            player.setEnemy(players.get(posicion));
+        }
     }
     
-    public static Napakalaki getInstance() {
+    /*public static Napakalaki getInstance() {
         
     }
     
@@ -67,21 +108,42 @@ public class Napakalaki {
     
     public void initGame(ArrayList<String> players) {
         
-    }*/
+    }
+    */
     
-    /*public Player getCurrentPlayer() {
-        
+    /**
+     * 
+     * Consultor del jugador actual
+     * @return jugador actual
+     */
+    public Player getCurrentPlayer() {
+        return currentPlayer;
     }
     
+    /**
+     * 
+     * Consultor del monstruo actual
+     * @return monstruo en juego
+     */
     public Monster getCurrentMonster() {
-        
+        return currentMonster;
     }
     
-    public boolean nextTurn() {
-        
-    }
-    
-    public boolean endOfGame (CombatResult result) {
+    /*public boolean nextTurn() {
         
     }*/
+    
+    /**
+     * 
+     * Comprueba si se acaba el juego
+     * @param result
+     * @return true si alguien gana
+     *         false en caso contrario
+     */
+    public boolean endOfGame (CombatResult result) {
+        if (result == CombatResult.WINGAME)
+            return true;
+        else
+            return false;
+    }
 }
