@@ -1,6 +1,7 @@
 package NapakalakiGame;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 /**
  *
@@ -118,12 +119,19 @@ public class Player {
     
     /**
      * 
-     * @param t
-     * @return 
+     * Comprueba si un tesoro puede pasarse a visible
+     * @param t tesoro para hacer visible
+     * @return true si el tesoro puede ser visible
+     *         false en caso contrario
      */
-    /*private boolean canMakeTreasureVisible(Treasure t) {
-         
-    }*/
+    private boolean canMakeTreasureVisible(Treasure t) {
+        if (t.getType() == TreasureKind.ONEHAND)
+            if (howManyVisibleTreasures(TreasureKind.ONEHAND) != 2 || howManyVisibleTreasures(TreasureKind.BOTHHANDS) == 0)
+                return true;
+        else if(howManyVisibleTreasures (t.getType()) == 0)
+            return true;
+        return false;
+    }
     
     /**
      * 
@@ -251,9 +259,16 @@ public class Player {
         this.enemy = enemy;
     }
     
-    /*private Treasure giveMeATreasure() {
-        
-    }*/
+    /**
+     * 
+     * Elige un tesoro al azar entre los tesoros ocultos
+     * @return un tesoro oculto
+     */
+    private Treasure giveMeATreasure() {
+        Random rand = new Random();
+        int posicion = rand.nextInt(hiddenTreasures.size());
+        return hiddenTreasures.get(posicion);
+    }
     
     /**
      * 
