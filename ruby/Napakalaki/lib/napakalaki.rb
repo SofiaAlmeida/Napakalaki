@@ -72,7 +72,6 @@ module NapakalakiGame
         end
       end
       @currentPlayer = @players.fetch(posicion)
-      posicion
     end
     
     def nextTurnAllowed
