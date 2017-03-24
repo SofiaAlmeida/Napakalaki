@@ -137,8 +137,16 @@ module NapakalakiGame
 
     end
 
+    #Probar si funciona bien los return 
     def canMakeTreasureVisible(t)
-
+      if t.getType == TreasureKind::ONEHAND
+        if howManyVisibleTreasures(TreasureKind::ONEHAND) != 2 or howManyVisibleTreasures(TreasureKind::BOTHHANDS) == 0
+          true
+        end
+      elsif howManyVisibleTreasures(t.getType) == 0
+        true
+      end
+      false
     end
 
     def howManyVisibleTreasures(tKind)
@@ -154,16 +162,17 @@ module NapakalakiGame
     end
 
     def giveMeATreasure
-
+      posicion = rand (@hiddenTreasures.length)
+      @hiddenTreasures.fetch(posicion)
     end
 
     # True si el jugador tiene tesoros para ser robados
     def canYouGiveMeATreasure
-      aux = false
       if (@hiddenTreasures.length > 0)
-        aux = true
+        true
+      else
+        false
       end
-      aux
     end
 
     # Llamar cuando el jugador roba un tesoro
