@@ -64,15 +64,17 @@ module NapakalakiGame
       @specificVisibleTreasures
     end
 
-=begin
-    def subtractVisibleTreasure(t)
 
+    def subtractVisibleTreasure(t)
+      @specificVisibleTreasures.delete(t)
+            
     end
 
     def subtractHiddenTreasure(t)
-
+      @specificHiddenTreasues.delete(t)
+      
     end
-
+=begin
     def adjustToFitTreasureLists(v, h)
 
     end

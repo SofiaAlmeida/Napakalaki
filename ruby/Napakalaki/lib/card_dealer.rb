@@ -15,11 +15,19 @@ module NapakalakiGame
     end
 
     def nextTreasure
-
+      if @unusedTreasures.empty?
+        @unusedTreasures = @usedTreasures.clone #No se si se igualan así los array no si es directamente
+        @usedTreasures.clear
+      end
+      @unusedTreasures.fetch(0)
     end
 
     def nextMonster
-
+      if @unusedMonsters.empty?
+        @unusedMonsters = @usedMonsters.clone #No se si se igualan así los array no si es directamente
+        @usedMonsters.clear
+      end
+      @unusedMonsters.fetch(0)
     end
 
     def giveTreasureBack(t)
