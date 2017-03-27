@@ -198,17 +198,31 @@ public class CardDealer {
      * 
      * @return 
      */
-    /*public Treasure nextTreasure() {
-        
-    }*/
+    public Treasure nextTreasure() {
+        if (unusedTreasures.isEmpty()){
+            for (Treasure t :  usedTreasures)
+                unusedTreasures.add(t);
+            usedTreasures.clear();
+        }
+        Treasure treasure = unusedTreasures.get(0);
+        unusedTreasures.remove(treasure);
+        return treasure;
+    }
     
     /**
      * 
      * @return 
      */
-    /*public Monster nextMonster() {
-        
-    }*/
+    public Monster nextMonster() {
+        if (unusedMonsters.isEmpty()){
+            for (Monster m :  usedMonsters)
+                unusedMonsters.add(m);
+            usedMonsters.clear();
+        }
+        Monster monster = unusedMonsters.get(0);
+        unusedMonsters.remove(monster);
+        return monster;
+    }
     
     /**
      * 

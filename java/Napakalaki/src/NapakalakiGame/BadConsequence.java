@@ -96,20 +96,20 @@ public class BadConsequence {
     
     /**
      * 
-     * 
-     * @param t Tesoro
+     * Actualiza el mal rollo quitanto el tesoro de la lista
+     * @param t Tesoro visible
      */
     public void substractVisibleTreasure(Treasure t) {
-        
+        specificVisibleTreasures.remove(t);
     }
     
     /**
      * 
-     * 
-     * @param t 
+     * Actualiza el mal rollo quitanto el tesoro de la lista
+     * @param t Tesoro oculto
      */
     public void substractHiddenTreasure(Treasure t) {
-        
+        specificHiddenTreasures.remove(t);
     }
     /**
      * 
