@@ -126,7 +126,10 @@ public class Player {
      */
     private boolean canMakeTreasureVisible(Treasure t) {
         if (t.getType() == TreasureKind.ONEHAND)
-            if (howManyVisibleTreasures(TreasureKind.ONEHAND) != 2 || howManyVisibleTreasures(TreasureKind.BOTHHANDS) == 0)
+            if (howManyVisibleTreasures(TreasureKind.ONEHAND) < 2 && howManyVisibleTreasures(TreasureKind.BOTHHANDS) == 0)
+                return true;
+        else if (t.getType() == TreasureKind.BOTHHANDS)
+            if (howManyVisibleTreasures(TreasureKind.ONEHAND) == 0 && howManyVisibleTreasures(TreasureKind.BOTHHANDS) == 0)
                 return true;
         else if(howManyVisibleTreasures (t.getType()) == 0)
             return true;
