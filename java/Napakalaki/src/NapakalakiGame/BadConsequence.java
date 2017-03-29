@@ -35,9 +35,9 @@ public class BadConsequence {
      * Consultor del texto
      * @return texto con la información del mal rollo
      */
-    /*public String getText() {
+    public String getText() {
         return text;
-    }*/
+    }
     
     /**
      * 
@@ -95,7 +95,7 @@ public class BadConsequence {
     }
     
     /**
-     * 
+     * REVIEW
      * Actualiza el mal rollo quitanto el tesoro de la lista
      * @param t Tesoro visible
      */
@@ -155,9 +155,9 @@ public class BadConsequence {
     public BadConsequence(String t, boolean death) {
         this.text = t;
         this.death = death;
-        this.levels = 0;
-        nVisibleTreasures = 0;
-        nHiddenTreasures = 0;
+        this.levels = Player.MAXLEVEL;
+        nVisibleTreasures = MAXTREASURES;
+        nHiddenTreasures = MAXTREASURES;
         specificHiddenTreasures = new ArrayList();
         specificVisibleTreasures = new ArrayList();
     }
@@ -169,9 +169,45 @@ public class BadConsequence {
      * @param h
      * @return 
      */
-    /*public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h) {
+    public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h) {
+        BadConsequence ajustada;
+        int nVT, nHT;
+        ArrayList<TreasureKind> vT = new ArrayList();
+        ArrayList<TreasureKind> hT = new ArrayList();
+        ArrayList<TreasureKind> sVT = new ArrayList(specificVisibleTreasures);
+        ArrayList<TreasureKind> sHT = new ArrayList(specificHiddenTreasures);
         
-    }*/
+        
+       if (specificHiddenTreasures.isEmpty() && specificVisibleTreasures.isEmpty()){
+            if (nVisibleTreasures > v.size())
+                nVT = v.size();
+            else
+                nVT = nVisibleTreasures;
+            if (nHiddenTreasures > h.size())
+                nHT = h.size();
+            else
+                nHT = nHiddenTreasures;
+            ajustada = new BadConsequence(getText(), getLevels(), nVT, nHT);
+        }
+       else{
+            if (!v.isEmpty())
+                for (Treasure treasure : v){
+                    if (sVT.contains(treasure.getType()))
+                        vT.add(treasure.getType());
+                        sVT.remove(treasure.getType());
+                }
+            if (!h.isEmpty())
+                for (Treasure treasure : h){
+                    if (sHT.contains(treasure.getType()))
+                        hT.add(treasure.getType());
+                        sHT.remove(treasure.getType());
+                }
+            ajustada = new BadConsequence (getText(), getLevels(), vT, hT);
+       }
+         
+        
+        return ajustada;
+    }
     /**
      * 
      * @return String con información del mal rollo

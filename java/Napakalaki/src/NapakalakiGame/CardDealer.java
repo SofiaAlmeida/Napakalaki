@@ -190,19 +190,20 @@ public class CardDealer {
      * 
      * @return 
      */
-    /*public static CardDealer getInstance() {
-        
-    }*/
+    public static CardDealer getInstance() {
+        return instance;
+    }
     
     /**
      * 
-     * @return 
+     * @return El siguiente monstruo de la baraja
      */
     public Treasure nextTreasure() {
         if (unusedTreasures.isEmpty()){
             for (Treasure t :  usedTreasures)
                 unusedTreasures.add(t);
             usedTreasures.clear();
+            shuffleTreasures();
         }
         Treasure treasure = unusedTreasures.get(0);
         unusedTreasures.remove(treasure);
@@ -211,13 +212,14 @@ public class CardDealer {
     
     /**
      * 
-     * @return 
+     * @return El siguiente monstruo de la baraja
      */
     public Monster nextMonster() {
         if (unusedMonsters.isEmpty()){
             for (Monster m :  usedMonsters)
                 unusedMonsters.add(m);
             usedMonsters.clear();
+            shuffleMonsters();
         }
         Monster monster = unusedMonsters.get(0);
         unusedMonsters.remove(monster);
@@ -246,7 +248,8 @@ public class CardDealer {
      * 
      */
     public void initCards() {
-        
+        initTreasureCardDeck();
+        initMonsterCardDeck();
     }
 }   
 

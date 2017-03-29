@@ -20,7 +20,7 @@ public class Napakalaki {
      */
     private Napakalaki() {
         instance = new Napakalaki();
-        dealer = null;
+        dealer = CardDealer.getInstance();
         currentPlayer = null;
         currentMonster = null;
         players = new ArrayList();
@@ -88,28 +88,42 @@ public class Napakalaki {
     
     /*public static Napakalaki getInstance() {
         
-    }
+    }*/
     
     public CombatResult developCombat() {
-        
+        CombatResult combatResult = currentPlayer.combat(currentMonster);
+        dealer.giveMonsterBack(currentMonster);
+        return combatResult;
     }
     
     public void discardVisibleTreasures(ArrayList<Treasure> treasures) {
+        for (Treasure treasure : treasures){
+            currentPlayer.discardVisibleTreasure(treasure);
+            dealer.giveTreasureBack(treasure);
+        }
         
     }
     
     public void discardHiddenTreasures(ArrayList<Treasure> treasures) {
-        
+        for (Treasure treasure : treasures){
+            currentPlayer.discardHiddenTreasure(treasure);
+            dealer.giveTreasureBack(treasure);
+        }
     }
     
     public void makeTreasuresVisible(ArrayList<Treasure> treasures) {
-        
+        for (Treasure t : treasures){
+            currentPlayer.makeTreasureVisible(t);
+        }
     }
     
     public void initGame(ArrayList<String> players) {
-        
+        initPlayers(players);
+        setEnemies();
+        nextTurn();
+        dealer.initCards();
     }
-    */
+    
     
     /**
      * 
@@ -129,9 +143,18 @@ public class Napakalaki {
         return currentMonster;
     }
     
-    /*public boolean nextTurn() {
-        
-    }*/
+    public boolean nextTurn() {
+        boolean stateOK = nextTurnAllowed();
+        if (stateOK){
+            currentMonster = dealer.nextMonster();
+            currentPlayer = nextPlayer();
+            boolean dead = currentPlayer.isDead();
+            if (dead){
+                currentPlayer.initTreasures();
+            }
+        }
+        return stateOK;
+    }
     
     /**
      * 
