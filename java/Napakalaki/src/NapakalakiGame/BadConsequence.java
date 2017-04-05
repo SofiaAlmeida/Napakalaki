@@ -28,7 +28,6 @@ public class BadConsequence {
             return true;
         return false;
     }
-    //NOTE: podríamos llamar a esta función en la función de PruebaNapakalaki
     
     /**
      * 
@@ -100,7 +99,7 @@ public class BadConsequence {
      * @param t Tesoro visible
      */
     public void substractVisibleTreasure(Treasure t) {
-        specificVisibleTreasures.remove(t);
+        
     }
     
     /**
@@ -109,7 +108,7 @@ public class BadConsequence {
      * @param t Tesoro oculto
      */
     public void substractHiddenTreasure(Treasure t) {
-        specificHiddenTreasures.remove(t);
+        
     }
     /**
      * 
@@ -140,9 +139,10 @@ public class BadConsequence {
     public BadConsequence(String t, int l, ArrayList<TreasureKind> v, ArrayList<TreasureKind> h) {
         text = t;
         levels = l;
+        nVisibleTreasures = 0;
+        nHiddenTreasures = 0;
         specificVisibleTreasures = v;
         specificHiddenTreasures = h;
-        levels = 0;
         death = false;       
     }
     
@@ -170,7 +170,7 @@ public class BadConsequence {
      * @return 
      */
     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h) {
-        BadConsequence ajustada;
+        BadConsequence adjusted;
         int nVT, nHT;
         ArrayList<TreasureKind> vT = new ArrayList();
         ArrayList<TreasureKind> hT = new ArrayList();
@@ -178,16 +178,16 @@ public class BadConsequence {
         ArrayList<TreasureKind> sHT = new ArrayList(specificHiddenTreasures);
         
         
-       if (specificHiddenTreasures.isEmpty() && specificVisibleTreasures.isEmpty()){
+       if (specificVisibleTreasures.isEmpty() && specificHiddenTreasures.isEmpty()){
             if (nVisibleTreasures > v.size())
                 nVT = v.size();
             else
                 nVT = nVisibleTreasures;
             if (nHiddenTreasures > h.size())
                 nHT = h.size();
-            else
+            else    
                 nHT = nHiddenTreasures;
-            ajustada = new BadConsequence(getText(), getLevels(), nVT, nHT);
+            adjusted = new BadConsequence(getText(), getLevels(), nVT, nHT);
         }
        else{
             if (!v.isEmpty())
@@ -202,11 +202,11 @@ public class BadConsequence {
                         hT.add(treasure.getType());
                         sHT.remove(treasure.getType());
                 }
-            ajustada = new BadConsequence (getText(), getLevels(), vT, hT);
+            adjusted = new BadConsequence (getText(), getLevels(), vT, hT);
        }
          
         
-        return ajustada;
+        return adjusted;
     }
     /**
      * 

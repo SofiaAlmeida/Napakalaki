@@ -187,8 +187,7 @@ public class CardDealer {
     
     /**
      * 
-     * 
-     * @return 
+     * @return la única instancia de esta clase
      */
     public static CardDealer getInstance() {
         return instance;
@@ -199,8 +198,8 @@ public class CardDealer {
      * @return El siguiente monstruo de la baraja
      */
     public Treasure nextTreasure() {
-        if (unusedTreasures.isEmpty()){
-            for (Treasure t :  usedTreasures)
+        if (unusedTreasures.isEmpty()) {
+            for (Treasure t : usedTreasures)
                 unusedTreasures.add(t);
             usedTreasures.clear();
             shuffleTreasures();
@@ -246,6 +245,7 @@ public class CardDealer {
     
     /**
      * 
+     * Inicializa el mazo de tesoros y el de monstruos
      */
     public void initCards() {
         initTreasureCardDeck();
