@@ -18,16 +18,16 @@ module NapakalakiGame
       @death = death
     end
 
-    def self.newLevelNumberOfTreasures(aText, someLevels, someVisibleTreasures, someHiddenTreasures)
-      new(aText, someLevels, someVisibleTreasures, someHiddenTreasures, [], [], false)
+    def self.newLevelNumberOfTreasures(t, l, nVisible, nHidden)
+      new(t, l, nVisible, nHidden, [], [], false)
     end
 
-    def self.newLevelSpecificTreasures(aText, someLevels, someSpecificVisibleTreasures, someSpecificHiddenTreasures)
-      new(aText, someLevels, 0, 0, someSpecificVisibleTreasures, someSpecificHiddenTreasures, false)
+    def self.newLevelSpecificTreasures(t, l, v, h)
+      new(t, l, 0, 0, v, h, false)
     end
 
-    def self.newDeath(aText)
-      new(aText, 0, 0, 0, [], [], true)
+    def self.newDeath(t, death)
+      new(t, Player.getMaxLevel, @@MAXTREASURES, @@MAXTREASURES, [], [], death)
     end
 
     def self.getMaxTreasures
@@ -66,19 +66,55 @@ module NapakalakiGame
 
 
     def subtractVisibleTreasure(t)
-      @specificVisibleTreasures.delete(t)
+      if @specificVisibleTreasures.empty? 
+        @nVisibleTreasures -= 1
+      else
+        @specificVisibleTreasures.delete(t)
+      end
             
     end
 
     def subtractHiddenTreasure(t)
-      @specificHiddenTreasues.delete(t)
+      if @specificHiddenTreasures.empty?
+        @nHiddenTreasures -= 1
+      else
+        @specificHiddenTreasues.delete(t)
+      end
       
     end
-=begin
-    def adjustToFitTreasureLists(v, h)
 
+    def adjustToFitTreasureLists(v, h)
+      if @specificVisibleTreasures.empty? and @specificHiddenTreasures.empty? 
+        # Si no hay tesoros específicos, ajustamos el número de tesoros
+        if v.count < @nVisibleTreasures
+          nVT = v.count
+        else
+          nVT = @nVsibleTreasures
+        end
+        
+        if h.count < @nHiddenTreasures
+          nHT = h.count
+        else
+          nHT = @nHiddenTreasures
+        end
+        
+        adjusted = BadConsequence.newLevelNumberOfTreasures(@text, @levels, nVT, nHT)
+      else
+        # Tesoros específicos
+        sVT = Array.new
+        # Creamos un array con los tipos de los tesoros de v, para poder comparar
+        # con @specific... directamente
+        v.each { |t| sVT << t.getType}         
+        sVT = sVT & @specificVisibleTreasures # Toma la intersección de ambos vectores
+        
+        sHT = Array.new
+        h.each { |t| sHT << t.getType}
+        sHT = sHT & @specificHiddenTreasures
+        
+        adjusted = BadConsequence.newLevelSpecificTreasures(@text, @levels, sVT, sHT)
+      end
+      adjusted
     end
-=end
 
     def to_s
       if @death==false

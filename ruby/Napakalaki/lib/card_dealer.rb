@@ -1,5 +1,9 @@
 #encoding: utf-8
 require "singleton"
+require_relative "prize.rb"
+require_relative "bad_consequence.rb"
+require_relative "treasure_kind.rb"
+require_relative "monster.rb"
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
 
@@ -45,7 +49,9 @@ module NapakalakiGame
     end
 
     def initCards
-
+      initTreasureCardDeck
+      initMonsterCardDeck
+      
     end
 
     private

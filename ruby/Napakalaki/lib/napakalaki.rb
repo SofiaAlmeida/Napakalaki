@@ -8,30 +8,47 @@ module NapakalakiGame
     include Singleton
 
     def initialize 
-      @currentMonster = Player.new
       @dealer = CardDealer.instance
       @players = Array.new
-      @currentPlayer = Player.new
+      @currentPlayer = nil
+      @currentMonster = nil
     end
 
     def developCombat
-
+      combatResult = @currentPlayer.combat(@currentMonster)
+      @dealer.giveMonsterBack(@currentMonster)
+      combatResult
     end
 
     def discardVisibleTreasures(treasures)
-
+      treasures.each { |treasure| 
+        @currentPlayer.discardVisibleTreasure(treasure)
+        @dealer.giveTreasureBack(treasure)
+      }
+      
     end
 
     def discardHiddenTreasures(treasures)
-
+      treasures.each { |treasure| 
+        @currentPlayer.discardHiddenTreasure(treasure)
+        @dealer.giveTreasureBack(treasure)
+      }
+      
     end
 
     def makeTreasuresVisible(treasures)
-
+      treasures.each { |t|
+        @currentPlayer.makeTreasureVisible(t)
+      }
+      
     end
 
     def initGame(players)
-
+      initPlayers(players)
+      setEnemies
+      @dealer.initCards
+      nextTurn
+      
     end
 
     def getCurrentPlayer
@@ -43,7 +60,16 @@ module NapakalakiGame
     end
 
     def nextTurn
-
+      stateOK = nextTurnAllowed
+      if stateOK
+        @currentMonster = @dealer.nextMonster
+        @currentPlayer = nextPlayer
+        dead = @currentPlayer.isDead
+        if dead
+          @currentPlayer.initTreasures
+        end
+      end
+      stateOK
     end
 
     def endOfGame(result)
@@ -62,10 +88,10 @@ module NapakalakiGame
     
     def nextPlayer
       if @currentPlayer.nil?
-        posicion = rand (@players.count)
+        posicion = rand(@players.count)
       else
         posicion = @players.index(@currentPlayer)
-        if (posicion == (@players.count -1))
+        if posicion == (@players.count - 1)
           posicion = 0
         else
           posicion += 1
@@ -84,9 +110,9 @@ module NapakalakiGame
     
     def setEnemies
       @players.each { |player| begin
-          posicion = rand (@players.count)
+          posicion = rand(@players.count)
         end while posicion == @players.index(player)
-        player.setEnemy (@players.fetch(posicion))
+        player.setEnemy(@players.fetch(posicion))
        }
     end
       

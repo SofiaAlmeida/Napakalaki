@@ -43,15 +43,29 @@ module NapakalakiGame
     end
 
     def makeTreasureVisible(t)
-
+      canI = canMakeTreasureVisible(t) #self necesario?
+      if canI
+        @visibleTreasures << t
+        @hiddenTreasures.remove(t)
+      end
+      
     end
 
     def discardVisibleTreasure(t)
-
+      @visibleTreasures.remove(t)
+      if (@pendingBadConsequence != nil) and !@pendingBadConsequence.empty?
+        @pendingBadConsequence.substractVisibleTreasure(t)
+      end
+      @currentPlayer.dieIfNoTreasures
+      
     end
 
     def discardHiddenTreasure(t)
-
+      @visibleTreasures.remove(t)
+      if (@pendingBadConsequence != nil) and !@pendingBadConsequence.empty?
+        @pendingBadConsequence.substractHiddenTreasure(t)
+      end
+      @currentPlayer.dieIfNoTreasures
     end
 
     # Devuelve true cuando el jugador no tiene ningún mal rollo que cumplir y no 
@@ -65,8 +79,24 @@ module NapakalakiGame
     end
 
     def initTreasures
-
+      dealer = CardDealer.instance
+      dice = Dice.instance
+      bringToLife
+      treasure = dealer.nextNumber
+      @hiddenTreasures << treasure
+      number = Dice.nextNumber
+      
+      if number > 1
+        treasure = dealer.nextTreasure
+        @hiddenTreasures << treasure
+      end
+      
+      if number == 6
+        treasure = dealer.nextTreasure
+        @hiddenTreasures << treasure
+      end
     end
+   
 
     def getLevels
       @level
