@@ -248,11 +248,10 @@ public class Player {
     /**
      * 
      * Equipa un tesoro
-     * @param t tesoro a equipar
+     * @param t Tesoro a equipar
      */
     public void makeTreasureVisible(Treasure t) {
         boolean canI = canMakeTreasureVisible(t);
-        
         if (canI) {
             visibleTreasures.add(t);
             hiddenTreasures.remove(t);
@@ -262,7 +261,7 @@ public class Player {
     /**
      * 
      * Descarta un tesoro visible para completar el mal rollo
-     * @param t tesoro a descartar
+     * @param t Tesoro a descartar
      */
     public void discardVisibleTreasure(Treasure t) {
         visibleTreasures.remove(t);

@@ -21,14 +21,15 @@ public class Napakalaki {
     private Napakalaki() {
         instance = new Napakalaki();
         dealer = CardDealer.getInstance();
+        players = new ArrayList();
         currentPlayer = null;
         currentMonster = null;
-        players = new ArrayList();
     }
 
     /**
      * 
-     * @param names 
+     * Inicializa la lista de jugadores a partir de los nombres dados
+     * @param names Nombre de los jugadores
      */
     private void initPlayers(ArrayList<String> names) {
         for (String name : names)
@@ -42,16 +43,16 @@ public class Napakalaki {
      */
     private Player nextPlayer() {
         int posicion;
-        if (currentPlayer == null){
+        if (currentPlayer == null) {
             Random rand = new Random();
             posicion = rand.nextInt(players.size());
         }
-        else{
+        else {
             posicion = players.indexOf(currentPlayer); //Devuelve solo la primera ocurrencia
-            if (posicion == players.size() -1)
+            if (posicion == (players.size() - 1))
                 posicion = 0;
             else
-                posicion ++;
+                posicion++;
         }
         currentPlayer = players.get(posicion);
         return currentPlayer;        
@@ -86,24 +87,42 @@ public class Napakalaki {
         }
     }
     
-    /*public static Napakalaki getInstance() {
-        
-    }*/
+    /**
+     * 
+     * @return la única instancia de esta clase
+     */
+    public static Napakalaki getInstance() {
+        return instance;
+    }
     
+    /**
+     * 
+     * Desarrollo del combate
+     * @return resultado del combate
+     */
     public CombatResult developCombat() {
         CombatResult combatResult = currentPlayer.combat(currentMonster);
         dealer.giveMonsterBack(currentMonster);
         return combatResult;
     }
     
+    /**
+     * 
+     * Elimina los tesoros visibles pasados como parámetro del jugador actual
+     * @param treasures Tesoros a descartar
+     */
     public void discardVisibleTreasures(ArrayList<Treasure> treasures) {
         for (Treasure treasure : treasures){
             currentPlayer.discardVisibleTreasure(treasure);
             dealer.giveTreasureBack(treasure);
         }
-        
     }
     
+    /**
+     * 
+     * Elimina los tesoros ocultos pasados como parámetro del jugador actual
+     * @param treasures Tesoros a descartar
+     */
     public void discardHiddenTreasures(ArrayList<Treasure> treasures) {
         for (Treasure treasure : treasures){
             currentPlayer.discardHiddenTreasure(treasure);
@@ -111,17 +130,28 @@ public class Napakalaki {
         }
     }
     
+    /**
+     * 
+     * Introduce la lista de tesoros pasados como parámetro a la de tesoros visibles
+     * @param treasures Lista con los tesoros que queremos descubrir
+     */
     public void makeTreasuresVisible(ArrayList<Treasure> treasures) {
         for (Treasure t : treasures){
             currentPlayer.makeTreasureVisible(t);
         }
     }
     
+    /**
+     * 
+     * Realiza las gestiones necesarias para iniciar el juego:
+     * inicializar los mazos de cartas, jugadores, enemigos...
+     * @param players 
+     */
     public void initGame(ArrayList<String> players) {
         initPlayers(players);
         setEnemies();
-        nextTurn();
         dealer.initCards();
+        nextTurn();
     }
     
     
@@ -143,6 +173,11 @@ public class Napakalaki {
         return currentMonster;
     }
     
+    /**
+     * Comprueba que el jugador actual ha terminado su turno y se pasa al siguiente 
+     * @return true si se puede pasar al siguiente jugador
+     *         false en caso contrario
+     */
     public boolean nextTurn() {
         boolean stateOK = nextTurnAllowed();
         if (stateOK){
@@ -159,11 +194,11 @@ public class Napakalaki {
     /**
      * 
      * Comprueba si se acaba el juego
-     * @param result
+     * @param result Resultado del combate
      * @return true si alguien gana
      *         false en caso contrario
      */
-    public boolean endOfGame (CombatResult result) {
+    public boolean endOfGame(CombatResult result) {
         if (result == CombatResult.WINGAME)
             return true;
         else
