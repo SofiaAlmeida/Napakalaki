@@ -49,4 +49,12 @@ public class Treasure {
     public TreasureKind getType() {
         return type;
     }
+    
+    /**
+     * 
+     * @return String con la información de la clase 
+     */
+    public String toString() {
+        return "Nombre: " + name + "\nBonus: " + bonus + "\nTipo: " + type;
+    }
 }
