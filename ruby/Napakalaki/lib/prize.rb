@@ -10,7 +10,6 @@ module NapakalakiGame
       @level = l
     end
 
-
     def getTreasures
       @treasures
     end

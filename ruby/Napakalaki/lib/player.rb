@@ -13,7 +13,7 @@ module NapakalakiGame
       @dead = true
       @canISteal = true
       @pendingBadConsequence = nil
-      @hiddenTreasueres = Array.new
+      @hiddenTreasures = Array.new
       @visibleTreasures = Array.new
       @enemy = nil
     end
@@ -31,11 +31,11 @@ module NapakalakiGame
     end
 
     def getHiddenTreasures
-
+      @hiddenTreasures
     end
 
     def getVisibleTreasures
-
+      @visibleTreasures
     end
 
     def combat(m)
@@ -57,11 +57,11 @@ module NapakalakiGame
     # Devuelve true cuando el jugador no tiene ningún mal rollo que cumplir y no 
     # tiene más de 4 tesoros, false en caso contrario
     def validState
-      state = false 
       if @pendingBadConsequence.isEmpty and @hiddenTreasures.length <= 4
-        state = true           
+        true
+      else
+        false
       end
-      state
     end
 
     def initTreasures
@@ -137,10 +137,13 @@ module NapakalakiGame
 
     end
 
-    #Probar si funciona bien los return 
     def canMakeTreasureVisible(t)
       if t.getType == TreasureKind::ONEHAND
-        if howManyVisibleTreasures(TreasureKind::ONEHAND) != 2 or howManyVisibleTreasures(TreasureKind::BOTHHANDS) == 0
+        if howManyVisibleTreasures(TreasureKind::ONEHAND) < 2 or howManyVisibleTreasures(TreasureKind::BOTHHANDS) == 0
+          true
+        end
+      elsif t.getType == TreasureKind::BOTHHANDS
+        if howManyVisibleTreasures(TreasureKind::ONEHAND) == 0 or howManyVisibleTreasures(TreasureKind::BOTHHANDS) == 0
           true
         end
       elsif howManyVisibleTreasures(t.getType) == 0
@@ -168,11 +171,10 @@ module NapakalakiGame
 
     # True si el jugador tiene tesoros para ser robados
     def canYouGiveMeATreasure
-      if (@hiddenTreasures.length > 0)
-        true
-      else
+      if @hiddenTreasures.length == 0
         false
       end
+      true
     end
 
     # Llamar cuando el jugador roba un tesoro
