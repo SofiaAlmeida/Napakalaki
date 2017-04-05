@@ -94,12 +94,15 @@ public class BadConsequence {
     }
     
     /**
-     * REVIEW
+     * 
      * Actualiza el mal rollo quitanto el tesoro de la lista
      * @param t Tesoro visible
      */
     public void substractVisibleTreasure(Treasure t) {
-        
+        if (specificVisibleTreasures.isEmpty())
+            nVisibleTreasures --;
+        else
+            specificVisibleTreasures.remove(t.getType());
     }
     
     /**
@@ -108,7 +111,10 @@ public class BadConsequence {
      * @param t Tesoro oculto
      */
     public void substractHiddenTreasure(Treasure t) {
-        
+        if (specificHiddenTreasures.isEmpty())
+            nHiddenTreasures --;
+        else
+            specificHiddenTreasures.remove(t.getType());
     }
     /**
      * 
@@ -165,9 +171,10 @@ public class BadConsequence {
    
     /**
      * 
-     * @param v
-     * @param h
-     * @return 
+     * Ajusta el mal rollo según los tesoros del jugador
+     * @param v Tesoros visibles del jugador
+     * @param h Tesoros ocultos del jugador
+     * @return mal rollo ajustado
      */
     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h) {
         BadConsequence adjusted;
@@ -176,9 +183,8 @@ public class BadConsequence {
         ArrayList<TreasureKind> hT = new ArrayList();
         ArrayList<TreasureKind> sVT = new ArrayList(specificVisibleTreasures);
         ArrayList<TreasureKind> sHT = new ArrayList(specificHiddenTreasures);
-        
-        
-       if (specificVisibleTreasures.isEmpty() && specificHiddenTreasures.isEmpty()){
+
+        if (specificVisibleTreasures.isEmpty() && specificHiddenTreasures.isEmpty()){
             if (nVisibleTreasures > v.size())
                 nVT = v.size();
             else
@@ -189,23 +195,21 @@ public class BadConsequence {
                 nHT = nHiddenTreasures;
             adjusted = new BadConsequence(getText(), getLevels(), nVT, nHT);
         }
-       else{
+        else{
             if (!v.isEmpty())
-                for (Treasure treasure : v){
+                for (Treasure treasure : v) {
                     if (sVT.contains(treasure.getType()))
                         vT.add(treasure.getType());
                         sVT.remove(treasure.getType());
                 }
             if (!h.isEmpty())
-                for (Treasure treasure : h){
+                for (Treasure treasure : h) {
                     if (sHT.contains(treasure.getType()))
                         hT.add(treasure.getType());
                         sHT.remove(treasure.getType());
                 }
-            adjusted = new BadConsequence (getText(), getLevels(), vT, hT);
-       }
-         
-        
+            adjusted = new BadConsequence(getText(), getLevels(), vT, hT);
+        }
         return adjusted;
     }
     /**
