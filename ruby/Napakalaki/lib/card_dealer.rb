@@ -20,10 +20,13 @@ module NapakalakiGame
 
     def nextTreasure
       if @unusedTreasures.empty?
-        @unusedTreasures = @usedTreasures.clone #No se si se igualan así los array no si es directamente
+        @usedTreasures.each { |t| @unusedTreasures << t}
+        shuffleTreasures
         @usedTreasures.clear
       end
-      treasure = @unusedTreasures.fetch(0)
+      
+      treasure = @unusedTreasures.at(0)
+      @usedTreasures << treasure
       @unusedTreasures.delete(treasure)
       treasure
     end
@@ -137,7 +140,7 @@ module NapakalakiGame
 
 
       prize = Prize.new(2, 1)
-      badConsequence = BadConsequence.newDeath("Estos monstruos resultan bastantes superficiales y te aburren mortalmente. Estás muerto")
+      badConsequence = BadConsequence.newDeath("Estos monstruos resultan bastantes superficiales y te aburren mortalmente. Estás muerto", true)
       @unusedMonsters << Monster.new("Los hondos", 8, badConsequence, prize)
 
       prize = Prize.new(2, 1)
@@ -153,11 +156,11 @@ module NapakalakiGame
       @unusedMonsters << Monster.new("Pollipólipo volante", 3, badConsequence, prize)
 
       prize = Prize.new(3, 1)
-      badConsequence = BadConsequence.newDeath("No le hace gracia que pronuncien mal su nombre. Estás muerto")
+      badConsequence = BadConsequence.newDeath("No le hace gracia que pronuncien mal su nombre. Estás muerto", true)
       @unusedMonsters << Monster.new("Yskhtihyssg-Goth", 14, badConsequence, prize)
 
       prize = Prize.new(3, 1)
-      badConsequence = BadConsequence.newDeath("La familia te atrapa. Estás muerto")
+      badConsequence = BadConsequence.newDeath("La familia te atrapa. Estás muerto", true)
       @unusedMonsters << Monster.new("Familia feliz", 1, badConsequence, prize)
 
       prize = Prize.new(2, 1)
