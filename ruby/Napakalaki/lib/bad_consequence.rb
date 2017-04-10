@@ -1,5 +1,8 @@
 #encoding: utf-8
 
+require_relative "player.rb"
+require_relative "treasure.rb" #QUITAAAR
+
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
 
@@ -37,11 +40,10 @@ module NapakalakiGame
     def isEmpty
       if @nHiddenTreasures == 0 and @nVisibleTreasures == 0 and
          @specificHiddenTreasures.empty? and @specificVisibleTreasures.empty?
-          empty = true
+        true
       else 
-          empty = false
+        false
       end
-      empty
     end
 
     def getLevels
@@ -69,7 +71,7 @@ module NapakalakiGame
       if @specificVisibleTreasures.empty? 
         @nVisibleTreasures -= 1
       else
-        @specificVisibleTreasures.delete(t)
+        @specificVisibleTreasures.delete(t.getType)
       end
             
     end
@@ -78,7 +80,7 @@ module NapakalakiGame
       if @specificHiddenTreasures.empty?
         @nHiddenTreasures -= 1
       else
-        @specificHiddenTreasues.delete(t)
+        @specificHiddenTreasures.delete(t.getType)
       end
       
     end
@@ -89,7 +91,7 @@ module NapakalakiGame
         if v.count < @nVisibleTreasures
           nVT = v.count
         else
-          nVT = @nVsibleTreasures
+          nVT = @nVisibleTreasures
         end
         
         if h.count < @nHiddenTreasures
@@ -118,11 +120,10 @@ module NapakalakiGame
 
     def to_s
       if @death==false
-        if @specificVisibleTreasures.nil? and @specificHiddenTreasures.nil? 
+        if @specificVisibleTreasures.empty? and @specificHiddenTreasures.empty? 
           "\n\tTexto: #{@text} \n\tNiveles: #{@levels} \n\tTesoros visibles: #{@nVisibleTreasures}\n\tTesoros ocultos: #{@nHiddenTreasures}"
         else
-          "\n\tTexto: #{@text} \n\tNiveles: #{@levels} \n\tTesoros ocultos específicos:
-          #{@specificHiddenTreasures} \n\tTesoros visibles específicos: #{@specificVisibleTreasures}"
+          "\n\tTexto: #{@text} \n\tNiveles: #{@levels} \n\tTesoros ocultos específicos: #{@specificHiddenTreasures} \n\tTesoros visibles específicos: #{@specificVisibleTreasures}"
         end
       else
         "\n\tTexto: #{@text} \n\tMuerto"
@@ -132,4 +133,34 @@ module NapakalakiGame
 
     private_class_method :new
   end
+  #Pruebas
+=begin
+badc1 = BadConsequence.newLevelNumberOfTreasures("Number", 5, 0, 3)
+badc2 = BadConsequence.newLevelSpecificTreasures("Array", 4, [TreasureKind::ONEHAND, TreasureKind::ONEHAND,TreasureKind::HELMET], [TreasureKind::BOTHHANDS])
+badc3 = BadConsequence.newDeath("Muertee", true)
+badc4 = BadConsequence.newLevelSpecificTreasures("Array", 4, [], [])
+
+
+puts "#{badc1}\n  #{badc1.isEmpty}\n"
+puts "#{badc2}\n  #{badc2.isEmpty}\n"
+puts "#{badc3}\n  #{badc3.isEmpty}\n"
+puts "#{badc4}\n  #{badc4.isEmpty}\n"
+t = Treasure.new("tesoro", 3, TreasureKind::ONEHAND)
+badc2.subtractVisibleTreasure(t)
+puts "#{badc2}\n"
+
+v = [TreasureKind::ONEHAND,TreasureKind::HELMET]
+h = [TreasureKind::SHOE]
+ajustada = badc1.adjustToFitTreasureLists(v, h)
+puts "#{ajustada}\n"
+
+t1 = Treasure.new("tesoro", 3, TreasureKind::ONEHAND)
+t2 = Treasure.new("tesoro", 2, TreasureKind::HELMET)
+t3 = Treasure.new("tesoro", 1, TreasureKind::ARMOR)
+v = [t1]
+h = [t1, t2, t3]
+ajustada = badc2.adjustToFitTreasureLists(v, h)
+puts "#{ajustada}\n"
+=end
 end
+
