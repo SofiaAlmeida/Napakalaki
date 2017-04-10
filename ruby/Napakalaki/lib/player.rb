@@ -1,5 +1,12 @@
 #encoding: utf-8
 
+require_relative "card_dealer.rb"
+require_relative "dice.rb"
+
+require_relative "monster.rb" #QUITAAAR
+require_relative "prize.rb" #QUITAR
+require_relative "bad_consequence.rb"  #QUITAR
+
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
 
@@ -18,7 +25,7 @@ module NapakalakiGame
       @enemy = nil
     end
 
-    def getMaxLevel
+    def self.getMaxLevel
       @@MAXLEVEL
     end
 
@@ -38,10 +45,35 @@ module NapakalakiGame
       @visibleTreasures
     end
 
+    #Simulación del combate con el monstruo
     def combat(m)
-
+      myLevel = getCombatLevel
+      monsterLevel = m.getCombatLevel
+      if !@canISteal
+        dice = Dice.instance
+        number = dice.nextNumber
+        
+        if number < 3
+          enemyLevel = @enemy.getCombatLevel
+          monsterLevel += enemyLevel
+        end
+        
+        if myLevel > monsterLevel
+          applyPrize (m)
+          if (@level >= @@MAXLEVEL)
+            CombatResult::WINGAME
+          else
+            CombatResult::WIN
+          end
+        else
+          applyBadConsequence (m)
+          puts "PIERDE"
+          CombatResult::LOSE
+        end
+      end
     end
 
+    #Hace visible el tesoro del parámetro
     def makeTreasureVisible(t)
       canI = canMakeTreasureVisible(t) #self necesario?
       if canI
@@ -51,6 +83,7 @@ module NapakalakiGame
       
     end
 
+    #Descarta un tesoro visible para completar el mal rollo
     def discardVisibleTreasure(t)
       @visibleTreasures.remove(t)
       if (@pendingBadConsequence != nil) and !@pendingBadConsequence.empty?
@@ -59,7 +92,8 @@ module NapakalakiGame
       @currentPlayer.dieIfNoTreasures
       
     end
-
+    
+    #Descarta un tesoro oculto para completar el mal rollo
     def discardHiddenTreasure(t)
       @visibleTreasures.remove(t)
       if (@pendingBadConsequence != nil) and !@pendingBadConsequence.empty?
@@ -78,13 +112,14 @@ module NapakalakiGame
       end
     end
 
+    #Da tesoros iniciales al jugador
     def initTreasures
       dealer = CardDealer.instance
       dice = Dice.instance
       bringToLife
-      treasure = dealer.nextNumber
+      treasure = dealer.nextTreasure
       @hiddenTreasures << treasure
-      number = Dice.nextNumber
+      number = dice.nextNumber
       
       if number > 1
         treasure = dealer.nextTreasure
@@ -101,11 +136,28 @@ module NapakalakiGame
     def getLevels
       @level
     end
-
+    
+    #REVIEW ver si funciona el ret
+    #Roba un tesoro
+    #Devuelve dicho tesoro, en caso de no robar un tesoro se devolverá nil
     def stealTreasure
-
+      canI = canISteal
+      if canI
+        canYou = @enemy.canYouGiveMeATreasure
+        if canYou
+          treasure = enemy.giveMeATreasure
+          hiddenTreasures.add(treasure)
+          haveStolen
+          
+          treasure
+        end
+      else
+        nil
+      end
     end
+    
 
+    #Asigna un enemigo al jugador
     def setEnemy(enemy)
       @enemy = enemy
     end
@@ -115,11 +167,14 @@ module NapakalakiGame
       @canISteal
     end
 
+    #Descarta todos los tesoros del jugador
     def discardAllTreasures
-
+      @visibleTreasures.each {|treasure| discardVisibleTreasure(treasure)}
+      @hiddenTreasures.each {|treasure| discardHiddenTreasure(treasure)}
+      
     end
 
-    private 
+    #private 
     def bringToLife
        @dead = false
 
@@ -132,6 +187,7 @@ module NapakalakiGame
       combatLevel
     end
 
+    #Aumenta el número de niveles pasados como parámetro
     def incrementLevels(l)
       if l > 0
         if @level + l > @@MAXLEVEL
@@ -143,6 +199,7 @@ module NapakalakiGame
 
     end
 
+    #Decrementa el número de niveles pasados como parámetro
     def decrementLevels(l)
       if l > 0
         if @level - l < 1
@@ -153,18 +210,37 @@ module NapakalakiGame
       end   
 
     end
-
+    
+    #Asigna el mal rollo pendiente
     def setPendingBadConsequence(b)
       @pendingBadConsequence = b
 
     end
 
+    #Aplica el premio del monstruo
     def applyPrize(m)
-
+      nLevels = m.getLevelsGained
+      self.incrementLevels (nLevels)
+      nTreasures = m.getTreasuresGained
+      
+      if nTreasures > 0
+        dealer = CardDealer.instance
+        nTreasures.times do
+          treasure = dealer.nextTreasure
+          @hiddenTreasures << treasure
+        end
+      end
+      
     end
 
+    #Aplica el mal rollo del monstruo
     def applyBadConsequence(m)
-
+      badConsequence = m.getBadConsequence
+      nLevels = badConsequence.getLevels
+      self.decrementLevels (nLevels)
+      pendingBad = badConsequence.adjustToFitTreasureLists(@visibleTreasures, @hiddenTreasures)
+      self.setPendingBadConsequence(pendingBad)
+      
     end
 
     def canMakeTreasureVisible(t)
@@ -188,7 +264,7 @@ module NapakalakiGame
 
     # Cambia el estado del jugador a muerto sino tiene ningún tesoro
     def dieIfNoTreasures
-      if hiddenTreasures.empty? and visibleTreasures.empty?
+      if @hiddenTreasures.empty? and @visibleTreasures.empty?
         @dead = true
       end
 
@@ -204,7 +280,7 @@ module NapakalakiGame
       if @hiddenTreasures.length == 0
         false
       end
-      true
+        true
     end
 
     # Llamar cuando el jugador roba un tesoro
@@ -220,4 +296,25 @@ module NapakalakiGame
     end
 
   end
+
+  #PRUEBAA
+mazo = CardDealer.instance
+mazo.initCards
+jugador = Player.new("jug1")
+enemigo = Player.new("ene")
+badc1 = BadConsequence.newLevelNumberOfTreasures("Number", 5, 0, 3)
+badc2 = BadConsequence.newLevelSpecificTreasures("Array", 3, [TreasureKind::ONEHAND,TreasureKind::HELMET], [TreasureKind::BOTHHANDS])
+p = Prize.new(3, 4)
+
+monpremio = Monster.new("Miguee", 8, badc1, p)
+monbc = Monster.new("asd", 20, badc2, p)
+jugador.initTreasures
+jugador.setEnemy(enemigo)
+puts "Jugador Antes:\n #{jugador}"
+jugador.applyPrize (monpremio)
+puts "Jugador Premio:\n #{jugador}"
+jugador.combat(monbc)
+puts "Jugador BC:\n #{jugador}"
+ 
+
 end
