@@ -1,7 +1,7 @@
 #encoding: utf-8
 require_relative "prize.rb"
 require_relative "treasure_kind.rb"
-require_relative "bad_consequence"
+require_relative "bad_consequence.rb"
 require_relative "monster.rb"
 require_relative "napakalaki.rb"
 require_relative "dice.rb"
@@ -117,7 +117,7 @@ end
   
   
   prize = Prize.new(2,1)
-  badConsequence = BadConsequence.newDeath("Estos monstruos resultan bastantes superficiales y te aburren mortalmente. Estás muerto.")
+  badConsequence = BadConsequence.newDeath("Estos monstruos resultan bastantes superficiales y te aburren mortalmente. Estás muerto.", true)
   @@monsters << Monster.new("Los hondos", 8, badConsequence, prize)
   
   prize = Prize.new(2,1)
@@ -133,11 +133,11 @@ end
   @@monsters << Monster.new("Pollipólipo volante", 3, badConsequence, prize)
   
   prize = Prize.new(3,1)
-  badConsequence = BadConsequence.newDeath("No le hace gracia que pronuncien mal su nombre. Estás muerto.")
+  badConsequence = BadConsequence.newDeath("No le hace gracia que pronuncien mal su nombre. Estás muerto.", true)
   @@monsters << Monster.new("Yskhtihyssg-Goth", 14, badConsequence, prize)
   
   prize = Prize.new(3,1)
-  badConsequence = BadConsequence.newDeath("La familia te atrapa. Estás muerto.")
+  badConsequence = BadConsequence.newDeath("La familia te atrapa. Estás muerto.", true)
   @@monsters << Monster.new("Familia feliz", 1, badConsequence, prize)
   
   prize = Prize.new(2,1)

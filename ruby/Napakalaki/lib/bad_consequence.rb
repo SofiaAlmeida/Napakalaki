@@ -1,7 +1,7 @@
 #encoding: utf-8
 
-require_relative "player.rb"
-require_relative "treasure.rb" #QUITAAAR
+#require_relative "player.rb"
+#require_relative "treasure.rb" 
 
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
@@ -30,7 +30,8 @@ module NapakalakiGame
     end
 
     def self.newDeath(t, death)
-      new(t, Player.getMaxLevel, @@MAXTREASURES, @@MAXTREASURES, [], [], death)
+      new(t, 10, @@MAXTREASURES, @@MAXTREASURES, [], [], death)
+      #new(t, Player.getMaxLevel, @@MAXTREASURES, @@MAXTREASURES, [], [], death) prueba cambiar luego
     end
 
     def self.getMaxTreasures
