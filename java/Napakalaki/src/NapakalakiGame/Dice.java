@@ -13,11 +13,11 @@ public class Dice {
      * 
      * Constructor vacío
      */
-    private Dice() {
-       instance = new Dice();
-    }
+    private Dice() { }
     
     public static Dice getInstance() {
+        if (instance == null)
+            instance = new Dice();
         return instance;
     }
     

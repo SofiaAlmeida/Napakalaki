@@ -81,10 +81,10 @@ public class Player {
      * @param l Número de niveles a incrementar 
      */
     private void incrementLevels(int l) {
-        if (l > 0)
-            if (level + l > MAXLEVEL)
+        if (l > 0) 
+            if (level + l > MAXLEVEL) 
                 level = MAXLEVEL;
-            else
+            else 
                 level += l;
     }
     
@@ -94,11 +94,12 @@ public class Player {
      * @param l Número de niveles a decrementar 
      */
     private void decrementLevels(int l) {
-        if (l > 0)
-            if (level - l < 1)
+        if (l > 0) 
+            if (level - l < 1) 
                 level = 1;
-            else
+            else 
                 level -= l;
+            
     }
     
     /**
@@ -150,14 +151,19 @@ public class Player {
      *         false en caso contrario
      */
     private boolean canMakeTreasureVisible(Treasure t) {
-        if (t.getType() == TreasureKind.ONEHAND)
-            if (howManyVisibleTreasures(TreasureKind.ONEHAND) < 2 && howManyVisibleTreasures(TreasureKind.BOTHHANDS) == 0)
+        if (t.getType() == TreasureKind.ONEHAND) {
+            if (howManyVisibleTreasures(TreasureKind.ONEHAND) < 2 && howManyVisibleTreasures(TreasureKind.BOTHHANDS) == 0) {
                 return true;
-        else if (t.getType() == TreasureKind.BOTHHANDS)
-            if (howManyVisibleTreasures(TreasureKind.ONEHAND) == 0 && howManyVisibleTreasures(TreasureKind.BOTHHANDS) == 0)
-                return true;
-        else if(howManyVisibleTreasures(t.getType()) == 0)
+            }
+        } 
+        else if (t.getType() == TreasureKind.BOTHHANDS) {
+            if (howManyVisibleTreasures(TreasureKind.ONEHAND) == 0 && howManyVisibleTreasures(TreasureKind.BOTHHANDS) == 0) {
+                return true; 
+            }
+        }
+        else if (howManyVisibleTreasures(t.getType()) == 0) {
             return true;
+        }
         return false;
     }
     
@@ -294,7 +300,7 @@ public class Player {
      *         false en caso contrario
      */
     public boolean validState() {
-        if (pendingBadConsequence.isEmpty() && hiddenTreasures.size()<= 4)
+        if (pendingBadConsequence.isEmpty() && hiddenTreasures.size()<= 4) 
             return true;
         else 
             return false;
@@ -411,5 +417,16 @@ public class Player {
         for(Treasure treasure : hiddenTreasures) {
             discardHiddenTreasure(treasure);
         }
+    }
+     
+    /**
+     * 
+     * @return String con la información del objeto
+     */
+    public String toString() {
+        return "\nNombre: " + name + "\nLevel: " + Integer.toString(level) + "\nMuerte: " + dead + 
+                "\nPuede robar: " + canISteal + "\nMal rollo pendiente: " + pendingBadConsequence + 
+                "\nTesoros ocultos: " + hiddenTreasures 
+                + "\nTesoros visibles: " + visibleTreasures + "\nEnemigo: " + enemy.getName();
     }
 }

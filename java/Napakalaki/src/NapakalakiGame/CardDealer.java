@@ -9,23 +9,17 @@ import java.util.Collections;
  * @author María Victoria Granados Pozo
  */
 public class CardDealer {
-    private static CardDealer instance = new CardDealer(); //REVIEW: inicializar así o a null? ¿Quizá a null en el constructor?
-    private ArrayList<Monster> unusedMonsters;
-    private ArrayList<Monster> usedMonsters;
-    private ArrayList<Treasure> unusedTreasures;
-    private ArrayList<Treasure> usedTreasures;
+    private static CardDealer instance = null;
+    private ArrayList<Monster> unusedMonsters = new ArrayList();
+    private ArrayList<Monster> usedMonsters = new ArrayList();
+    private ArrayList<Treasure> unusedTreasures = new ArrayList();
+    private ArrayList<Treasure> usedTreasures = new ArrayList();
     
     /**
      * 
      * Constructor vacío
      */
-    private CardDealer() {
-        instance = new CardDealer();
-        unusedMonsters = new ArrayList();
-        usedMonsters = new ArrayList();
-        unusedTreasures = new ArrayList();
-        usedTreasures = new ArrayList();
-    }
+    private CardDealer() { }
     
     /**
      * 
@@ -190,6 +184,8 @@ public class CardDealer {
      * @return la única instancia de esta clase
      */
     public static CardDealer getInstance() {
+        if (instance == null)
+            instance = new CardDealer();
         return instance;
     }
     

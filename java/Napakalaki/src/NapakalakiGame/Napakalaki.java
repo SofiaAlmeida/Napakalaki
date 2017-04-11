@@ -9,22 +9,16 @@ import java.util.Random;
  */
 public class Napakalaki {
     private static Napakalaki instance = null;
-    private CardDealer dealer;
-    private ArrayList<Player> players;
-    private Player currentPlayer;
-    private Monster currentMonster;
+    private CardDealer dealer = CardDealer.getInstance();
+    private ArrayList<Player> players = new ArrayList();;
+    private Player currentPlayer = null;
+    private Monster currentMonster = null;
     
     /**
      * 
      * Constructor por defecto
      */
-    private Napakalaki() {
-        instance = new Napakalaki();
-        dealer = CardDealer.getInstance();
-        players = new ArrayList();
-        currentPlayer = null;
-        currentMonster = null;
-    }
+    private Napakalaki() { }
 
     /**
      * 
@@ -78,11 +72,11 @@ public class Napakalaki {
      */
     private void setEnemies() {
         int posicion;
-        for (Player player : players){
-            do{
+        for (Player player : players) {
+            do {
                 Random rand = new Random();
                 posicion = rand.nextInt(players.size());
-            }while (posicion == players.indexOf(player));
+            } while (posicion == players.indexOf(player));
             player.setEnemy(players.get(posicion));
         }
     }
@@ -92,6 +86,8 @@ public class Napakalaki {
      * @return la única instancia de esta clase
      */
     public static Napakalaki getInstance() {
+        if (instance == null)
+            instance = new Napakalaki();
         return instance;
     }
     
