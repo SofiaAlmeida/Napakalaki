@@ -300,7 +300,7 @@ public class Player {
      *         false en caso contrario
      */
     public boolean validState() {
-        if (pendingBadConsequence.isEmpty() && hiddenTreasures.size()<= 4) 
+        if (pendingBadConsequence == null || (pendingBadConsequence.isEmpty() && hiddenTreasures.size()<= 4)) 
             return true;
         else 
             return false;
@@ -411,22 +411,25 @@ public class Player {
      * Descarta todos los tesoros del jugador
      */
     public void discardAllTreasures() {
-        for(Treasure treasure : visibleTreasures) {
+        ArrayList<Treasure> copyVisibleTreasures = new ArrayList(visibleTreasures);
+        for(Treasure treasure : copyVisibleTreasures) {
             discardVisibleTreasure(treasure);
         }
-        for(Treasure treasure : hiddenTreasures) {
+        
+        ArrayList<Treasure> copyHiddenTreasures = new ArrayList(hiddenTreasures);
+        for(Treasure treasure : copyHiddenTreasures) {
             discardHiddenTreasure(treasure);
         }
     }
      
     /**
      * 
-     * @return String con la información del objeto
+     * @return String con la información del objeto 
      */
     public String toString() {
         return "\nNombre: " + name + "\nLevel: " + Integer.toString(level) + "\nMuerte: " + dead + 
                 "\nPuede robar: " + canISteal + "\nMal rollo pendiente: " + pendingBadConsequence + 
-                "\nTesoros ocultos: " + hiddenTreasures 
-                + "\nTesoros visibles: " + visibleTreasures + "\nEnemigo: " + enemy.getName();
+                "\nTesoros ocultos: " + hiddenTreasures + "\nTesoros visibles: " + visibleTreasures +
+                "\nEnemigo: " + enemy.getName();
     }
 }

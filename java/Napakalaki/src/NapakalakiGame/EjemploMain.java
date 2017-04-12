@@ -9,7 +9,7 @@ public class EjemploMain {
       Napakalaki game = Napakalaki.getInstance();
       GameTester test = GameTester.getInstance();
       
-      // Poner el numero de jugadores con el que se quiera probar
+      // Poner el número de jugadores con el que se quiera probar
       test.play(game, 2); 
               
     }
