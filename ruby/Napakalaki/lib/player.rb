@@ -2,6 +2,7 @@
 
 require_relative "card_dealer.rb"
 require_relative "dice.rb"
+require_relative "combat_result.rb"
 
 require_relative "monster.rb" #QUITAAAR
 require_relative "prize.rb" #QUITAR
@@ -67,31 +68,33 @@ module NapakalakiGame
           end
         else
           applyBadConsequence (m)
-          puts "PIERDE"
-          CombatResult::LOSE
+          return CombatResult::LOSE
         end
       end
     end
 
+    
     #Hace visible el tesoro del parámetro
     def makeTreasureVisible(t)
-      canI = canMakeTreasureVisible(t) #self necesario?
+      canI = canMakeTreasureVisible(t)
       if canI
         @visibleTreasures << t
-        @hiddenTreasures.remove(t)
+        @hiddenTreasures.delete(t)
       end
       
     end
 
+    
     #Descarta un tesoro visible para completar el mal rollo
     def discardVisibleTreasure(t)
-      @visibleTreasures.remove(t)
+      @visibleTreasures.delete(t)
       if (@pendingBadConsequence != nil) and !@pendingBadConsequence.empty?
         @pendingBadConsequence.substractVisibleTreasure(t)
       end
-      @currentPlayer.dieIfNoTreasures
+      dieIfNoTreasures
       
     end
+    
     
     #Descarta un tesoro oculto para completar el mal rollo
     def discardHiddenTreasure(t)
@@ -102,6 +105,7 @@ module NapakalakiGame
       @currentPlayer.dieIfNoTreasures
     end
 
+    
     # Devuelve true cuando el jugador no tiene ningún mal rollo que cumplir y no 
     # tiene más de 4 tesoros, false en caso contrario
     def validState
@@ -132,12 +136,12 @@ module NapakalakiGame
       end
     end
    
-
+    
     def getLevels
       @level
     end
     
-    #REVIEW ver si funciona el ret
+    
     #Roba un tesoro
     #Devuelve dicho tesoro, en caso de no robar un tesoro se devolverá nil
     def stealTreasure
@@ -149,10 +153,10 @@ module NapakalakiGame
           hiddenTreasures.add(treasure)
           haveStolen
           
-          treasure
+          return treasure
         end
       else
-        nil
+        return nil
       end
     end
     
@@ -246,16 +250,16 @@ module NapakalakiGame
     def canMakeTreasureVisible(t)
       if t.getType == TreasureKind::ONEHAND
         if howManyVisibleTreasures(TreasureKind::ONEHAND) < 2 or howManyVisibleTreasures(TreasureKind::BOTHHANDS) == 0
-          true
+          return true
         end
       elsif t.getType == TreasureKind::BOTHHANDS
         if howManyVisibleTreasures(TreasureKind::ONEHAND) == 0 or howManyVisibleTreasures(TreasureKind::BOTHHANDS) == 0
-          true
+          return true
         end
       elsif howManyVisibleTreasures(t.getType) == 0
-        true
+        return true
       end
-      false
+      return false
     end
 
     def howManyVisibleTreasures(tKind)
@@ -298,10 +302,12 @@ module NapakalakiGame
   end
 
   #PRUEBAA
+=begin
 mazo = CardDealer.instance
 mazo.initCards
 jugador = Player.new("jug1")
 enemigo = Player.new("ene")
+badc0 = BadConsequence.newLevelNumberOfTreasures("lkjehf", 1, 0, 0)
 badc1 = BadConsequence.newLevelNumberOfTreasures("Number", 5, 0, 3)
 badc2 = BadConsequence.newLevelSpecificTreasures("Array", 3, [TreasureKind::ONEHAND,TreasureKind::HELMET], [TreasureKind::BOTHHANDS])
 p = Prize.new(3, 4)
@@ -313,8 +319,19 @@ jugador.setEnemy(enemigo)
 puts "Jugador Antes:\n #{jugador}"
 jugador.applyPrize (monpremio)
 puts "Jugador Premio:\n #{jugador}"
-jugador.combat(monbc)
+jugador.haveStolen
+p = jugador.combat(monbc)
 puts "Jugador BC:\n #{jugador}"
+#t = Treasure.new("Botas de investigación", 3, TreasureKind::SHOE)
+puts "Jugador canmake:\n #{jugador.howManyVisibleTreasures(t.getType)}"
+puts "Jugador canmake:\n #{jugador.canMakeTreasureVisible(t)}"
+jugador.makeTreasureVisible(t)
+puts "Jugador make:\n #{jugador}"
+jugador.discardVisibleTreasure(t)
+puts "Jugador discard:\n #{jugador}" 
+jugador.setPendingBadConsequence (badc0)
+puts "valid #{jugador.validState}"
+=end
  
 
 end
