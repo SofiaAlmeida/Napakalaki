@@ -177,8 +177,14 @@ module NapakalakiGame
       @hiddenTreasures.each {|treasure| discardHiddenTreasure(treasure)}
       
     end
-
-    #private 
+    
+    def to_s
+      "\nNombre: #{@name} \nLevel: #{@level} \nMuerte: #{@dead}\nPuede robar: #{@canISteal}\n" +
+      "Mal rollo pendiente: #{@pendingBadConsequence} \nTesoros ocultos: #{@hiddenTreasures}\n" +
+      "Tesoros visibles: #{@visibleTreasures} \nEnemigo: #{@enemy.getName}" 
+    end
+    
+    private 
     def bringToLife
        @dead = false
 
@@ -292,13 +298,6 @@ module NapakalakiGame
       @canISteal = false
 
     end
-
-    def to_s
-      "\nNombre: #{@name} \nLevel: #{@level} \nMuerte: #{@dead}\nPuede robar: #{@canISteal}\n" +
-      "Mal rollo pendiente: #{@pendingBadConsequence} \nTesoros ocultos: #{@hiddenTreasures}\n" +
-      "Tesoros visibles: #{@visibleTreasures} \nEnemigo: #{@enemy.getName}" 
-    end
-
   end
 
   #PRUEBAA

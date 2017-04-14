@@ -2,6 +2,7 @@
 require "singleton"
 require_relative "prize.rb"
 require_relative "bad_consequence.rb"
+require_relative "treasure.rb"
 require_relative "treasure_kind.rb"
 require_relative "monster.rb"
 #Sofía Almeida Bruno
@@ -53,7 +54,9 @@ module NapakalakiGame
 
     def initCards
       initTreasureCardDeck
+      shuffleTreasures
       initMonsterCardDeck
+      shuffleMonster
       
     end
 
