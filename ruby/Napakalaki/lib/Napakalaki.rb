@@ -2,6 +2,7 @@
 require "singleton"
 require_relative "card_dealer.rb"
 require_relative "player.rb"
+require_relative "combat_result.rb"
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
 

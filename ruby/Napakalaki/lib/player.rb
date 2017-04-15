@@ -3,10 +3,11 @@
 require_relative "card_dealer.rb"
 require_relative "dice.rb"
 require_relative "combat_result.rb"
+require_relative "treasure.rb"
 
-require_relative "monster.rb" #QUITAAAR
-require_relative "prize.rb" #QUITAR
-require_relative "bad_consequence.rb"  #QUITAR
+#require_relative "monster.rb" #QUITAAAR
+#require_relative "prize.rb" #QUITAR
+#require_relative "bad_consequence.rb"  #QUITAR
 
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
@@ -60,14 +61,14 @@ module NapakalakiGame
         end
         
         if myLevel > monsterLevel
-          applyPrize (m)
+          applyPrize(m)
           if (@level >= @@MAXLEVEL)
             CombatResult::WINGAME
           else
             CombatResult::WIN
           end
         else
-          applyBadConsequence (m)
+          applyBadConsequence(m)
           return CombatResult::LOSE
         end
       end
@@ -107,9 +108,9 @@ module NapakalakiGame
 
     
     # Devuelve true cuando el jugador no tiene ningún mal rollo que cumplir y no 
-    # tiene más de 4 tesoros, false en caso contrario
+    # tiene más de 4 tesoros o no tiene ningún mal rollo asignado, false en caso contrario
     def validState
-      if @pendingBadConsequence.isEmpty and @hiddenTreasures.length <= 4
+      if @pendingBadConsequence == nil || (@pendingBadConsequence.isEmpty and @hiddenTreasures.length <= 4)
         true
       else
         false
@@ -180,8 +181,8 @@ module NapakalakiGame
     
     def to_s
       "\nNombre: #{@name} \nLevel: #{@level} \nMuerte: #{@dead}\nPuede robar: #{@canISteal}\n" +
-      "Mal rollo pendiente: #{@pendingBadConsequence} \nTesoros ocultos: #{@hiddenTreasures}\n" +
-      "Tesoros visibles: #{@visibleTreasures} \nEnemigo: #{@enemy.getName}" 
+      "Mal rollo pendiente: #{@pendingBadConsequence} \nTesoros ocultos: #{@hiddenTreasures.map(&:to_s)}\n" +
+      "Tesoros visibles: #{@visibleTreasures.map(&:to_s)} \nEnemigo: #{@enemy.getName}" 
     end
     
     private 

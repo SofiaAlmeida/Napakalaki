@@ -155,7 +155,7 @@ class GameTester
   
   def manageMakeTreasureVisible (aPlayer)
        
-    begin #Se hacen tesoros visibles hasta que se vuelve al menÃº anterior
+    begin #Se hacen tesoros visibles hasta que se vuelve al menú anterior
       howMany = showTreasures("Elige tesoros para intentar hacerlos visibles", aPlayer.getHiddenTreasures(), true)
       option = getTreasure (howMany);
       if (option > -1) then
