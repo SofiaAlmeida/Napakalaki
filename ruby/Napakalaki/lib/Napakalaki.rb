@@ -83,7 +83,7 @@ module NapakalakiGame
       end
     end
     
-    private
+    protected
     def initPlayers (names)
       names.each { |player| @players << Player.new(player)}
       

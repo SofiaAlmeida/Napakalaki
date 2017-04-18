@@ -12,7 +12,7 @@ module Test
     end
     
     Exit = Option.new(0, "Salir")
-    GoBack = Option.new(-1, "Menu anterior")
+    GoBack = Option.new(-1, "Menú anterior")
     Combat = Option.new(69, "¡¡ C O M B A T I R !!")
     ShowMonster = Option.new(10, "Mostrar monstruo")
     ShowVisibleTreasure = Option.new(11, "Mostrar tesoros visibles")
