@@ -27,7 +27,7 @@ module NapakalakiGame
       end
       
       treasure = @unusedTreasures.at(0)
-      @usedTreasures << treasure
+      giveTreasureBack(treasure)
       @unusedTreasures.delete(treasure)
       treasure
     end
@@ -38,7 +38,8 @@ module NapakalakiGame
         @usedMonsters.clear
         shuffleMonster
       end
-      monster = @unusedMonsters.fetch(0)
+      monster = @unusedMonsters.at(0)
+      giveMonsterBack(monster)
       @unusedMonsters.delete(monster)
       monster
     end
