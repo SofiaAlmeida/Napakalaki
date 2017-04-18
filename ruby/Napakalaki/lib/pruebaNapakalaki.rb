@@ -15,18 +15,6 @@ require_relative "card_dealer.rb"
 
 module NapakalakiGame
   class PruebaNapakalaki
-
-    Pruebas previas
-    prize = Prize.new(TreasureKind::ONEHAND, 2)
-    bc = BadConsequence.newLevelNumberOfTreasures("Muerte", 1, 2, 3)
-    monster = Monster.new("Nombre", 3, prize, bc)
-
-    puts bc
-    puts bc
-    puts prize.to_s
-    puts monster.to_s
-
-
     def self.combatLevelGt10(monstruos)
     result = Array.new
     monstruos.each { |monstruo| if (monstruo.getCombatLevel > 10)
@@ -157,9 +145,6 @@ module NapakalakiGame
     badConsequence = BadConsequence.newLevelSpecificTreasures("Te faltan menos para tanta cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos.", 
       3, [TreasureKind::ONEHAND, TreasureKind::ONEHAND, TreasureKind::BOTHHANDS], [])
     @@monsters << Monster.new("Bicéfalo", 21, badConsequence, prize)
-
-
-
   end
 end
 

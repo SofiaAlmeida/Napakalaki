@@ -84,7 +84,7 @@ module NapakalakiGame
       end
       
     end
-
+    
     def adjustToFitTreasureLists(v, h)
       if @specificVisibleTreasures.empty? and @specificHiddenTreasures.empty? 
         # Si no hay tesoros específicos, ajustamos el número de tesoros
@@ -93,7 +93,6 @@ module NapakalakiGame
         else
           nVT = @nVisibleTreasures
         end
-        
         if h.count < @nHiddenTreasures
           nHT = h.count
         else
@@ -108,11 +107,9 @@ module NapakalakiGame
         # con @specific... directamente
         v.each { |t| sVT << t.getType}         
         sVT = sVT & @specificVisibleTreasures # Toma la intersección de ambos vectores
-        
         sHT = Array.new
         h.each { |t| sHT << t.getType}
         sHT = sHT & @specificHiddenTreasures
-        
         adjusted = BadConsequence.newLevelSpecificTreasures(@text, @levels, sVT, sHT)
       end
       adjusted

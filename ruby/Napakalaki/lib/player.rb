@@ -262,7 +262,7 @@ module NapakalakiGame
     def canMakeTreasureVisible(t)
       tipo = t.getType
       if t.getType == TreasureKind::ONEHAND
-        if (howManyVisibleTreasures(TreasureKind::ONEHAND)) < 2 and (howManyVisibleTreasures(TreasureKind::BOTHHANDS) == 0)
+        if (howManyVisibleTreasures(TreasureKind::ONEHAND) < 2) and (howManyVisibleTreasures(TreasureKind::BOTHHANDS) == 0)
           true
         else
           false
