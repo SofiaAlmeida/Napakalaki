@@ -3,7 +3,7 @@ package Test;
 
 public enum Command {
   Exit (0, "Salir del juego"),
-  GoBack (-1, "Menu anterior"), 
+  GoBack (-1, "Menú anterior"), 
   Combat (69, "¡¡ C O M B A T I R !!"),
   ShowMonster         (10, "Mostrar monstruo"), 
   ShowVisibleTreasure (11, "Mostrar tesoros visibles"), 
