@@ -16,8 +16,8 @@ module NapakalakiGame
       @levels = someLevels
       @nVisibleTreasures = someVisibleTreasures
       @nHiddenTreasures = someHiddenTreasures
-      @specificHiddenTreasures = someSpecificVisibleTreasures
-      @specificVisibleTreasures = someSpecificHiddenTreasures
+      @specificVisibleTreasures = someSpecificVisibleTreasures
+      @specificHiddenTreasures = someSpecificHiddenTreasures
       @death = death
     end
 
@@ -98,18 +98,20 @@ module NapakalakiGame
         else
           nHT = @nHiddenTreasures
         end
-        
         adjusted = BadConsequence.newLevelNumberOfTreasures(@text, @levels, nVT, nHT)
       else
         # Tesoros específicos
         sVT = Array.new
         # Creamos un array con los tipos de los tesoros de v, para poder comparar
         # con @specific... directamente
-        v.each { |t| sVT << t.getType}         
-        sVT = sVT & @specificVisibleTreasures # Toma la intersección de ambos vectores
+        v.each { |t| sVT << t.getType}    
+        # Toma la intersección de ambos vectores manteniendo la multiplicidad de cada elemento
+        puts "sv antes: #{sVT} specific: #{@specificVisibleTreasures.to_s}"
+        sVT = (sVT & @specificVisibleTreasures).flat_map { |n| [n]*[sVT.count(n), @specificVisibleTreasures.count(n)].min } 
+        
         sHT = Array.new
         h.each { |t| sHT << t.getType}
-        sHT = sHT & @specificHiddenTreasures
+        sHT = (sHT & @specificHiddenTreasures).flat_map { |n| [n]*[sHT.count(n), @specificHiddenTreasures.count(n)].min }
         adjusted = BadConsequence.newLevelSpecificTreasures(@text, @levels, sVT, sHT)
       end
       adjusted
@@ -120,7 +122,7 @@ module NapakalakiGame
         if @specificVisibleTreasures.empty? and @specificHiddenTreasures.empty? 
           "\n\tTexto: #{@text} \n\tNiveles: #{@levels} \n\tTesoros visibles: #{@nVisibleTreasures}\n\tTesoros ocultos: #{@nHiddenTreasures}"
         else
-          "\n\tTexto: #{@text} \n\tNiveles: #{@levels} \n\tTesoros ocultos específicos: #{@specificHiddenTreasures} \n\tTesoros visibles específicos: #{@specificVisibleTreasures}"
+          "\n\tTexto: #{@text} \n\tNiveles: #{@levels} \n\tTesoros visibles específicos: #{@specificVisibleTreasures}\n\tTesoros ocultos específicos: #{@specificHiddenTreasures} "
         end
       else
         "\n\tTexto: #{@text} \n\tMuerto"
