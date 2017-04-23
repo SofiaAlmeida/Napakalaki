@@ -8,6 +8,7 @@ package NapakalakiGame;
 public class Monster {
     private String name;
     private int combatLevel;
+    private int levelChangeAgainstCultistPlayer; //Inicializar a 0??
    
     private Prize prize;
     private BadConsequence badConsequence;
@@ -16,13 +17,31 @@ public class Monster {
      * 
      * Constructor 
      * @param n Nombre del monstruo
-     * @param l Nivel de combate del mostruo 
+     * @param l Nivel de combate del mostruo
      * @param b Mal rollo del monstruo
      * @param p Premio al ganar al monstruo
      */
     public Monster(String n, int l, BadConsequence b, Prize p) {
         name = n;
         combatLevel = l;
+        levelChangeAgainstCultistPlayer = 0;
+        badConsequence = b;
+        prize = p;
+    }
+    
+    /**
+     * 
+     * Constructor 
+     * @param n Nombre del monstruo
+     * @param l Nivel de combate del mostruo
+     * @param lC Nivel del sectario
+     * @param b Mal rollo del monstruo
+     * @param p Premio al ganar al monstruo
+     */
+    public Monster(String n, int l, BadConsequence b, Prize p, int lC) {
+        name = n;
+        combatLevel = l;
+        levelChangeAgainstCultistPlayer = lC;
         badConsequence = b;
         prize = p;
     }
@@ -43,6 +62,15 @@ public class Monster {
      */
     public int getCombatLevel() {
         return combatLevel;
+    }
+    
+    /**
+     * 
+     * Consultor del nivel afectado por el sectario
+     * @return Nivel del sectario
+     */
+    public int getCombatLevelAgainstCultistPlayer() {
+        return levelChangeAgainstCultistPlayer + getCombatLevel();
     }
     
     //REVIEW: no sale en el diagrama de clases, ¿lo borramos?

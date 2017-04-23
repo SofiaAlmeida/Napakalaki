@@ -6,5 +6,5 @@ package NapakalakiGame;
  * @author María Victoria Granados Pozo
  */
 public enum CombatResult {
-    WINGAME, WIN, LOSE;
+    WINGAME, WIN, LOSE, LOSEANDCONVERT;
 }
