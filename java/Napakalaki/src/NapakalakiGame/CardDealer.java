@@ -14,6 +14,7 @@ public class CardDealer {
     private ArrayList<Monster> usedMonsters = new ArrayList();
     private ArrayList<Treasure> unusedTreasures = new ArrayList();
     private ArrayList<Treasure> usedTreasures = new ArrayList();
+    private ArrayList<Cultist> unusedCultist = new ArrayList();
     
     /**
      * 
@@ -161,6 +162,52 @@ public class CardDealer {
                 new ArrayList());
         prize = new Prize(2, 1);
         unusedMonsters.add(new Monster("Bicéfalo", 21, bc, prize));
+        
+        bc = new BadConsequence("Pierdes una mano visible", 0, 
+                new ArrayList(Arrays.asList(TreasureKind.ONEHAND)), new ArrayList());
+        prize = new Prize(3, 1);
+        unusedMonsters.add(new Monster("El mal indecible impronunciable", 10, bc, prize, -2));
+        
+        bc = new BadConsequence("Pierdes tus tesoros visibles. Ja ja ja.", 0, 
+                BadConsequence.MAXTREASURES, 0);
+        prize = new Prize(2, 1);
+        unusedMonsters.add(new Monster("Testigos Oculares", 6, bc, prize, 2));
+        
+        bc = new BadConsequence("Hoy no es tu día de suerte. Mueres.", true);
+        prize = new Prize (2, 5);
+        unusedMonsters.add(new Monster("Los hondos", 8, bc, prize, 4));
+        
+        bc = new BadConsequence("Tu gobierno te recorta 2 niveles.", 2, 
+                0, 0);
+        prize = new Prize(2, 1);
+        unusedMonsters.add(new Monster("Serpiente Político", 8, bc, prize, -2));
+        
+        bc = new BadConsequence("Pierdes tu casco y tu armadura visible. Pierdes tus manos ocultas", 
+                2, new ArrayList(Arrays.asList(TreasureKind.HELMET, TreasureKind.ARMOR)), new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS)));
+        prize = new Prize(2, 1);
+        unusedMonsters.add(new Monster("Felpuggoth", 2, bc, prize, 5));
+        
+        bc = new BadConsequence("Pierdes 2 niveles.", 2, 0, 0);
+        prize = new Prize(4, 2);
+        unusedMonsters.add(new Monster("Shoggoth", 16, bc, prize, -4));
+        
+        bc = new BadConsequence("Pintalabios negro. Pierdes 2 niveles.", 2, 0, 0);
+        prize = new Prize(1, 1);
+        unusedMonsters.add(new Monster("Lolitagooth", 2, bc, prize, 3));
+    }
+    
+    /**
+     * 
+     * Inicializa el mazo de cartas no usadas de los sectarios
+     */
+    private void initCultistCardDeck(){
+        unusedCultist.add(new Cultist("Sectario", 1));
+        unusedCultist.add(new Cultist("Sectario", 2));
+        unusedCultist.add(new Cultist("Sectario", 1));
+        unusedCultist.add(new Cultist("Sectario", 2));
+        unusedCultist.add(new Cultist("Sectario", 1));
+        unusedCultist.add(new Cultist("Sectario", 1));
+
     }
     
     /**
@@ -177,6 +224,14 @@ public class CardDealer {
      */
     private void shuffleMonsters() {
         Collections.shuffle(unusedMonsters);
+    }
+    
+    /**
+     * 
+     * Baraja el mazo de cartas de sectarios sin usar
+     */
+    private void shuffleCultist() {
+        Collections.shuffle(unusedCultist);
     }
     
     /**
@@ -248,6 +303,8 @@ public class CardDealer {
         shuffleTreasures();
         initMonsterCardDeck();
         shuffleMonsters();
+        initCultistCardDeck();
+        shuffleCultist();
     }
 }   
 
