@@ -17,7 +17,7 @@ public class Player {
     private BadConsequence pendingBadConsequence;
     private ArrayList<Treasure> hiddenTreasures;
     private ArrayList<Treasure> visibleTreasures;
-    private Player enemy;
+    protected Player enemy;
     
     
     /**
@@ -34,6 +34,22 @@ public class Player {
         hiddenTreasures = new ArrayList();
         visibleTreasures = new ArrayList();
         enemy = null; 
+    }
+    
+    /**
+     * 
+     * Constructor copia
+     * @param p Jugador a copiar
+     */
+    public Player(Player p) {
+        name = p.name;
+        level = p.level;
+        dead = p.dead;
+        canISteal = p.canISteal;
+        pendingBadConsequence = p.pendingBadConsequence;
+        hiddenTreasures = p.hiddenTreasures;
+        visibleTreasures = p.visibleTreasures;
+        enemy = p.enemy;
     }
     
     /**
@@ -67,7 +83,7 @@ public class Player {
      * Consultor del nivel de combate
      * @return nivel de combate
      */
-    private int getCombatLevel() {
+    protected int getCombatLevel() {
         int combatLevel = level;
         for(Treasure treasure : visibleTreasures) {
            combatLevel += treasure.getBonus();
@@ -228,7 +244,7 @@ public class Player {
      */
     public CombatResult combat(Monster m) {
         int myLevel = getCombatLevel();
-        int monsterLevel = m.getCombatLevel();
+        int monsterLevel = getOponentLevel(m);
         if (!canISteal) {
            Dice dice = Dice.getInstance();
            int number = dice.nextNumber();
@@ -247,6 +263,9 @@ public class Player {
         }
         else {
             applyBadConsequence(m);
+            
+            if(shouldConvert())
+                return CombatResult.LOSEANDCONVERT;
             return CombatResult.LOSE;
         }
     }
@@ -337,6 +356,15 @@ public class Player {
         return level;
     }
     
+    /**
+     * 
+     * Nivel del oponente
+     * @param m Monstruo contra el que luchar
+     * @return Nivel del monstruo
+     */
+    protected int getOponentLevel(Monster m) {
+        return m.getCombatLevel();
+    }
     /**
      * 
      * Roba un tesoro
@@ -432,4 +460,17 @@ public class Player {
                 "\nTesoros ocultos: " + hiddenTreasures + "\nTesoros visibles: " + visibleTreasures +
                 "\nEnemigo: " + enemy.getName();
     }
+    
+    /**
+     * 
+     * Indica si el jugador se convertirá en sectario
+     * @return true, si al lanzar el dado sale un 6
+     *         false, en caso contrario
+     */
+    protected boolean shouldConvert() {
+        Dice dice = Dice.getInstance();
+        int number = dice.nextNumber();
+        
+        return number == 6;
+    } 
 }

@@ -9,12 +9,22 @@ public class Cultist {
     private String name;
     private int gainedLevels;
     
-    public Cultist(String name, int gainedLevels){
+    /**
+     * 
+     * Constructor
+     * @param name Nombre del sectario
+     * @param gainedLevels Niveles añadidos 
+     */
+    public Cultist(String name, int gainedLevels) {
         this.name = name;
         this.gainedLevels = gainedLevels;
     }
     
-    public int getGainedLevels(){
+    /**
+     * 
+     * @return Niveles que se añaden por ser sectario
+     */
+    public int getGainedLevels() {
         return gainedLevels;
     }
 }

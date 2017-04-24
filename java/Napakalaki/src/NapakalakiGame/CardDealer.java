@@ -14,7 +14,7 @@ public class CardDealer {
     private ArrayList<Monster> usedMonsters = new ArrayList();
     private ArrayList<Treasure> unusedTreasures = new ArrayList();
     private ArrayList<Treasure> usedTreasures = new ArrayList();
-    private ArrayList<Cultist> unusedCultist = new ArrayList();
+    private ArrayList<Cultist> unusedCultists = new ArrayList();
     
     /**
      * 
@@ -163,6 +163,7 @@ public class CardDealer {
         prize = new Prize(2, 1);
         unusedMonsters.add(new Monster("Bicéfalo", 21, bc, prize));
         
+        // Monstruos con sectarios
         bc = new BadConsequence("Pierdes una mano visible", 0, 
                 new ArrayList(Arrays.asList(TreasureKind.ONEHAND)), new ArrayList());
         prize = new Prize(3, 1);
@@ -175,16 +176,16 @@ public class CardDealer {
         
         bc = new BadConsequence("Hoy no es tu día de suerte. Mueres.", true);
         prize = new Prize (2, 5);
-        unusedMonsters.add(new Monster("Los hondos", 8, bc, prize, 4));
+        unusedMonsters.add(new Monster("El gran cthulhu", 20, bc, prize, 4));
         
         bc = new BadConsequence("Tu gobierno te recorta 2 niveles.", 2, 
                 0, 0);
         prize = new Prize(2, 1);
         unusedMonsters.add(new Monster("Serpiente Político", 8, bc, prize, -2));
         
-        bc = new BadConsequence("Pierdes tu casco y tu armadura visible. Pierdes tus manos ocultas", 
-                2, new ArrayList(Arrays.asList(TreasureKind.HELMET, TreasureKind.ARMOR)), new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS)));
-        prize = new Prize(2, 1);
+        bc = new BadConsequence("Pierdes tu casco y tu armadura visible. Pierdes tus manos ocultas.", 
+                0, new ArrayList(Arrays.asList(TreasureKind.HELMET, TreasureKind.ARMOR)), new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS, TreasureKind.ONEHAND)));
+        prize = new Prize(1, 1);
         unusedMonsters.add(new Monster("Felpuggoth", 2, bc, prize, 5));
         
         bc = new BadConsequence("Pierdes 2 niveles.", 2, 0, 0);
@@ -200,14 +201,22 @@ public class CardDealer {
      * 
      * Inicializa el mazo de cartas no usadas de los sectarios
      */
-    private void initCultistCardDeck(){
-        unusedCultist.add(new Cultist("Sectario", 1));
-        unusedCultist.add(new Cultist("Sectario", 2));
-        unusedCultist.add(new Cultist("Sectario", 1));
-        unusedCultist.add(new Cultist("Sectario", 2));
-        unusedCultist.add(new Cultist("Sectario", 1));
-        unusedCultist.add(new Cultist("Sectario", 1));
-
+    private void initCultistCardDeck() {
+        
+        /*
+        unusedCultists.add(new Cultist("Sectario", 1));
+        unusedCultists.add(new Cultist("Sectario", 2));
+        unusedCultists.add(new Cultist("Sectario", 1));
+        unusedCultists.add(new Cultist("Sectario", 2));
+        unusedCultists.add(new Cultist("Sectario", 1));
+        unusedCultists.add(new Cultist("Sectario", 1));
+        */
+        
+        //REVIEW: ¿Con un bucle mejor?
+        for(int i = 0; i < 4; ++i)
+            unusedCultists.add(new Cultist("Sectario", 1));
+        for(int i = 0; i < 2; ++i)
+            unusedCultists.add(new Cultist("Sectario", 2));
     }
     
     /**
@@ -231,7 +240,7 @@ public class CardDealer {
      * Baraja el mazo de cartas de sectarios sin usar
      */
     private void shuffleCultist() {
-        Collections.shuffle(unusedCultist);
+        Collections.shuffle(unusedCultists);
     }
     
     /**
@@ -274,6 +283,19 @@ public class CardDealer {
         Monster monster = unusedMonsters.get(0);
         unusedMonsters.remove(monster);
         return monster;
+    }
+
+    /**
+     * 
+     * @return El siguiente sectario de la baraja
+     */
+    public Cultist nextCultist() {
+        if (unusedCultists.isEmpty()){
+            // REVIEW: ¿QUÉ HACEMOS EN ESTE CASO?
+        }
+        Cultist cultist = unusedCultists.get(0);
+        unusedCultists.remove(cultist);
+        return cultist;
     }
     
     /**

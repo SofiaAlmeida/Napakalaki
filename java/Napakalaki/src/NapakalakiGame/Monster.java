@@ -8,10 +8,11 @@ package NapakalakiGame;
 public class Monster {
     private String name;
     private int combatLevel;
-    private int levelChangeAgainstCultistPlayer; //Inicializar a 0??
-   
+
     private Prize prize;
     private BadConsequence badConsequence;
+    
+    private int levelChangeAgainstCultistPlayer; 
     
     /**
      * 
@@ -34,16 +35,16 @@ public class Monster {
      * Constructor 
      * @param n Nombre del monstruo
      * @param l Nivel de combate del mostruo
-     * @param lC Nivel del sectario
      * @param b Mal rollo del monstruo
      * @param p Premio al ganar al monstruo
+     * @param lC Nivel del sectario
      */
     public Monster(String n, int l, BadConsequence b, Prize p, int lC) {
         name = n;
         combatLevel = l;
-        levelChangeAgainstCultistPlayer = lC;
         badConsequence = b;
         prize = p;
+        levelChangeAgainstCultistPlayer = lC;
     }
     
     /**
