@@ -70,6 +70,14 @@ public class Player {
         return name;
     }
     
+    /**
+     * 
+     * Consultor del enemigo
+     * @return jugador enemigo
+     */
+    protected Player getEnemy() {
+        return enemy;
+    }
      /**
       * 
       * Da vida al jugador
@@ -367,7 +375,7 @@ public class Player {
     }
     /**
      * 
-     * Roba un tesoro
+     * Roba un tesoro 
      * @return tesoro robado, null en caso de no poder robarse un tesoro
      */
     public Treasure stealTreasure() {
@@ -421,9 +429,7 @@ public class Player {
      *         false en caso contrario
      */
     private boolean canYouGiveMeATreasure() {
-        if (hiddenTreasures.isEmpty())
-            return false;
-        return true;
+        return !hiddenTreasures.isEmpty();
     }
     
     /**

@@ -99,6 +99,21 @@ public class Napakalaki {
     public CombatResult developCombat() {
         CombatResult combatResult = currentPlayer.combat(currentMonster);
         dealer.giveMonsterBack(currentMonster);
+        if(combatResult == CombatResult.LOSEANDCONVERT) {
+            // Creamos el sectario
+            Cultist c = dealer.nextCultist();
+            CultistPlayer cp = new CultistPlayer(currentPlayer, c);
+            // Reemplazamos al jugador actual por el sectario correspondiente
+            // (currentPlayer, players, enemy)
+            
+            for(Player p : players)
+                if(p.getEnemy() == currentPlayer)
+                    p.setEnemy(cp);
+            currentPlayer = cp;
+            // FIXME: Queda pendiente cambiar el jugador por el sectario en el array
+                    //porque me da que esto no lo hace directamente
+            
+        }
         return combatResult;
     }
     
