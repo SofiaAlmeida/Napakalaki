@@ -15,6 +15,7 @@ public class CardDealer {
     private ArrayList<Treasure> unusedTreasures = new ArrayList();
     private ArrayList<Treasure> usedTreasures = new ArrayList();
     private ArrayList<Cultist> unusedCultists = new ArrayList();
+    private ArrayList<Cultist> usedCultists = new ArrayList();
     
     /**
      * 
@@ -202,17 +203,6 @@ public class CardDealer {
      * Inicializa el mazo de cartas no usadas de los sectarios
      */
     private void initCultistCardDeck() {
-        
-        /*
-        unusedCultists.add(new Cultist("Sectario", 1));
-        unusedCultists.add(new Cultist("Sectario", 2));
-        unusedCultists.add(new Cultist("Sectario", 1));
-        unusedCultists.add(new Cultist("Sectario", 2));
-        unusedCultists.add(new Cultist("Sectario", 1));
-        unusedCultists.add(new Cultist("Sectario", 1));
-        */
-        
-        //REVIEW: ¿Con un bucle mejor?
         for(int i = 0; i < 4; ++i)
             unusedCultists.add(new Cultist("Sectario", 1));
         for(int i = 0; i < 2; ++i)
@@ -239,7 +229,7 @@ public class CardDealer {
      * 
      * Baraja el mazo de cartas de sectarios sin usar
      */
-    private void shuffleCultist() {
+    private void shuffleCultists() {
         Collections.shuffle(unusedCultists);
     }
     
@@ -291,7 +281,10 @@ public class CardDealer {
      */
     public Cultist nextCultist() {
         if (unusedCultists.isEmpty()){
-            // REVIEW: ¿QUÉ HACEMOS EN ESTE CASO?
+            for (Cultist c :  usedCultists)
+                unusedCultists.add(c);
+            usedCultists.clear();
+            shuffleCultists();            
         }
         Cultist cultist = unusedCultists.get(0);
         unusedCultists.remove(cultist);
@@ -326,7 +319,7 @@ public class CardDealer {
         initMonsterCardDeck();
         shuffleMonsters();
         initCultistCardDeck();
-        shuffleCultist();
+        shuffleCultists();
     }
 }   
 

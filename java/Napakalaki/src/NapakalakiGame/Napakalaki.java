@@ -109,10 +109,8 @@ public class Napakalaki {
             for(Player p : players)
                 if(p.getEnemy() == currentPlayer)
                     p.setEnemy(cp);
+            players.set(players.indexOf(currentPlayer), cp); // Reemplazamos jugador en el array
             currentPlayer = cp;
-            // FIXME: Queda pendiente cambiar el jugador por el sectario en el array
-                    //porque me da que esto no lo hace directamente
-            
         }
         return combatResult;
     }

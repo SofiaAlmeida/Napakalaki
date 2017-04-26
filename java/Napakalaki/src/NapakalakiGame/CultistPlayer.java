@@ -65,7 +65,8 @@ public class CultistPlayer extends Player {
     private Treasure giveMeATreasure() {
         Random rand = new Random();
         int posicion = rand.nextInt(getVisibleTreasures().size());
-        return super.getVisibleTreasures().get(posicion);
+        getVisibleTreasures().remove(posicion);    
+        return getVisibleTreasures().get(posicion);
     }
     
      /**
