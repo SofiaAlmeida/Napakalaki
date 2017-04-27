@@ -91,15 +91,17 @@ public class SpecificBadConsequence extends BadConsequence {
 
         if (!v.isEmpty())
             for (Treasure treasure : v) {
-                if (sVT.contains(treasure.getType()))
+                if (sVT.contains(treasure.getType())) {
                     vT.add(treasure.getType());
                     sVT.remove(treasure.getType());
+                }
             }
         if (!h.isEmpty())
             for (Treasure treasure : h) {
-                if (sHT.contains(treasure.getType()))
+                if (sHT.contains(treasure.getType())) {
                     hT.add(treasure.getType());
                     sHT.remove(treasure.getType());
+                }
             }
         
         return new SpecificBadConsequence(getText(), getLevels(), vT, hT);
@@ -113,5 +115,6 @@ public class SpecificBadConsequence extends BadConsequence {
     public String toString() {
      return super.toString() + "\nTreasures Visibles = " + specificVisibleTreasures.toString()
             + "\nHidden Treasures = " + specificHiddenTreasures.toString();
+    }
 }
 
