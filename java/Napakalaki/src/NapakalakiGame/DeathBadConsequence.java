@@ -1,8 +1,6 @@
 
 package NapakalakiGame;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Sofía Almeida Bruno

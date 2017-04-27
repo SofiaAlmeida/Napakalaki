@@ -40,10 +40,10 @@ public class PruebaNapakalaki {
         ArrayList<Monster> result = new ArrayList();
         
         for(Monster monster : m)
-            if(monster.getBadConsequence().getNHiddenTreasures() == 0 &&
-               monster.getBadConsequence().getNVisibleTreasures() == 0 &&
-               monster.getBadConsequence().getSpecificHiddenTreasures().isEmpty() &&
-               monster.getBadConsequence().getSpecificVisibleTreasures().isEmpty())
+            if(((NumericBadConsequence) monster.getBadConsequence()).getNHiddenTreasures() == 0 &&
+               ((NumericBadConsequence) monster.getBadConsequence()).getNVisibleTreasures() == 0 &&
+               ((SpecificBadConsequence) monster.getBadConsequence()).getSpecificHiddenTreasures().isEmpty() &&
+               ((SpecificBadConsequence) monster.getBadConsequence()).getSpecificVisibleTreasures().isEmpty())
                  
                    result.add(monster);
         
@@ -77,8 +77,8 @@ public class PruebaNapakalaki {
         ArrayList<Monster> result = new ArrayList();
         
         for(Monster monster : m)
-            if(monster.getBadConsequence().getSpecificHiddenTreasures().contains(t)
-               || monster.getBadConsequence().getSpecificVisibleTreasures().contains(t))  
+            if(((SpecificBadConsequence) monster.getBadConsequence()).getSpecificHiddenTreasures().contains(t)
+               || ((SpecificBadConsequence) monster.getBadConsequence()).getSpecificVisibleTreasures().contains(t))  
                 result.add(monster);
         
         return result;
@@ -257,9 +257,9 @@ public class PruebaNapakalaki {
     // Prueba clase BadConsequence
         ArrayList<TreasureKind> tes = new ArrayList();
         tes.add(tk);
-        BadConsequence bc1 = new BadConsequence("No muerte",2,3,4);
-        BadConsequence bc2 = new BadConsequence("Muerte", true);
-        BadConsequence bc3 = new BadConsequence("No muerte 3", 2, tes, tes);
+        BadConsequence bc1 = new NumericBadConsequence("No muerte",2,3,4);
+        BadConsequence bc2 = new DeathBadConsequence("Muerte");
+        BadConsequence bc3 = new SpecificBadConsequence("No muerte 3", 2, tes, tes);
         
         
         System.out.println(bc1);
@@ -268,11 +268,11 @@ public class PruebaNapakalaki {
         // Prueba de los consultores
         //System.out.println(bc3.getText());
         System.out.println(bc3.getLevels());
-        System.out.println(bc3.getNVisibleTreasures());
-        System.out.println(bc3.getNHiddenTreasures());
+        System.out.println(((NumericBadConsequence) bc3).getNVisibleTreasures());
+        System.out.println(((NumericBadConsequence) bc3).getNHiddenTreasures());
         //System.out.println(bc3.getDeath());
-        System.out.println(bc3.getSpecificVisibleTreasures());
-        System.out.println(bc3.getSpecificHiddenTreasures());
+        System.out.println(((SpecificBadConsequence) bc3).getSpecificVisibleTreasures());
+        System.out.println(((SpecificBadConsequence) bc3).getSpecificHiddenTreasures());
      
     // Prueba clase Monster
         Monster monster = new Monster("Nombre", 1, bc1, prize1);
@@ -317,19 +317,19 @@ public class PruebaNapakalaki {
             System.out.println(num);
         }
         ArrayList<Monster> unusedMonsters = new ArrayList();
-        bc = new BadConsequence("Pierdes la armadura visible. ", 0, 
+        bc = new SpecificBadConsequence("Pierdes la armadura visible. ", 0, 
                 new ArrayList(Arrays.asList(TreasureKind.ARMOR)), new ArrayList());
         prize = new Prize(2,1);
         unusedMonsters.add(new Monster("H.P. Munchcraft", 6, bc, prize));
         
         
-        bc = new BadConsequence("Sientes bichos bajo la ropa. Descarta la armadura visible.", 
+        bc = new SpecificBadConsequence("Sientes bichos bajo la ropa. Descarta la armadura visible.", 
                 0, new ArrayList(Arrays.asList(TreasureKind.ARMOR)), new ArrayList());
         prize = new Prize(1,1);
         unusedMonsters.add(new Monster("Necrófago", 13, bc, prize));
               
         
-        bc = new BadConsequence("Pierdes 5 niveles y 3 tesoros visibles", 5, 3, 0);
+        bc = new NumericBadConsequence("Pierdes 5 niveles y 3 tesoros visibles", 5, 3, 0);
         prize = new Prize(3, 2);
         unusedMonsters.add(new Monster("El rey de rosado", 11, bc, prize));
         
