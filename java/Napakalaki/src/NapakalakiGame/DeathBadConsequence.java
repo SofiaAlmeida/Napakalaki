@@ -8,7 +8,6 @@ import java.util.ArrayList;
  * @author Sofía Almeida Bruno
  * @author María Victoria Granados Pozo
  */
-
 public class DeathBadConsequence extends NumericBadConsequence {
     /**
      * 
