@@ -26,9 +26,10 @@ public class PruebasVarias {
     // Prueba clase BadConsequence
         ArrayList<TreasureKind> tes = new ArrayList<TreasureKind>();
         tes.add(tk);
-        BadConsequence bc1 = new BadConsequence("No muerte",2,3,4);
-        BadConsequence bc2 = new BadConsequence("Muerte", true);
-        BadConsequence bc3 = new BadConsequence("No muerte 3", 2, tes, tes);
+        
+        BadConsequence bc1 = new NumericBadConsequence("No muerte",2,3,4);
+        DeathBadConsequence bc2 = new DeathBadConsequence("Muerte", true);
+        SpecificBadConsequence bc3 = new SpecificBadConsequence("No muerte 3", 2, tes, tes);
         
         
         System.out.println(bc1);
@@ -37,8 +38,8 @@ public class PruebasVarias {
         // Prueba de los consultores
         //System.out.println(bc3.getText());
         System.out.println(bc3.getLevels());
-        System.out.println(bc3.getNVisibleTreasures());
-        System.out.println(bc3.getNHiddenTreasures());
+        System.out.println(((NumericBadConsequence) bc1).getNVisibleTreasures());
+        System.out.println(((NumericBadConsequence) bc1).getNHiddenTreasures());
         //System.out.println(bc3.getDeath());
         System.out.println(bc3.getSpecificVisibleTreasures());
         System.out.println(bc3.getSpecificHiddenTreasures());
