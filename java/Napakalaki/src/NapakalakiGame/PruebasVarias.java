@@ -28,7 +28,7 @@ public class PruebasVarias {
         tes.add(tk);
         
         BadConsequence bc1 = new NumericBadConsequence("No muerte",2,3,4);
-        DeathBadConsequence bc2 = new DeathBadConsequence("Muerte", true);
+        DeathBadConsequence bc2 = new DeathBadConsequence("Muerte");
         SpecificBadConsequence bc3 = new SpecificBadConsequence("No muerte 3", 2, tes, tes);
         
         

@@ -116,7 +116,7 @@ public class CardDealer {
         unusedMonsters.add(new Monster("Flecher", 2, (NumericBadConsequence) bc, prize));
         
         bc = new DeathBadConsequence("Estos monstruos resultan bastante superficiales "
-                + "y te aburren mortalmente. Estás muerto", true);
+                + "y te aburren mortalmente. Estás muerto");
         prize = new Prize (2, 1);
         unusedMonsters.add(new Monster("Los hondos", 8, (DeathBadConsequence) bc, prize));
         
@@ -133,11 +133,11 @@ public class CardDealer {
         prize = new Prize(2, 1);
         unusedMonsters.add(new Monster("Pollipólipo volante", 3, (NumericBadConsequence) bc, prize));
         
-        bc = new DeathBadConsequence("No le hace gracia que pronuncien mal su nombre. Estás muerto", true);
+        bc = new DeathBadConsequence("No le hace gracia que pronuncien mal su nombre. Estás muerto");
         prize = new Prize(3, 1);
         unusedMonsters.add(new Monster("Yskhtihyssg-Goth", 14, (DeathBadConsequence) bc, prize));
         
-        bc = new DeathBadConsequence("La familia te atrapa. Estás muerto", true);
+        bc = new DeathBadConsequence("La familia te atrapa. Estás muerto");
         prize = new Prize(3, 1);
         unusedMonsters.add(new Monster("Familia feliz", 1, (DeathBadConsequence) bc, prize));
         
@@ -175,7 +175,7 @@ public class CardDealer {
         prize = new Prize(2, 1);
         unusedMonsters.add(new Monster("Testigos Oculares", 6, (NumericBadConsequence) bc, prize, 2));
         
-        bc = new DeathBadConsequence("Hoy no es tu día de suerte. Mueres.", true);
+        bc = new DeathBadConsequence("Hoy no es tu día de suerte. Mueres.");
         prize = new Prize (2, 5);
         unusedMonsters.add(new Monster("El gran cthulhu", 20, (DeathBadConsequence) bc, prize, 4));
         
