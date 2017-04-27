@@ -10,12 +10,6 @@ public abstract class BadConsequence {
     static final int MAXTREASURES = 10;
     private String text;
     private int levels;
-    /*private int nVisibleTreasures;
-    private int nHiddenTreasures;
-    private boolean death;
-    private ArrayList<TreasureKind> specificHiddenTreasures;
-    private ArrayList<TreasureKind> specificVisibleTreasures;*/
-    
 
     /**
      * 
@@ -67,23 +61,6 @@ public abstract class BadConsequence {
      * @param t Tesoro oculto
      */
     public abstract void substractHiddenTreasure(Treasure t);
-            
-    /**
-     * 
-     * Constructor: Muerte
-     * @param text Descripción del mal rollo
-     * @param death Boolean que indica si el mal rollo es muerte
-     */
-    public BadConsequence(String t, boolean death) {
-        this.text = t;
-        this.death = death;
-        this.levels = Player.MAXLEVEL;
-        nVisibleTreasures = MAXTREASURES;
-        nHiddenTreasures = MAXTREASURES;
-        specificHiddenTreasures = new ArrayList();
-        specificVisibleTreasures = new ArrayList();
-    }
-        
    
     /**
      * 

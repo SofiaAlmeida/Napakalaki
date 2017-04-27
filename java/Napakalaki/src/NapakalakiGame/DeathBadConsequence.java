@@ -1,14 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package NapakalakiGame;
+
+import java.util.ArrayList;
 
 /**
  *
- * @author usuario
+ * @author Sofía Almeida Bruno
+ * @author María Victoria Granados Pozo
  */
-public class DeathBadConsequence {
+
+public class DeathBadConsequence extends NumericBadConsequence {
+    /**
+     * 
+     * Constructor
+     * @param t Descripción del mal rollo
+     */
+    DeathBadConsequence(String t) {
+        super(t, Player.MAXLEVEL, BadConsequence.MAXTREASURES, BadConsequence.MAXTREASURES);
+    }
     
+    /**
+     * 
+     * @return String con información del mal rollo
+     */
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

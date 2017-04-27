@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author Sofía Almeida Bruno
  * @author María Victoria Granados Pozo
  */
-public class NumericBadConsequence extends BadConsequence{
+public class NumericBadConsequence extends BadConsequence {
     private int nVisibleTreasures;
     private int nHiddenTreasures;
     
@@ -18,7 +18,7 @@ public class NumericBadConsequence extends BadConsequence{
      * @param nVisible Número de tesoros visibles que se pierden
      * @param nHidden Número de tesoros ocultos que se pierden
      */
-    NumericBadConsequence(String t, int l, int nVisible, int nHidden){
+    NumericBadConsequence(String t, int l, int nVisible, int nHidden) {
         super(t, l);
         nVisibleTreasures = nVisible;
         nHiddenTreasures = nHidden;
