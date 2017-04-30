@@ -1,9 +1,9 @@
 #encoding: utf-8
 
-require_relative "card_dealer.rb"
-require_relative "dice.rb"
-require_relative "combat_result.rb"
-require_relative "treasure.rb"
+require_relative "card_dealer"
+require_relative "dice"
+require_relative "combat_result"
+require_relative "treasure"
 
 #require_relative "monster.rb" #QUITAAAR
 #require_relative "prize.rb" #QUITAR

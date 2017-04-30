@@ -1,7 +1,7 @@
 #encoding: utf-8
 
-#require_relative "player.rb"
-#require_relative "treasure.rb" 
+#require_relative "player"
+#require_relative "treasure" 
 
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo

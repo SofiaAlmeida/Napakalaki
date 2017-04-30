@@ -1,8 +1,10 @@
 #encoding: utf-8
+
 require "singleton"
-require_relative "card_dealer.rb"
-require_relative "player.rb"
-require_relative "combat_result.rb"
+require_relative "card_dealer"
+require_relative "player"
+require_relative "combat_result"
+
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
 

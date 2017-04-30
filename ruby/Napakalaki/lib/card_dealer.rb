@@ -1,10 +1,12 @@
 #encoding: utf-8
+
 require "singleton"
-require_relative "prize.rb"
-require_relative "bad_consequence.rb"
-require_relative "treasure.rb"
-require_relative "treasure_kind.rb"
-require_relative "monster.rb"
+require_relative "prize"
+require_relative "bad_consequence"
+require_relative "treasure"
+require_relative "treasure_kind"
+require_relative "monster"
+
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
 

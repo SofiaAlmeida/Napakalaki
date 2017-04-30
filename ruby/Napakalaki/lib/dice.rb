@@ -1,5 +1,7 @@
 #encoding: utf-8
+
 require "singleton"
+
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
 
