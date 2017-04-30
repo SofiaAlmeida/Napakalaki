@@ -27,6 +27,17 @@ module NapakalakiGame
       @enemy = nil
     end
 
+    def self.new(p)
+      @name = p.getName
+      @level = p.getLevels
+      @dead = p.isDead
+      @canISteal = p.canISteal
+      @pendingBadConsequence = p.getPendingBadConsequence
+      @hiddenTreasures = p.getHiddenTreasures
+      @visibleTreasures = p.getVisibleTreasures
+      @enemy = p.getEnemy
+    end
+    
     def self.getMaxLevel
       @@MAXLEVEL
     end
@@ -45,6 +56,14 @@ module NapakalakiGame
 
     def getVisibleTreasures
       @visibleTreasures
+    end
+    
+    def getEnemy
+      @enemy
+    end
+    
+    def getPendingBadConsequence
+      @pendingBadConsequence
     end
 
     #Simulación del combate con el monstruo
@@ -310,6 +329,14 @@ module NapakalakiGame
     def haveStolen
       @canISteal = false
 
+    end
+    
+    def getOponentLevel
+      
+    end
+    def shouldConvert
+      number = Dice.getInstance.nextNumber
+      number == 6
     end
   end
 
