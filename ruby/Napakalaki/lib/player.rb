@@ -23,7 +23,7 @@ module NapakalakiGame
       @enemy = nil
     end
 
-    def self.new(p)
+    def self.newCopy(p)
       @name = p.getName
       @level = p.getLevels
       @dead = p.isDead
@@ -33,7 +33,7 @@ module NapakalakiGame
       @visibleTreasures = p.getVisibleTreasures
       @enemy = p.getEnemy
     end
-    
+
     def self.getMaxLevel
       @@MAXLEVEL
     end

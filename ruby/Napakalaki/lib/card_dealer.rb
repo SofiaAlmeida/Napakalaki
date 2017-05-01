@@ -23,14 +23,12 @@ module NapakalakiGame
       @usedCultists = Array.new
     end
 
+     # FIXME: ESTO HACE LO QUE TIENE QUE HACER?
     def nextTreasure
       if @unusedTreasures.empty?
-        #@usedTreasures.each { |t| @unusedTreasures << t}
-        #shuffleTreasures
-        #@usedTreasures.clear
         t = @usedTreasures
         @usedTreasures = @unusedTreasures
-        @unusedTreasures = t
+        @unusedTreasures = t # nil? Array.new?
         shuffleTreasures
       end
       
@@ -90,7 +88,7 @@ module NapakalakiGame
       initMonsterCardDeck
       shuffleMonster
       initCultistCardDeck
-      shuffleCultist
+      shuffleCultists
       
     end
 
@@ -250,6 +248,12 @@ module NapakalakiGame
     end
     
     def initCultistCardDeck
+      4.times do
+        @unusedCultists << Cultist.new("Sectario", 1)
+      end
+      2.times do
+        @unusedCultists << Cultist.new("Sectario", 2)
+      end
       
     end
 
@@ -261,7 +265,7 @@ module NapakalakiGame
       @unusedMonsters.shuffle!
     end
     
-    def shuffleCultist
+    def shuffleCultists
       @unusedCultists.shuffle!
     end
 

@@ -13,11 +13,11 @@ module NapakalakiGame
       @levelChangeAgainstCultistPlayer = lC
     end
     
-    def self.newCultistMonster (n, l, b, p, lC)
+    def self.newCultistMonster(n, l, b, p, lC)
       new(n, l, b, p, lC)
     end
     
-    def self.newMonster (n, l, b, p)
+    def self.newMonster(n, l, b, p)
       new(n, l, b, p, 0)
     end
 
