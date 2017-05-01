@@ -64,12 +64,11 @@ public class CultistPlayer extends Player {
      */
     private Treasure giveMeATreasure() {
         Random rand = new Random();
-        int posicion = rand.nextInt(getVisibleTreasures().size());
-        getVisibleTreasures().remove(posicion);    
-        return getVisibleTreasures().get(posicion);
+        int posicion = rand.nextInt(getVisibleTreasures().size());   
+        return getVisibleTreasures().remove(posicion); 
     }
     
-     /**
+    /**
      * 
      * Consulta si le pueden robar un tesoro
      * @return true si el jugador tiene tesoros visibles
@@ -79,6 +78,10 @@ public class CultistPlayer extends Player {
         return !getVisibleTreasures().isEmpty();
     }
     
+    /**
+     * Número de sectarios en juego
+     * @return Total de sectarios
+     */
     public int getTotalCultistPlayers() {
         return totalCultistPlayers;
     }

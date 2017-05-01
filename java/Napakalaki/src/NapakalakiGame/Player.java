@@ -409,8 +409,7 @@ public class Player {
     private Treasure giveMeATreasure() {
         Random rand = new Random();
         int posicion = rand.nextInt(hiddenTreasures.size());
-        hiddenTreasures.remove(posicion);
-        return hiddenTreasures.get(posicion);
+        return hiddenTreasures.remove(posicion);
     }
     
     /**
