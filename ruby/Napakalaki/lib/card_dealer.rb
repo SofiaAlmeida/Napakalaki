@@ -227,7 +227,7 @@ module NapakalakiGame
       prize = Prize.new(1, 1)
       badConsequence = BadConsequence.newLevelSpecificTreasures("Pierdes tu casco y tu armadura visble. Pierdes tus manos ocultas", 
         0, [TreasureKind::ARMOR, TreasureKind::HELMET], [TreasureKind::ONEHAND, TreasureKind::ONEHAND, TreasureKind::ONEHAND, TreasureKind::ONEHAND,
-          TreasureKind::BOTHHANDS, TreasureKind::BOTHHANDS, TreasureKind::BOTHHANDS, TreasureKind::BOTHHANDS,])
+          TreasureKind::BOTHHANDS, TreasureKind::BOTHHANDS])
       @unusedMonsters << Monster.newCultistMonster("Felpuggoth", 2, badConsequence, prize, 5)
       
       prize = Prize.new(4, 2)
