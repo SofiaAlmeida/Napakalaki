@@ -7,27 +7,9 @@ module NapakalakiGame
   class BadConsequence
     @@MAXTREASURES = 10
 
-    def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures, 
-        someSpecificVisibleTreasures, someSpecificHiddenTreasures, death)
+    def initialize(aText, someLevels)
       @text = aText
       @levels = someLevels
-      @nVisibleTreasures = someVisibleTreasures
-      @nHiddenTreasures = someHiddenTreasures
-      @specificVisibleTreasures = someSpecificVisibleTreasures
-      @specificHiddenTreasures = someSpecificHiddenTreasures
-      @death = death
-    end
-
-    def self.newLevelNumberOfTreasures(t, l, nVisible, nHidden)
-      new(t, l, nVisible, nHidden, [], [], false)
-    end
-
-    def self.newLevelSpecificTreasures(t, l, v, h)
-      new(t, l, 0, 0, v, h, false)
-    end
-
-    def self.newDeath(t, death)
-      new(t, Player.getMaxLevel, @@MAXTREASURES, @@MAXTREASURES, [], [], death)
     end
 
     def self.getMaxTreasures
@@ -46,15 +28,7 @@ module NapakalakiGame
     def getLevels
       @levels
     end
-
-    def getNVisibleTreasures
-      @nVisibleTreasures
-    end
-
-    def getNHiddenTreasures
-      @nHiddenTreasures
-    end
-
+=begin
     def getSpecificHiddenTreasures
       @specificHiddenTreasures
     end
@@ -112,7 +86,7 @@ module NapakalakiGame
       end
       adjusted
     end
-
+=end
     def to_s
       if @death==false
         if @specificVisibleTreasures.empty? and @specificHiddenTreasures.empty? 
