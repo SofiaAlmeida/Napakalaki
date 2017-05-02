@@ -1,8 +1,5 @@
 #encoding: utf-8
 
-#require_relative "player"
-#require_relative "treasure" 
-
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
 
@@ -106,7 +103,6 @@ module NapakalakiGame
         # con @specific... directamente
         v.each { |t| sVT << t.getType}    
         # Toma la intersección de ambos vectores manteniendo la multiplicidad de cada elemento
-        puts "sv antes: #{sVT} specific: #{@specificVisibleTreasures.to_s}"
         sVT = (sVT & @specificVisibleTreasures).flat_map { |n| [n]*[sVT.count(n), @specificVisibleTreasures.count(n)].min } 
         
         sHT = Array.new

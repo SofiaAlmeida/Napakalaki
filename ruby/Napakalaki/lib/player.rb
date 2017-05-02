@@ -23,7 +23,7 @@ module NapakalakiGame
       @enemy = nil
     end
 
-    def self.newCopy(p)
+    def new(p)
       @name = p.getName
       @level = p.getLevels
       @dead = p.isDead
@@ -169,7 +169,7 @@ module NapakalakiGame
         puts "#{canYou}"
         if canYou
           treasure = @enemy.giveMeATreasure
-          @hiddenTreasures.add(treasure)
+          @hiddenTreasures << treasure
           haveStolen
           
           return treasure
@@ -340,7 +340,7 @@ module NapakalakiGame
     
     # Indica si el jugador se convertirá en sectario
     def shouldConvert
-      number = Dice.getInstance.nextNumber
+      number = Dice.instance.nextNumber
       number == 6
     end
   end

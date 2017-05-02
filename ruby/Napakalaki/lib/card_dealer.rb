@@ -6,6 +6,7 @@ require_relative "bad_consequence"
 require_relative "treasure"
 require_relative "treasure_kind"
 require_relative "monster"
+require_relative "cultist"
 
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
@@ -23,48 +24,38 @@ module NapakalakiGame
       @usedCultists = Array.new
     end
 
-     # FIXME: ESTO HACE LO QUE TIENE QUE HACER?
     def nextTreasure
       if @unusedTreasures.empty?
-        t = @usedTreasures
-        @usedTreasures = @unusedTreasures
-        @unusedTreasures = t # nil? Array.new?
+        @unusedTreasures = @usedTreasures
+        @usedTreasures = Array.new
         shuffleTreasures
       end
       
       treasure = @unusedTreasures.at(0)
       giveTreasureBack(treasure)
       @unusedTreasures.delete(treasure)
-      treasure
     end
 
     def nextMonster
       if @unusedMonsters.empty?
-        #@unusedMonsters.each { |m| @unusedMonster << m}
-        #@usedMonsters.clear
-        #shuffleMonster
-        m = @usedMonsters
-        @usedMonsters = @unusedMonsters
-        @unusedMonsters = m
+        @unusedMonsters = @usedMonsters
+        @usedMonsters = Array.new
         shuffleTreasures
       end
+      
       monster = @unusedMonsters.at(0)
       giveMonsterBack(monster)
       @unusedMonsters.delete(monster)
-      monster
     end
     
     def nextCultist
       if @unusedCultists.empty?
-        c = @usedCulstists
-        @usedCultists = @unusedCultists
-        @unusedMonsters = c
+        @unusedMonsters = @usedCulstis
         shuffleCultists
       end
       cultist = @unusedCultists.at(0)
       giveCultistBack(cultist)
       @unusedMonsters.delete(cultist)
-      cultist
     end
 
     def giveTreasureBack(t)
@@ -215,6 +206,7 @@ module NapakalakiGame
         3, [TreasureKind::ONEHAND, TreasureKind::ONEHAND, TreasureKind::BOTHHANDS], [])
       @unusedMonsters << Monster.newMonster("Bicéfalo", 21, badConsequence, prize)
 
+      # Monstruos con sectarios
       prize = Prize.new(3, 1)
       badConsequence = BadConsequence.newLevelSpecificTreasures("Pierdes una mano visible", 
         0, [TreasureKind::ONEHAND], [])
@@ -225,16 +217,17 @@ module NapakalakiGame
       @unusedMonsters << Monster.newCultistMonster("Testigos Oculares", 6, badConsequence, prize, 2)
 
       prize = Prize.new(2, 5)
-      badConsequence = BadConsequence.newDeath("Hoy no es tu día de suerte. Mueres")
-      @unusedMonsters << Monster.newMonster("El gran cthlhu", 20, badConsequence, prize, 4)
+      badConsequence = BadConsequence.newDeath("Hoy no es tu día de suerte. Mueres", true)
+      @unusedMonsters << Monster.newCultistMonster("El gran cthulhu", 20, badConsequence, prize, 4)
       
       prize = Prize.new(2, 1)
       badConsequence = BadConsequence.newLevelNumberOfTreasures("Tu gobierno te recorta 2 niveles", 2, 0, 0)
       @unusedMonsters << Monster.newCultistMonster("Serpiente Político", 8, badConsequence, prize, -2)
-      #REWIEV
+      
       prize = Prize.new(1, 1)
       badConsequence = BadConsequence.newLevelSpecificTreasures("Pierdes tu casco y tu armadura visble. Pierdes tus manos ocultas", 
-        0, [TreasureKind::ARMOR, TreasureKind::HELMET], [TreasureKind::ONEHAND, TreasureKind::ONEHAND, TreasureKind::BOTHHANDS])
+        0, [TreasureKind::ARMOR, TreasureKind::HELMET], [TreasureKind::ONEHAND, TreasureKind::ONEHAND, TreasureKind::ONEHAND, TreasureKind::ONEHAND,
+          TreasureKind::BOTHHANDS, TreasureKind::BOTHHANDS, TreasureKind::BOTHHANDS, TreasureKind::BOTHHANDS,])
       @unusedMonsters << Monster.newCultistMonster("Felpuggoth", 2, badConsequence, prize, 5)
       
       prize = Prize.new(4, 2)

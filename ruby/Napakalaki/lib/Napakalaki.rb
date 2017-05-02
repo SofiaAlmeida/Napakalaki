@@ -4,6 +4,7 @@ require "singleton"
 require_relative "card_dealer"
 require_relative "player"
 require_relative "combat_result"
+require_relative "cultist_player"
 
 #Sofía Almeida Bruno
 #María Victoria Granados Pozo
@@ -22,6 +23,18 @@ module NapakalakiGame
     def developCombat
       combatResult = @currentPlayer.combat(@currentMonster)
       @dealer.giveMonsterBack(@currentMonster)
+      if combatResult == CombatResult::LOSEANDCONVERT
+        cultist = @dealer.nextCultist
+        cultistPlayer = CultistPlayer.new(@currentPlayer, cultist)
+        # Reemplazamos al jugador actual por el sectario correspondiente
+        # (currentPlayer, players, enemy
+        @players.each {|p| 
+          if p.getEnemy == @currentPlayer
+            p.setEnemy(cultistPlayer)
+          end
+        }
+        @players.insert(@players.index(@currentPlayer), cultistPlayer)
+      end
       combatResult
     end
 
