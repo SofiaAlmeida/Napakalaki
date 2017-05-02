@@ -185,7 +185,9 @@ public class CardDealer {
         unusedMonsters.add(new Monster("Serpiente Político", 8, (NumericBadConsequence) bc, prize, -2));
         
         bc = new SpecificBadConsequence("Pierdes tu casco y tu armadura visible. Pierdes tus manos ocultas.", 
-                0, new ArrayList(Arrays.asList(TreasureKind.HELMET, TreasureKind.ARMOR)), new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS, TreasureKind.ONEHAND)));
+                0, new ArrayList(Arrays.asList(TreasureKind.HELMET, TreasureKind.ARMOR)),
+                new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS, TreasureKind.BOTHHANDS, TreasureKind.BOTHHANDS, TreasureKind.BOTHHANDS,
+                        TreasureKind.ONEHAND, TreasureKind.ONEHAND, TreasureKind.ONEHAND, TreasureKind.ONEHAND)));
         prize = new Prize(1, 1);
         unusedMonsters.add(new Monster("Felpuggoth", 2, (SpecificBadConsequence) bc, prize, 5));
         
