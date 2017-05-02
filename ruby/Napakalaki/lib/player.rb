@@ -86,9 +86,9 @@ module NapakalakiGame
         applyBadConsequence(m)
         
         if shouldConvert
-          return CombatResult::LOSEANDCONVERT
+          CombatResult::LOSEANDCONVERT
         end
-        return CombatResult::LOSE
+        CombatResult::LOSE
       end
     end
     
