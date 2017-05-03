@@ -1,6 +1,9 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+#encoding: utf-8
+
+require_relative "bad_consequence"
+
+#Sofía Almeida Bruno
+#María Victoria Granados Pozo
 
 module NapakalakiGame
   class SpecificBadConsequence < BadConsequence
@@ -48,7 +51,11 @@ module NapakalakiGame
       sHT = Array.new
       h.each { |t| sHT << t.getType}
       sHT = (sHT & @specificHiddenTreasures).flat_map { |n| [n]*[sHT.count(n), @specificHiddenTreasures.count(n)].min }
-      SpecificBadConsequence.newLevelSpecificTreasures(@text, @levels, sVT, sHT)
+      SpecificBadConsequence.new(@text, @levels, sVT, sHT)
     end
+    def to_s
+      super + "\n\tTesoros visibles específicos: #{@specificVisibleTreasures}\n\tTesoros ocultos específicos: #{@specificHiddenTreasures} "
+    end
+    
   end
 end

@@ -23,7 +23,7 @@ module NapakalakiGame
       @enemy = nil
     end
 
-    def new(p)
+    def newCopy(p)
       @name = p.getName
       @level = p.getLevels
       @dead = p.isDead

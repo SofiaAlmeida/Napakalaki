@@ -1,3 +1,9 @@
+#encoding: utf-8
+
+require_relative "bad_consequence"
+
+#Sofía Almeida Bruno
+#María Victoria Granados Pozo
 
 module NapakalakiGame
   class NumericBadConsequence < BadConsequence
@@ -6,6 +12,7 @@ module NapakalakiGame
       @nVisibleTreasures = someVisibleTreasures
       @nHiddenTreasures = someHiddenTreasures
     end
+    
     def isEmpty
       if @nHiddenTreasures == 0 and @nVisibleTreasures == 0
         true
@@ -13,6 +20,7 @@ module NapakalakiGame
         false
       end
     end
+    
     def getNVisibleTreasures
       @nVisibleTreasures
     end
@@ -43,6 +51,10 @@ module NapakalakiGame
         nHT = @nHiddenTreasures
       end
       NumericBadConsequence.new(@text, @levels, nVT, nHT)
+    end
+    
+    def to_s
+      super + "\n\tTesoros visibles: #{@nVisibleTreasures}\n\tTesoros ocultos: #{@nHiddenTreasures}"
     end
     
   end

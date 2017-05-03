@@ -8,7 +8,8 @@ module NapakalakiGame
     @@totalCultistPlayers = 0
     
     def initialize(p, c)
-      super(p)  # FIXME: ESTO LLAMA AL INITIALIZE DE PLAYER O A NEW???
+      super(p)  
+      newCopy(p)
       @myCultistCard = c
       @@totalCultistPlayers += 1
     end
@@ -18,12 +19,6 @@ module NapakalakiGame
       @@totalCultistPlayers
     end
     
-    # WARNING
-    # protected no se permite desde fuera de la clase
-    # en Player.stealTreasure {...canYou = @enemy.canYouGiveMeATreasure ...}
-    # @enemy llama a este método
-    # Dejarla pública no me convence
-    # 
     # Elige un tesoro al azar entre los tesoros visibles
     def giveMeATresure
       posicion = rand(getVisibleTreasures.length)
@@ -33,6 +28,10 @@ module NapakalakiGame
     # Consulta si le pueden robar un tesoro
     def canYouGiveMeATreasure
       !getVisibleTreasures.empty?
+    end
+    
+    def to_s
+      "\nHolaa!! Soy sectario \n" + super
     end
     
     protected
