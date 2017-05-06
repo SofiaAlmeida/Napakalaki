@@ -41,6 +41,10 @@ module NapakalakiGame
     def getName
       @name
     end
+    
+    def getLevels
+      @level
+    end
 
     def isDead
       @dead
@@ -54,14 +58,6 @@ module NapakalakiGame
       @visibleTreasures
     end
     
-    def getEnemy
-      @enemy
-    end
-    
-    def getPendingBadConsequence
-      @pendingBadConsequence
-    end
-
     # Simulación del combate con el monstruo
     def combat(m)
       myLevel = getCombatLevel
@@ -152,13 +148,7 @@ module NapakalakiGame
         treasure = dealer.nextTreasure
         @hiddenTreasures << treasure
       end
-    end
-   
-    
-    def getLevels
-      @level
-    end
-    
+    end    
     
     # Roba un tesoro
     # Devuelve dicho tesoro, en caso de no robar un tesoro se devolverá nil
@@ -342,6 +332,14 @@ module NapakalakiGame
     def shouldConvert
       number = Dice.instance.nextNumber
       number == 6
+    end
+    
+    def getEnemy
+      @enemy
+    end
+    
+    def getPendingBadConsequence
+      @pendingBadConsequence
     end
   end
 
