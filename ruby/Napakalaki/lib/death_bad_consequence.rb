@@ -6,10 +6,7 @@ require_relative "bad_consequence"
 #María Victoria Granados Pozo
 
 module NapakalakiGame
-  class DeathBadConsequence < NumericBadConsequence
-    
-   
-    
+  class DeathBadConsequence < NumericBadConsequence   
     def initialize (t)
       super(t, Player.getMaxLevel, BadConsequence.getMaxTreasures, BadConsequence.getMaxTreasures)
       @death = true

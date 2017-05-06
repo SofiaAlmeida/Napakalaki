@@ -14,11 +14,7 @@ module NapakalakiGame
     end
     
     def isEmpty
-      if @specificHiddenTreasures.empty? and @specificVisibleTreasures.empty?
-        true
-      else 
-        false
-      end
+      @specificHiddenTreasures.empty? and @specificVisibleTreasures.empty?
     end
     
     def getSpecificHiddenTreasures
@@ -53,6 +49,7 @@ module NapakalakiGame
       sHT = (sHT & @specificHiddenTreasures).flat_map { |n| [n]*[sHT.count(n), @specificHiddenTreasures.count(n)].min }
       SpecificBadConsequence.new(@text, @levels, sVT, sHT)
     end
+    
     def to_s
       super + "\n\tTesoros visibles específicos: #{@specificVisibleTreasures}\n\tTesoros ocultos específicos: #{@specificHiddenTreasures} "
     end

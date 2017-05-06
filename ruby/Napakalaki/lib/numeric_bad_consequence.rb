@@ -14,11 +14,7 @@ module NapakalakiGame
     end
     
     def isEmpty
-      if @nHiddenTreasures == 0 and @nVisibleTreasures == 0
-        true
-      else 
-        false
-      end
+      @nHiddenTreasures == 0 and @nVisibleTreasures == 0
     end
     
     def getNVisibleTreasures

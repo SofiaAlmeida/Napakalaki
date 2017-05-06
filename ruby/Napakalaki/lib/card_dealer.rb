@@ -2,7 +2,6 @@
 
 require "singleton"
 require_relative "prize"
-#require_relative "bad_consequence"
 require_relative "treasure"
 require_relative "treasure_kind"
 require_relative "monster"

@@ -97,7 +97,6 @@ module NapakalakiGame
       end
       
     end
-
     
     # Descarta un tesoro visible para completar el mal rollo
     def discardVisibleTreasure(t)
@@ -123,11 +122,7 @@ module NapakalakiGame
     # Devuelve true cuando el jugador no tiene ningún mal rollo que cumplir y no 
     # tiene más de 4 tesoros o no tiene ningún mal rollo asignado, false en caso contrario
     def validState
-      if @pendingBadConsequence == nil or (@pendingBadConsequence.isEmpty and @hiddenTreasures.length <= 4)
-        true
-      else
-        false
-      end
+      @pendingBadConsequence == nil or (@pendingBadConsequence.isEmpty and @hiddenTreasures.length <= 4)
     end
 
     # Da tesoros iniciales al jugador
@@ -168,7 +163,6 @@ module NapakalakiGame
         return nil
       end
     end
-    
 
     # Asigna un enemigo al jugador
     def setEnemy(enemy)

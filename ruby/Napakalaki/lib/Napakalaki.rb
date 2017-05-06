@@ -27,7 +27,7 @@ module NapakalakiGame
         cultist = @dealer.nextCultist
         cultistPlayer = CultistPlayer.new(@currentPlayer, cultist)
         # Reemplazamos al jugador actual por el sectario correspondiente
-        # (currentPlayer, players, enemy
+        # (currentPlayer, players, enemy)
         @players.each {|p| 
           if p.getEnemy == @currentPlayer
             p.setEnemy(cultistPlayer)
