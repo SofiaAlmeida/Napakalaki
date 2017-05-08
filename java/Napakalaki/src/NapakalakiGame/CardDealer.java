@@ -250,13 +250,13 @@ public class CardDealer {
      * @return El siguiente monstruo de la baraja
      */
     public Treasure nextTreasure() {
-        if (unusedTreasures.isEmpty()) {
-            for (Treasure t : usedTreasures)
-                unusedTreasures.add(t);
-            usedTreasures.clear();
+        if(unusedTreasures.isEmpty()) {
+            unusedTreasures = usedTreasures;
+            usedTreasures = new ArrayList();
             shuffleTreasures();
         }
         Treasure treasure = unusedTreasures.get(0);
+        giveTreasureBack(treasure);
         unusedTreasures.remove(treasure);
         return treasure;
     }
@@ -266,13 +266,13 @@ public class CardDealer {
      * @return El siguiente monstruo de la baraja
      */
     public Monster nextMonster() {
-        if (unusedMonsters.isEmpty()){
-            for (Monster m :  usedMonsters)
-                unusedMonsters.add(m);
-            usedMonsters.clear();
+        if(unusedMonsters.isEmpty()) {
+            unusedMonsters = usedMonsters;
+            usedMonsters = new ArrayList();
             shuffleMonsters();
         }
         Monster monster = unusedMonsters.get(0);
+        giveMonsterBack(monster);
         unusedMonsters.remove(monster);
         return monster;
     }
@@ -282,13 +282,13 @@ public class CardDealer {
      * @return El siguiente sectario de la baraja
      */
     public Cultist nextCultist() {
-        if (unusedCultists.isEmpty()){
-            for (Cultist c :  usedCultists)
-                unusedCultists.add(c);
-            usedCultists.clear();
-            shuffleCultists();            
+        if(unusedCultists.isEmpty()) {
+            unusedCultists = usedCultists;
+            usedCultists = new ArrayList();
+            shuffleCultists();
         }
         Cultist cultist = unusedCultists.get(0);
+        giveCultistBack(cultist);
         unusedCultists.remove(cultist);
         return cultist;
     }
@@ -311,6 +311,14 @@ public class CardDealer {
         usedMonsters.add(m);
     }
     
+    /**
+     * 
+     * Introduce el sectario en el mazo de sectarios descartados
+     * @param c Sectario a descartar
+     */
+    public void giveCultistBack(Cultist c) {
+        usedCultists.add(c);
+    }
     /**
      * 
      * Inicializa el mazo de tesoros y el de monstruos
