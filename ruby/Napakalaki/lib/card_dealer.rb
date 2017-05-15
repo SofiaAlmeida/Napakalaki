@@ -52,12 +52,13 @@ module NapakalakiGame
     
     def nextCultist
       if @unusedCultists.empty?
-        @unusedMonsters = @usedCulstis
+        @unusedCultists = @usedCultists
+        @usedCultist = Array.new
         shuffleCultists
       end
       cultist = @unusedCultists.at(0)
       giveCultistBack(cultist)
-      @unusedMonsters.delete(cultist)
+      @unusedCultists.delete(cultist)
     end
 
     def giveTreasureBack(t)
