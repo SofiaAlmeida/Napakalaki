@@ -83,8 +83,9 @@ module NapakalakiGame
         
         if shouldConvert
           CombatResult::LOSEANDCONVERT
+        else
+          CombatResult::LOSE
         end
-        CombatResult::LOSE
       end
     end
     
@@ -151,7 +152,6 @@ module NapakalakiGame
       canI = canISteal
       if canI
         canYou = @enemy.canYouGiveMeATreasure
-        puts "#{canYou}"
         if canYou
           treasure = @enemy.giveMeATreasure
           @hiddenTreasures << treasure
@@ -183,13 +183,17 @@ module NapakalakiGame
       
     end
     
+    def getEnemy
+      @enemy
+    end
+    
     def to_s
-=begin      
-      "\nNombre: #{@name} \nLevel: #{@level} \nMuerte: #{@dead}\nPuede robar: #{@canISteal}\n" +
+     
+      "\nNombre: #{@name} \nLevel: #{@level}  \nNivel del combate: #{getCombatLevel} \nMuerte: #{@dead}\nPuede robar: #{@canISteal}\n" +
       "Mal rollo pendiente: #{@pendingBadConsequence} \nTesoros ocultos: #{@hiddenTreasures.map(&:to_s)}\n" +
       "Tesoros visibles: #{@visibleTreasures.map(&:to_s)} \nEnemigo: #{@enemy.getName}"
-=end
-      "\nNombre: #{@name} \nLevel: #{@level} \nNivel del combate: #{getCombatLevel} \nMal rollo: #{@pendingBadConsequence}"
+
+      #"\nNombre: #{@name} \nLevel: #{@level} \nNivel del combate: #{getCombatLevel} \nMal rollo: #{@pendingBadConsequence}"
     end
     
     protected
@@ -324,14 +328,12 @@ module NapakalakiGame
     
     # Indica si el jugador se convertirá en sectario
     def shouldConvert
-      number = Dice.instance.nextNumber
-      number == 6
+      #number = Dice.instance.nextNumber
+      #number == 6
+      true
     end
     
-    def getEnemy
-      @enemy
-    end
-    
+        
     def getPendingBadConsequence
       @pendingBadConsequence
     end

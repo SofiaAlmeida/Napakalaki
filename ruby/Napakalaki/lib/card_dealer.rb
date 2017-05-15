@@ -42,7 +42,7 @@ module NapakalakiGame
       if @unusedMonsters.empty?
         @unusedMonsters = @usedMonsters
         @usedMonsters = Array.new
-        shuffleTreasures
+        shuffleMonster
       end
       
       monster = @unusedMonsters.at(0)
@@ -96,6 +96,7 @@ module NapakalakiGame
       @unusedTreasures << Treasure.new("Botas de lluvia ácida", 1, TreasureKind::BOTHHANDS)
       @unusedTreasures << Treasure.new("Casco minero", 2, TreasureKind::HELMET)
       @unusedTreasures << Treasure.new("Ametralladora ACME", 4, TreasureKind::BOTHHANDS)
+=begin
       @unusedTreasures << Treasure.new("Camiseta de la ETSIIT", 1, TreasureKind::ARMOR)
       @unusedTreasures << Treasure.new("Clavo de rail ferroviario", 3, TreasureKind::ONEHAND)
       @unusedTreasures << Treasure.new("Cuchillo de sushi arcano", 2, TreasureKind::ONEHAND)
@@ -120,11 +121,12 @@ module NapakalakiGame
       @unusedTreasures << Treasure.new("Varita de atizamiento", 3, TreasureKind::ONEHAND)
       @unusedTreasures << Treasure.new("Tentáculo de pega", 2, TreasureKind::HELMET)
       @unusedTreasures << Treasure.new("Zapato deja-amigos", 1, TreasureKind::SHOE)
+=end
 
     end
 
     def initMonsterCardDeck
-
+=begin
       prize = Prize.new(2, 1)
       badConsequence = SpecificBadConsequence.new("Pierdes tu armadura visible y otra oculta", 
       0, [TreasureKind::ARMOR], [TreasureKind::ARMOR])
@@ -223,7 +225,7 @@ module NapakalakiGame
       prize = Prize.new(2, 1)
       badConsequence = NumericBadConsequence.new("Tu gobierno te recorta 2 niveles", 2, 0, 0)
       @unusedMonsters << Monster.newCultistMonster("Serpiente Político", 8, badConsequence, prize, -2)
-      
+=end      
       prize = Prize.new(1, 1)
       badConsequence = SpecificBadConsequence.new("Pierdes tu casco y tu armadura visble. Pierdes tus manos ocultas", 
         0, [TreasureKind::ARMOR, TreasureKind::HELMET], [TreasureKind::ONEHAND, TreasureKind::ONEHAND, TreasureKind::ONEHAND, TreasureKind::ONEHAND,

@@ -34,6 +34,8 @@ module NapakalakiGame
           end
         }
         @players.insert(@players.index(@currentPlayer), cultistPlayer)
+        @players.delete(@currentPlayer)
+        @currentPlayer = cultistPlayer
       end
       combatResult
     end

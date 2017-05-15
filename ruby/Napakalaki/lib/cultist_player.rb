@@ -8,7 +8,6 @@ module NapakalakiGame
     @@totalCultistPlayers = 0
     
     def initialize(p, c)
-      super(p)  
       newCopy(p)
       @myCultistCard = c
       @@totalCultistPlayers += 1
@@ -34,13 +33,14 @@ module NapakalakiGame
       "\nHolaa!! Soy sectario \n" + super
     end
     
+    
+    
     protected
     # Nivel de combate
     def getCombatLevel
       combatLevel = 1.7*super + @myCultistCard.getGainedLevels*@@totalCultistPlayers
       combatLevel.to_i 
     end
-    
     # Nivel del oponente
     def getOponentLevel(m)
       m.getCombatLevelAgainstCultistPlayer
