@@ -33,14 +33,13 @@ module NapakalakiGame
       "\nHolaa!! Soy sectario \n" + super
     end
     
-    
-    
     protected
     # Nivel de combate
     def getCombatLevel
       combatLevel = 1.7*super + @myCultistCard.getGainedLevels*@@totalCultistPlayers
       combatLevel.to_i 
     end
+    
     # Nivel del oponente
     def getOponentLevel(m)
       m.getCombatLevelAgainstCultistPlayer

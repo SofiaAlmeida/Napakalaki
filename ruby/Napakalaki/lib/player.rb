@@ -109,7 +109,6 @@ module NapakalakiGame
       
     end
     
-    
     # Descarta un tesoro oculto para completar el mal rollo
     def discardHiddenTreasure(t)
       @hiddenTreasures.delete(t)
@@ -119,7 +118,6 @@ module NapakalakiGame
       dieIfNoTreasures
     end
 
-    
     # Devuelve true cuando el jugador no tiene ningún mal rollo que cumplir y no 
     # tiene más de 4 tesoros o no tiene ningún mal rollo asignado, false en caso contrario
     def validState
@@ -328,11 +326,9 @@ module NapakalakiGame
     
     # Indica si el jugador se convertirá en sectario
     def shouldConvert
-      #number = Dice.instance.nextNumber
-      #number == 6
-      true
+      number = Dice.instance.nextNumber
+      number == 6
     end
-    
         
     def getPendingBadConsequence
       @pendingBadConsequence
