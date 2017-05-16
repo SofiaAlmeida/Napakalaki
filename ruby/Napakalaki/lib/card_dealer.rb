@@ -219,7 +219,7 @@ module NapakalakiGame
       prize = Prize.new(2, 5)
       badConsequence = DeathBadConsequence.new("Hoy no es tu día de suerte. Mueres")
       @unusedMonsters << Monster.newCultistMonster("El gran cthulhu", 20, badConsequence, prize, 4)
-      
+     
       prize = Prize.new(2, 1)
       badConsequence = NumericBadConsequence.new("Tu gobierno te recorta 2 niveles", 2, 0, 0)
       @unusedMonsters << Monster.newCultistMonster("Serpiente Político", 8, badConsequence, prize, -2)
