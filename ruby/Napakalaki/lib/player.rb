@@ -58,6 +58,11 @@ module NapakalakiGame
       @visibleTreasures
     end
     
+    #Añadir un tesoro al vector de tesoros ocultos
+    def addTreasure(t)
+      @hiddenTreasures << t
+    end
+    
     # Simulación del combate con el monstruo
     def combat(m)
       myLevel = getCombatLevel
@@ -187,9 +192,15 @@ module NapakalakiGame
     
     def to_s
      
-      "\nNombre: #{@name} \nLevel: #{@level}  \nNivel del combate: #{getCombatLevel} \nMuerte: #{@dead}\nPuede robar: #{@canISteal}\n" +
-      "Mal rollo pendiente: #{@pendingBadConsequence} \nTesoros ocultos: #{@hiddenTreasures.map(&:to_s)}\n" +
-      "Tesoros visibles: #{@visibleTreasures.map(&:to_s)} \nEnemigo: #{@enemy.getName}"
+      if @enemy == nil
+        "\nNombre: #{@name} \nLevel: #{@level}  \nNivel del combate: #{getCombatLevel} \nMuerte: #{@dead}\nPuede robar: #{@canISteal}\n" +
+        "Mal rollo pendiente: #{@pendingBadConsequence} \nTesoros ocultos: #{@hiddenTreasures.map(&:to_s)}\n" +
+        "Tesoros visibles: #{@visibleTreasures.map(&:to_s)}"
+      else
+        "\nNombre: #{@name} \nLevel: #{@level}  \nNivel del combate: #{getCombatLevel} \nMuerte: #{@dead}\nPuede robar: #{@canISteal}\n" +
+        "Mal rollo pendiente: #{@pendingBadConsequence} \nTesoros ocultos: #{@hiddenTreasures.map(&:to_s)}\n" +
+        "Tesoros visibles: #{@visibleTreasures.map(&:to_s)} \nEnemigo: #{@enemy.getName}"
+      end
 
       #"\nNombre: #{@name} \nLevel: #{@level} \nNivel del combate: #{getCombatLevel} \nMal rollo: #{@pendingBadConsequence}"
     end
