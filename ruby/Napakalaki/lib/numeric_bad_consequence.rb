@@ -26,12 +26,16 @@ module NapakalakiGame
     end
     
     def substractVisibleTreasure(t)
-      @nVisibleTreasures -= 1      
+      if @nVisibleTreasures > 0
+        @nVisibleTreasures -= 1
+      end
             
     end
 
     def substractHiddenTreasure(t)
-      @nHiddenTreasures -= 1
+      if @nHiddenTreasures > 0
+        @nHiddenTreasures -= 1
+      end
       
     end
     
