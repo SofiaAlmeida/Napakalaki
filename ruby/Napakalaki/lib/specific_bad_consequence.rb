@@ -7,7 +7,7 @@ require_relative "bad_consequence"
 
 module NapakalakiGame
   class SpecificBadConsequence < BadConsequence
-    def initialize (t, l, v, h)
+    def initialize(t, l, v, h)
       super(t, l)
       @specificVisibleTreasures = v
       @specificHiddenTreasures = h
@@ -36,7 +36,6 @@ module NapakalakiGame
     end
     
     def adjustToFitTreasureLists(v, h)
-      # Tesoros específicos
       sVT = Array.new
       # Creamos un array con los tipos de los tesoros de v, para poder comparar
       # con @specific... directamente
@@ -47,11 +46,12 @@ module NapakalakiGame
       sHT = Array.new
       h.each { |t| sHT << t.getType}
       sHT = (sHT & @specificHiddenTreasures).flat_map { |n| [n]*[sHT.count(n), @specificHiddenTreasures.count(n)].min }
+      
       SpecificBadConsequence.new(@text, @levels, sVT, sHT)
     end
     
     def to_s
-      super + "\n\tTesoros visibles específicos: #{@specificVisibleTreasures}\n\tTesoros ocultos específicos: #{@specificHiddenTreasures} "
+      super + "\n\tTesoros visibles específicos: #{@specificVisibleTreasures}\n\tTesoros ocultos específicos: #{@specificHiddenTreasures}"
     end
     
   end

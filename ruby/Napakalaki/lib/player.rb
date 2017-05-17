@@ -121,6 +121,7 @@ module NapakalakiGame
         @pendingBadConsequence.substractHiddenTreasure(t)
       end
       dieIfNoTreasures
+      
     end
 
     # Devuelve true cuando el jugador no tiene ningún mal rollo que cumplir y no 
