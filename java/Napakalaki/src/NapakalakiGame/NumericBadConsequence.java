@@ -60,6 +60,7 @@ public class NumericBadConsequence extends BadConsequence {
      */
     @Override
     public void substractVisibleTreasure(Treasure t) {
+        if(nVisibleTreasures > 0)
         nVisibleTreasures --;
     }
     
@@ -70,7 +71,8 @@ public class NumericBadConsequence extends BadConsequence {
      */
     @Override
     public void substractHiddenTreasure(Treasure t) {
-        nHiddenTreasures --;
+        if(nHiddenTreasures > 0)
+            nHiddenTreasures --;
     }
     
     /**
