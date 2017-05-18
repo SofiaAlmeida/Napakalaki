@@ -76,7 +76,7 @@ public class Player {
      * Consultor del enemigo
      * @return jugador enemigo
      */
-    protected Player getEnemy() {
+    public Player getEnemy() {
         return enemy;
     }
      /**
@@ -92,7 +92,7 @@ public class Player {
      * Consultor del nivel de combate
      * @return nivel de combate
      */
-    protected int getCombatLevel() {
+    public int getCombatLevel() {
         int combatLevel = level;
         for(Treasure treasure : visibleTreasures) {
            combatLevel += treasure.getBonus();
