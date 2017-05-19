@@ -28,11 +28,11 @@ public class Main {
         names = namesCapture.getNames();
         game.initGame(names);
         
-        
+        /**
         TreasureView treasure = new TreasureView();
         treasure.setTreasure(new Treasure ("prueba", 7, TreasureKind.ARMOR));
         treasure.setVisible(true);
         napakalakiView.setVisible(true);
-        
+        **/
     }   
 }
