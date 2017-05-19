@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * @author María Victoria Granados Pozo
  */
 public class NumericBadConsequence extends BadConsequence {
+    static final int MAXTREASURES = 10;
     private int nVisibleTreasures;
     private int nHiddenTreasures;
     
@@ -61,7 +62,7 @@ public class NumericBadConsequence extends BadConsequence {
     @Override
     public void substractVisibleTreasure(Treasure t) {
         if(nVisibleTreasures > 0)
-        nVisibleTreasures --;
+            nVisibleTreasures --;
     }
     
     /**

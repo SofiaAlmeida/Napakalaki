@@ -93,7 +93,7 @@ public class CardDealer {
         prize = new Prize(4, 1);
         unusedMonsters.add(new Monster("Demonios de Magaluf", 2, (SpecificBadConsequence) bc, prize));
         
-        bc = new NumericBadConsequence("Pierdes todos tus tesoros visibles", 0, BadConsequence.MAXTREASURES, 0);
+        bc = new NumericBadConsequence("Pierdes todos tus tesoros visibles", 0, NumericBadConsequence.MAXTREASURES, 0);
         prize = new Prize(3, 1);
         unusedMonsters.add(new Monster("El gorrón en el umbral", 13, (NumericBadConsequence) bc, prize));
         
@@ -171,7 +171,7 @@ public class CardDealer {
         unusedMonsters.add(new Monster("El mal indecible impronunciable", 10, (SpecificBadConsequence) bc, prize, -2));
         
         bc = new NumericBadConsequence("Pierdes tus tesoros visibles. Ja ja ja.", 0, 
-                BadConsequence.MAXTREASURES, 0);
+                NumericBadConsequence.MAXTREASURES, 0);
         prize = new Prize(2, 1);
         unusedMonsters.add(new Monster("Testigos Oculares", 6, (NumericBadConsequence) bc, prize, 2));
         

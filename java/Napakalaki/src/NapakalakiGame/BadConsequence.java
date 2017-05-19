@@ -7,7 +7,6 @@ import java.util.ArrayList;
  * @author María Victoria Granados Pozo
  */
 public abstract class BadConsequence {
-    static final int MAXTREASURES = 10;
     private String text;
     private int levels;
 

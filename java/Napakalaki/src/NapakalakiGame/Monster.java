@@ -74,15 +74,14 @@ public class Monster {
         return levelChangeAgainstCultistPlayer + getCombatLevel();
     }
     
-    //REVIEW: no sale en el diagrama de clases, ¿lo borramos?
     /**
      * 
      * Consultor del premio
      * @return Premio que se obtiene al ganar al monstruo
      */
-    /*public Prize getPrize() {
+    public Prize getPrize() {
         return prize;
-    }*/
+    }
     
     /**
      * 

@@ -13,7 +13,7 @@ public class DeathBadConsequence extends NumericBadConsequence {
      * @param t Descripción del mal rollo
      */
     DeathBadConsequence(String t) {
-        super(t, Player.MAXLEVEL, BadConsequence.MAXTREASURES, BadConsequence.MAXTREASURES);
+        super(t, Player.MAXLEVEL, NumericBadConsequence.MAXTREASURES, NumericBadConsequence.MAXTREASURES);
     }
     
     /**

@@ -62,7 +62,7 @@ public class SpecificBadConsequence extends BadConsequence {
      */
     @Override
     public void substractVisibleTreasure(Treasure t) {
-        specificVisibleTreasures.remove(t.getType());
+        specificVisibleTreasures.remove(specificVisibleTreasures.indexOf(t.getType()));
     }
         
     /**
@@ -72,7 +72,7 @@ public class SpecificBadConsequence extends BadConsequence {
      */
     @Override
     public void substractHiddenTreasure(Treasure t) {
-        specificHiddenTreasures.remove(t.getType());
+        specificHiddenTreasures.remove(specificHiddenTreasures.indexOf(t.getType()));
     }
     
         /**
