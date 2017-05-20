@@ -16,6 +16,7 @@ public class NapakalakiView extends javax.swing.JFrame {
 
     public void setNapakalaki(Napakalaki napakalaki){
         napakalakiModel = napakalaki;
+        currentPlayer.setNapakalaki(napakalakiModel);
         currentPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
         currentMonster.setMonster(napakalakiModel.getCurrentMonster());
     }
@@ -35,6 +36,11 @@ public class NapakalakiView extends javax.swing.JFrame {
         nextTurn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+        getContentPane().add(currentMonster);
+        currentMonster.setBounds(614, 12, 301, 155);
+        getContentPane().add(currentPlayer);
+        currentPlayer.setBounds(12, 12, 554, 397);
 
         meetMonster.setText("Meet the Monster");
         meetMonster.addActionListener(new java.awt.event.ActionListener() {
@@ -42,49 +48,16 @@ public class NapakalakiView extends javax.swing.JFrame {
                 meetMonsterActionPerformed(evt);
             }
         });
+        getContentPane().add(meetMonster);
+        meetMonster.setBounds(631, 360, 131, 27);
 
         combat.setText("Combat");
+        getContentPane().add(combat);
+        combat.setBounds(774, 360, 64, 27);
 
         nextTurn.setText("Next Turn");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(currentPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(currentMonster, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(meetMonster)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(combat)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(nextTurn)))
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(currentPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(20, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(currentMonster, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(meetMonster)
-                            .addComponent(combat)
-                            .addComponent(nextTurn))
-                        .addGap(42, 42, 42))))
-        );
+        getContentPane().add(nextTurn);
+        nextTurn.setBounds(844, 360, 79, 27);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

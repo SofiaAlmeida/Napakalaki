@@ -1,5 +1,6 @@
 package GUI;
 import NapakalakiGame.Treasure;
+import java.awt.Color;
 
 /**
  *
@@ -8,11 +9,30 @@ import NapakalakiGame.Treasure;
  */
 public class TreasureView extends javax.swing.JPanel {
     Treasure treasureModel;
+    boolean selected = false;
     /**
      * Creates new form TreasureView
      */
     public TreasureView() {
         initComponents();
+    }
+    
+    /**
+     * 
+     * Consultor de selected
+     * @return Devuelve si el tesoro está seleccionado
+     */
+    public boolean isSelected() {
+        return selected;
+    }
+    
+    /**
+     * 
+     * Consultor de treasureModel
+     * @return Devuelve el tesoro representado en la vista
+     */
+    public Treasure getTreasure() {
+        return treasureModel;
     }
     
     public void setTreasure(Treasure aTreasure) {
@@ -35,37 +55,39 @@ public class TreasureView extends javax.swing.JPanel {
         bonus = new javax.swing.JLabel();
         type = new javax.swing.JLabel();
 
-        name.setText("jLabel1");
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
+        setLayout(null);
 
-        bonus.setText("jLabel2");
+        name.setText("n");
+        add(name);
+        name.setBounds(29, 12, 85, 25);
 
-        type.setText("jLabel3");
+        bonus.setText("b");
+        add(bonus);
+        bonus.setBounds(29, 43, 85, 25);
+        bonus.getAccessibleContext().setAccessibleName("");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(type)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(bonus)
-                        .addComponent(name)))
-                .addContainerGap(162, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(name)
-                .addGap(26, 26, 26)
-                .addComponent(bonus)
-                .addGap(33, 33, 33)
-                .addComponent(type)
-                .addContainerGap(166, Short.MAX_VALUE))
-        );
+        type.setText("t");
+        add(type);
+        type.setBounds(29, 80, 85, 25);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        this.setBackground(Color.cyan);
+        if (selected == true) {
+            selected =false;
+            this.setOpaque(false);
+        }
+        else{
+            selected = true;
+            this.setOpaque(true);
+        }        
+        repaint();
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
