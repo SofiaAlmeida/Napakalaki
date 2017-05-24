@@ -20,19 +20,20 @@ public class Main {
         Napakalaki game = Napakalaki.getInstance();
         NapakalakiView napakalakiView = new NapakalakiView();
         Dice.createInstance(napakalakiView);
-        napakalakiView.setNapakalaki(game);
-        
         
         ArrayList<String> names;
         PlayerNamesCapture namesCapture = new PlayerNamesCapture(napakalakiView, true);
         names = namesCapture.getNames();
         game.initGame(names);
+        napakalakiView.setNapakalaki(game);
+        
+        napakalakiView.setVisible(true);
+        
         
         /**
         TreasureView treasure = new TreasureView();
         treasure.setTreasure(new Treasure ("prueba", 7, TreasureKind.ARMOR));
         treasure.setVisible(true);
-        napakalakiView.setVisible(true);
         **/
     }   
 }

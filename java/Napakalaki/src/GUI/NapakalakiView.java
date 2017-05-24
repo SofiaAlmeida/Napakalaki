@@ -1,4 +1,5 @@
 package GUI;
+import NapakalakiGame.Monster;
 import NapakalakiGame.Napakalaki;
 /**
  *
@@ -36,11 +37,9 @@ public class NapakalakiView extends javax.swing.JFrame {
         nextTurn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
-        getContentPane().add(currentMonster);
-        currentMonster.setBounds(614, 12, 301, 155);
-        getContentPane().add(currentPlayer);
-        currentPlayer.setBounds(12, 12, 554, 397);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(currentMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 301, 155));
+        getContentPane().add(currentPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 550, 340));
 
         meetMonster.setText("Meet the Monster");
         meetMonster.addActionListener(new java.awt.event.ActionListener() {
@@ -48,23 +47,31 @@ public class NapakalakiView extends javax.swing.JFrame {
                 meetMonsterActionPerformed(evt);
             }
         });
-        getContentPane().add(meetMonster);
-        meetMonster.setBounds(631, 360, 131, 27);
+        getContentPane().add(meetMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(631, 360, -1, -1));
 
         combat.setText("Combat");
-        getContentPane().add(combat);
-        combat.setBounds(774, 360, 64, 27);
+        combat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combatActionPerformed(evt);
+            }
+        });
+        getContentPane().add(combat, new org.netbeans.lib.awtextra.AbsoluteConstraints(774, 360, -1, -1));
 
         nextTurn.setText("Next Turn");
-        getContentPane().add(nextTurn);
-        nextTurn.setBounds(844, 360, 79, 27);
+        getContentPane().add(nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(844, 360, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void meetMonsterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetMonsterActionPerformed
-        // TODO add your handling code here:
+        currentMonster.setMonster(napakalakiModel.getCurrentMonster());
+        currentMonster.setVisible(true);               
+        setNapakalaki(napakalakiModel);
     }//GEN-LAST:event_meetMonsterActionPerformed
+
+    private void combatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combatActionPerformed
+        
+    }//GEN-LAST:event_combatActionPerformed
 
     /**
      * @param args the command line arguments
