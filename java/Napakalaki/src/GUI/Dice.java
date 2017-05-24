@@ -52,9 +52,9 @@ public class Dice extends javax.swing.JDialog {
       }
     };
   
+  //Puedes llamar al método pasandole dos cadenas
   public int nextNumber () {
-    return nextNumber ("Puedes llamar al método",
-            "Pasándole 2 cadenas como parámetros");
+    return nextNumber ("", "");
     
   }
   public int nextNumber (String message1, String message2) {

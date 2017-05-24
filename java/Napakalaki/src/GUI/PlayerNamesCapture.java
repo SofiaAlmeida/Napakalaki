@@ -45,6 +45,8 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
         BCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setFont(new java.awt.Font("Khmer OS", 0, 12)); // NOI18N
 
         Player1.setText("Player 1");
 
@@ -99,7 +101,7 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
                             .addComponent(name1, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                             .addComponent(name2)
                             .addComponent(name3))))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,11 +118,11 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Player3)
                     .addComponent(name3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BPlay)
-                    .addComponent(BCancel))
-                .addGap(54, 54, 54))
+                    .addComponent(BCancel)
+                    .addComponent(BPlay))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();

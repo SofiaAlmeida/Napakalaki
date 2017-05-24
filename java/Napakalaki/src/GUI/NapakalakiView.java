@@ -17,9 +17,13 @@ public class NapakalakiView extends javax.swing.JFrame {
 
     public void setNapakalaki(Napakalaki napakalaki){
         napakalakiModel = napakalaki;
-        currentPlayer.setNapakalaki(napakalakiModel);
         currentPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
         currentMonster.setMonster(napakalakiModel.getCurrentMonster());
+        
+        
+        currentPlayer.setNapakalaki(napakalakiModel);
+        repaint();
+        revalidate();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,15 +35,16 @@ public class NapakalakiView extends javax.swing.JFrame {
     private void initComponents() {
 
         currentMonster = new GUI.MonsterView();
-        currentPlayer = new GUI.PlayerView();
         meetMonster = new javax.swing.JButton();
         combat = new javax.swing.JButton();
         nextTurn = new javax.swing.JButton();
+        currentPlayer = new GUI.PlayerView();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1000, 1000));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(currentMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 301, 155));
-        getContentPane().add(currentPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 550, 340));
+        getContentPane().add(currentMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 210, 180));
 
         meetMonster.setText("Meet the Monster");
         meetMonster.addActionListener(new java.awt.event.ActionListener() {
@@ -47,7 +52,7 @@ public class NapakalakiView extends javax.swing.JFrame {
                 meetMonsterActionPerformed(evt);
             }
         });
-        getContentPane().add(meetMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(631, 360, -1, -1));
+        getContentPane().add(meetMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 420, -1, -1));
 
         combat.setText("Combat");
         combat.addActionListener(new java.awt.event.ActionListener() {
@@ -55,10 +60,11 @@ public class NapakalakiView extends javax.swing.JFrame {
                 combatActionPerformed(evt);
             }
         });
-        getContentPane().add(combat, new org.netbeans.lib.awtextra.AbsoluteConstraints(774, 360, -1, -1));
+        getContentPane().add(combat, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, -1, -1));
 
         nextTurn.setText("Next Turn");
-        getContentPane().add(nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(844, 360, -1, -1));
+        getContentPane().add(nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 420, -1, -1));
+        getContentPane().add(currentPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
