@@ -24,7 +24,20 @@ public class PlayerView extends javax.swing.JPanel {
         this.cultist.setVisible(false);
         //No se permite pulsar el botón antes de combatir 
         this.stealTreasure.enableInputMethods(false);
-        
+        this.discardAll.enableInputMethods(false);
+        this.discardTreasures.enableInputMethods(false);
+    }
+    
+    /**
+     * Activa los botones 
+     * 
+     * Llamar a esta función después de combatir
+     * REVIEW: ¿HABRÍA QUE CREAR OTRA PARA DESACTIVARLOS?
+     */
+    public void enableButtons() {
+        this.stealTreasure.enableInputMethods(true);
+        this.discardAll.enableInputMethods(true);
+        this.discardTreasures.enableInputMethods(true);
     }
     
     /**
@@ -143,6 +156,7 @@ public class PlayerView extends javax.swing.JPanel {
         enemy.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         enemy.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
+        stealTreasure.setBackground(new java.awt.Color(249, 159, 235));
         stealTreasure.setFont(new java.awt.Font("Khmer OS", 1, 12)); // NOI18N
         stealTreasure.setText("Steal Treasure\n");
         stealTreasure.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
@@ -161,6 +175,7 @@ public class PlayerView extends javax.swing.JPanel {
             }
         });
 
+        discardTreasures.setBackground(new java.awt.Color(249, 159, 236));
         discardTreasures.setFont(new java.awt.Font("Khmer OS", 1, 12)); // NOI18N
         discardTreasures.setText("Discard Treasure");
         discardTreasures.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +184,7 @@ public class PlayerView extends javax.swing.JPanel {
             }
         });
 
+        discardAll.setBackground(new java.awt.Color(249, 159, 236));
         discardAll.setFont(new java.awt.Font("Khmer OS", 1, 12)); // NOI18N
         discardAll.setText("Discard All Treasures");
         discardAll.setToolTipText("\n");
@@ -235,15 +251,14 @@ public class PlayerView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(hiddenTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(discardTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stealTreasure, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(discardAll, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(makeVisible, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(stealTreasure, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(discardAll, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(makeVisible, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-
-        stealTreasure.getAccessibleContext().setAccessibleName("Steal Treasure\n");
 
         getAccessibleContext().setAccessibleParent(this);
     }// </editor-fold>//GEN-END:initComponents
@@ -259,6 +274,10 @@ public class PlayerView extends javax.swing.JPanel {
         setPlayer(napakalakiModel.getCurrentPlayer());
     }//GEN-LAST:event_makeVisibleActionPerformed
 
+    /**
+     * Roba un tesoro de su enemigo
+     * @param evt 
+     */
     private void stealTreasureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stealTreasureActionPerformed
         Treasure t = playerModel.stealTreasure();
         if (t != null){

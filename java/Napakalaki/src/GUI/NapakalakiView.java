@@ -1,4 +1,5 @@
 package GUI;
+import NapakalakiGame.CombatResult;
 import NapakalakiGame.Monster;
 import NapakalakiGame.Napakalaki;
 /**
@@ -19,7 +20,7 @@ public class NapakalakiView extends javax.swing.JFrame {
         napakalakiModel = napakalaki;
         currentPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
         currentMonster.setMonster(napakalakiModel.getCurrentMonster());
-        
+        currentMonster.setVisible(false);
         
         currentPlayer.setNapakalaki(napakalakiModel);
         repaint();
@@ -39,47 +40,96 @@ public class NapakalakiView extends javax.swing.JFrame {
         combat = new javax.swing.JButton();
         nextTurn = new javax.swing.JButton();
         currentPlayer = new GUI.PlayerView();
+        showCombatResult = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 630));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(currentMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 210, 180));
+        getContentPane().add(currentMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 250, 190));
 
+        meetMonster.setBackground(new java.awt.Color(249, 159, 236));
         meetMonster.setText("Meet the Monster");
         meetMonster.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 meetMonsterActionPerformed(evt);
             }
         });
-        getContentPane().add(meetMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 510, -1, -1));
+        getContentPane().add(meetMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, -1, -1));
 
+        combat.setBackground(new java.awt.Color(249, 159, 236));
         combat.setText("Combat");
         combat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combatActionPerformed(evt);
             }
         });
-        getContentPane().add(combat, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 510, -1, -1));
+        getContentPane().add(combat, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 510, -1, -1));
 
+        nextTurn.setBackground(new java.awt.Color(249, 159, 236));
         nextTurn.setText("Next Turn");
-        getContentPane().add(nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 510, -1, -1));
+        nextTurn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextTurnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 510, -1, -1));
 
         currentPlayer.setPreferredSize(new java.awt.Dimension(600, 600));
         getContentPane().add(currentPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 650, 580));
+        getContentPane().add(showCombatResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, 280, 110));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Muestra el siguiente monstruo del mazo
+     * @param evt 
+     */
     private void meetMonsterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetMonsterActionPerformed
         currentMonster.setMonster(napakalakiModel.getCurrentMonster());
         currentMonster.setVisible(true);               
         setNapakalaki(napakalakiModel);
     }//GEN-LAST:event_meetMonsterActionPerformed
 
+    /**
+     * Lucha contra el monstruo y muestra el resultado
+     * @param evt 
+     */
     private void combatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combatActionPerformed
-        
+       CombatResult combatResult = napakalakiModel.developCombat();
+       String text = "";
+       switch (combatResult) {
+            case WINGAME : 
+              text += "\n\n       " + currentPlayer.getName();
+              text += "\n\n ¡¡¡ H A S   G A N A D O   L A   P A R T I D A !!!";
+              break;
+            case WIN :
+              text += "\n\n Ganaste el combate";
+              break;
+            case LOSE :
+              text += "\n\n Has perdido el combate, te toca cumplir el mal rollo";
+              break;
+            case LOSEANDCONVERT : 
+                text += "\n\n Has perdido el combate, y te" +
+                                     " has convertido en sectario"; 
+                text += "\n No obstante, tienes que cumplir" + 
+               " el mal rollo"; 
+                break; 
+          }
+       showCombatResult.setText(text);
+       currentPlayer.enableButtons();
+       
+       setNapakalaki(napakalakiModel);
     }//GEN-LAST:event_combatActionPerformed
+
+    /**
+     * Pasar de turno
+     * @param evt 
+     */
+    private void nextTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTurnActionPerformed
+        currentPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
+        setNapakalaki(napakalakiModel);
+    }//GEN-LAST:event_nextTurnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -94,5 +144,6 @@ public class NapakalakiView extends javax.swing.JFrame {
     private GUI.PlayerView currentPlayer;
     private javax.swing.JButton meetMonster;
     private javax.swing.JButton nextTurn;
+    private javax.swing.JLabel showCombatResult;
     // End of variables declaration//GEN-END:variables
 }
