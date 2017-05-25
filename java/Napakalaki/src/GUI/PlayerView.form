@@ -47,70 +47,63 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="hiddenTreasures" alignment="0" min="-2" pref="521" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="stealTreasure" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="makeVisible" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="discardTreasures" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="discardAll" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="stealTreasure" min="-2" pref="128" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="makeVisible" min="-2" pref="134" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="discardTreasures" pref="157" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="discardAll" min="-2" pref="170" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
+                  <Component id="hiddenTreasures" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="name" min="-2" pref="203" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="cultist" min="-2" pref="187" max="-2" attributes="0"/>
+                          <Component id="level" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
+                          <Component id="combatLevel" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
+                          <Component id="enemy" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
+                          <Component id="cultist" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="level" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
-                              <Component id="combatLevel" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
-                              <Component id="enemy" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="treasureSteal" min="-2" pref="187" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="visibleTreasures" alignment="0" min="-2" pref="521" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="treasureSteal" min="-2" pref="199" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="visibleTreasures" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="30" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="name" pref="27" max="32767" attributes="0"/>
-                  <Component id="cultist" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
+                      <Component id="name" min="-2" pref="27" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="level" min="-2" pref="27" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="combatLevel" min="-2" pref="27" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="enemy" min="-2" pref="27" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cultist" min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="treasureSteal" min="-2" pref="78" max="-2" attributes="0"/>
+                  <Component id="treasureSteal" min="-2" pref="142" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="visibleTreasures" pref="161" max="32767" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="visibleTreasures" min="-2" pref="161" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="hiddenTreasures" min="-2" pref="167" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="stealTreasure" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="makeVisible" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="discardTreasures" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="discardAll" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="discardTreasures" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="stealTreasure" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="discardAll" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="makeVisible" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -172,14 +165,27 @@
     </Component>
     <Component class="javax.swing.JButton" name="stealTreasure">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Steal Treasure"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Khmer OS" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Steal Treasure&#xa;"/>
+        <Property name="horizontalTextPosition" type="int" value="10"/>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Steal Treasure&#xa;"/>
+      </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stealTreasureActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="makeVisible">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="eb" green="9e" red="fa" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Khmer OS" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Make Visible"/>
       </Properties>
       <Events>
@@ -188,7 +194,10 @@
     </Component>
     <Component class="javax.swing.JButton" name="discardTreasures">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Discard Treasures"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Khmer OS" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Discard Treasure"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="discardTreasuresActionPerformed"/>
@@ -196,7 +205,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="discardAll">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Khmer OS" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Discard All Treasures"/>
+        <Property name="toolTipText" type="java.lang.String" value="&#xa;"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="discardAllActionPerformed"/>
@@ -215,6 +228,11 @@
       </Properties>
     </Component>
     <Component class="GUI.TreasureView" name="treasureSteal">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cf" green="7d" red="75" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="visibleTreasures">
       <Properties>
@@ -235,9 +253,6 @@
           </Border>
         </Property>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Hidden Treasures&#xa;"/>
-      </AccessibilityProperties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
     </Container>

@@ -41,10 +41,10 @@ public class NapakalakiView extends javax.swing.JFrame {
         currentPlayer = new GUI.PlayerView();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 1000));
+        setPreferredSize(new java.awt.Dimension(900, 630));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(currentMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 210, 180));
+        getContentPane().add(currentMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 210, 180));
 
         meetMonster.setText("Meet the Monster");
         meetMonster.addActionListener(new java.awt.event.ActionListener() {
@@ -52,7 +52,7 @@ public class NapakalakiView extends javax.swing.JFrame {
                 meetMonsterActionPerformed(evt);
             }
         });
-        getContentPane().add(meetMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 420, -1, -1));
+        getContentPane().add(meetMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 510, -1, -1));
 
         combat.setText("Combat");
         combat.addActionListener(new java.awt.event.ActionListener() {
@@ -60,11 +60,13 @@ public class NapakalakiView extends javax.swing.JFrame {
                 combatActionPerformed(evt);
             }
         });
-        getContentPane().add(combat, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, -1, -1));
+        getContentPane().add(combat, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 510, -1, -1));
 
         nextTurn.setText("Next Turn");
-        getContentPane().add(nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 420, -1, -1));
-        getContentPane().add(currentPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 510, -1, -1));
+
+        currentPlayer.setPreferredSize(new java.awt.Dimension(600, 600));
+        getContentPane().add(currentPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 650, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
