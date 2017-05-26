@@ -55,7 +55,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="makeVisible" min="-2" pref="134" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="discardTreasures" pref="157" max="32767" attributes="0"/>
+                      <Component id="discardTreasures" min="-2" pref="157" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="discardAll" min="-2" pref="170" max="-2" attributes="0"/>
                   </Group>

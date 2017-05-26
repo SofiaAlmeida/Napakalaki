@@ -41,24 +41,24 @@ public class PlayerView extends javax.swing.JPanel {
     }
     
     public void enableSteal() {
-        this.stealTreasure.enableInputMethods(true);
+        this.stealTreasure.setEnabled(true);
     }
     
     public void enableMakeVisble() {
-        this.makeVisible.enableInputMethods(true);
+        this.makeVisible.setEnabled(true);
     }
     
     public void disableDiscards() {
-        this.discardAll.enableInputMethods(false);
-        this.discardTreasures.enableInputMethods(false);
+        this.discardAll.setEnabled(false);
+        this.discardTreasures.setEnabled(false);
     }
     
     public void disableSteal() {
-        this.stealTreasure.enableInputMethods(false);
+        this.stealTreasure.setEnabled(false);
     }
     //VER COLORES
     public void disableMakeVisble() {
-        this.makeVisible.enableInputMethods(false);
+        this.makeVisible.setEnabled(true);
         //this.makeVisible.setBackground(Color.color(182, 100, 168));
                 //hsb(309, 113, 179));
     }
@@ -238,7 +238,7 @@ public class PlayerView extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(makeVisible, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(discardTreasures, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                        .addComponent(discardTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(discardAll, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(hiddenTreasures, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
