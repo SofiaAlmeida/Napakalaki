@@ -45,38 +45,49 @@ public class NapakalakiView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(currentMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 250, 190));
+
+        currentMonster.setMaximumSize(new java.awt.Dimension(268, 225));
+        currentMonster.setMinimumSize(new java.awt.Dimension(268, 225));
+        getContentPane().add(currentMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 250, 240));
 
         meetMonster.setBackground(new java.awt.Color(249, 159, 236));
+        meetMonster.setFont(new java.awt.Font("Khmer OS System", 1, 12)); // NOI18N
         meetMonster.setText("Meet the Monster");
+        meetMonster.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         meetMonster.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 meetMonsterActionPerformed(evt);
             }
         });
-        getContentPane().add(meetMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, -1, -1));
+        getContentPane().add(meetMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, 160, -1));
 
         combat.setBackground(new java.awt.Color(249, 159, 236));
+        combat.setFont(new java.awt.Font("Khmer OS System", 1, 12)); // NOI18N
         combat.setText("Combat");
+        combat.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         combat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combatActionPerformed(evt);
             }
         });
-        getContentPane().add(combat, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 510, -1, -1));
+        getContentPane().add(combat, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 510, -1, -1));
 
         nextTurn.setBackground(new java.awt.Color(249, 159, 236));
+        nextTurn.setFont(new java.awt.Font("Khmer OS System", 1, 12)); // NOI18N
         nextTurn.setText("Next Turn");
+        nextTurn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         nextTurn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextTurnActionPerformed(evt);
             }
         });
-        getContentPane().add(nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 510, -1, -1));
+        getContentPane().add(nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 510, -1, -1));
 
         currentPlayer.setPreferredSize(new java.awt.Dimension(600, 600));
         getContentPane().add(currentPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 650, 580));
-        getContentPane().add(showCombatResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, 280, 110));
+
+        showCombatResult.setMaximumSize(new java.awt.Dimension(280, 200));
+        getContentPane().add(showCombatResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, 280, 200));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -90,7 +101,6 @@ public class NapakalakiView extends javax.swing.JFrame {
         currentMonster.setVisible(true);
         currentPlayer.disableMakeVisble();
         currentPlayer.disableDiscards();
-        setNapakalaki(napakalakiModel);
     }//GEN-LAST:event_meetMonsterActionPerformed
 
     /**
@@ -130,8 +140,8 @@ public class NapakalakiView extends javax.swing.JFrame {
      * @param evt 
      */
     private void nextTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTurnActionPerformed
-        currentPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
-        setNapakalaki(napakalakiModel);
+        if(napakalakiModel.nextTurn())
+            setNapakalaki(napakalakiModel);
     }//GEN-LAST:event_nextTurnActionPerformed
 
     /**

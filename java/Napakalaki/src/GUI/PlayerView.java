@@ -29,15 +29,9 @@ public class PlayerView extends javax.swing.JPanel {
         this.discardTreasures.enableInputMethods(false);
     }
     
-    /**
-     * Activa los botones 
-     * 
-     * Llamar a esta función después de combatir
-     * REVIEW: ¿HABRÍA QUE CREAR OTRA PARA DESACTIVARLOS?
-     */
     public void enableDiscards() {
-        this.discardAll.enableInputMethods(true);
-        this.discardTreasures.enableInputMethods(true);
+        this.discardAll.setEnabled(true);
+        this.discardTreasures.setEnabled(true);;
     }
     
     public void enableSteal() {
@@ -56,11 +50,9 @@ public class PlayerView extends javax.swing.JPanel {
     public void disableSteal() {
         this.stealTreasure.setEnabled(false);
     }
-    //VER COLORES
+    
     public void disableMakeVisble() {
         this.makeVisible.setEnabled(true);
-        //this.makeVisible.setBackground(Color.color(182, 100, 168));
-                //hsb(309, 113, 179));
     }
     
     /**

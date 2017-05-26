@@ -22,8 +22,8 @@ public class PrizeView extends javax.swing.JPanel {
     
     public void setPrize(Prize aPrize){
         prizeModel = aPrize;
-        this.level.setText("Niveles: " + prizeModel.getLevels());
-        this.treasures.setText("Tesoros: " + prizeModel.getTreasures());
+        this.level.setText("<html>Niveles: " + prizeModel.getLevels());
+        this.treasures.setText("<html>Tesoros: " + prizeModel.getTreasures());
         repaint();
     }
 
@@ -44,9 +44,9 @@ public class PrizeView extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(treasures, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                    .addComponent(treasures, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
                     .addComponent(level, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
