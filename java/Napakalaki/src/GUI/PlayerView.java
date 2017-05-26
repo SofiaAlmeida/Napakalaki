@@ -5,7 +5,6 @@ import NapakalakiGame.Player;
 import NapakalakiGame.Treasure;
 import java.awt.Component;
 import java.util.ArrayList;
-import javafx.scene.paint.Color;
 import javax.swing.JPanel;
 
 /**
