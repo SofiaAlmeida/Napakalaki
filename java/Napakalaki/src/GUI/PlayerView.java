@@ -5,6 +5,7 @@ import NapakalakiGame.Player;
 import NapakalakiGame.Treasure;
 import java.awt.Component;
 import java.util.ArrayList;
+import javafx.scene.paint.Color;
 import javax.swing.JPanel;
 
 /**
@@ -34,10 +35,32 @@ public class PlayerView extends javax.swing.JPanel {
      * Llamar a esta función después de combatir
      * REVIEW: ¿HABRÍA QUE CREAR OTRA PARA DESACTIVARLOS?
      */
-    public void enableButtons() {
-        this.stealTreasure.enableInputMethods(true);
+    public void enableDiscards() {
         this.discardAll.enableInputMethods(true);
         this.discardTreasures.enableInputMethods(true);
+    }
+    
+    public void enableSteal() {
+        this.stealTreasure.enableInputMethods(true);
+    }
+    
+    public void enableMakeVisble() {
+        this.makeVisible.enableInputMethods(true);
+    }
+    
+    public void disableDiscards() {
+        this.discardAll.enableInputMethods(false);
+        this.discardTreasures.enableInputMethods(false);
+    }
+    
+    public void disableSteal() {
+        this.stealTreasure.enableInputMethods(false);
+    }
+    //VER COLORES
+    public void disableMakeVisble() {
+        this.makeVisible.enableInputMethods(false);
+        //this.makeVisible.setBackground(Color.color(182, 100, 168));
+                //hsb(309, 113, 179));
     }
     
     /**

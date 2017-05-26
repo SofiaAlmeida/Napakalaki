@@ -87,7 +87,9 @@ public class NapakalakiView extends javax.swing.JFrame {
      */
     private void meetMonsterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetMonsterActionPerformed
         currentMonster.setMonster(napakalakiModel.getCurrentMonster());
-        currentMonster.setVisible(true);               
+        currentMonster.setVisible(true);
+        currentPlayer.disableMakeVisble();
+        currentPlayer.disableDiscards();
         setNapakalaki(napakalakiModel);
     }//GEN-LAST:event_meetMonsterActionPerformed
 
@@ -117,7 +119,8 @@ public class NapakalakiView extends javax.swing.JFrame {
                 break; 
           }
        showCombatResult.setText(text);
-       currentPlayer.enableButtons();
+       currentPlayer.enableDiscards();
+       currentPlayer.enableSteal();
        
        setNapakalaki(napakalakiModel);
     }//GEN-LAST:event_combatActionPerformed
