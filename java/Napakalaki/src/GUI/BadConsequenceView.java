@@ -61,7 +61,7 @@ public class BadConsequenceView extends javax.swing.JPanel {
         specificHidden = new javax.swing.JPanel();
         specificVisible = new javax.swing.JPanel();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder("Pending Bad Consequence\n"));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bad Consequence\n", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         setMaximumSize(new java.awt.Dimension(385, 273));
         setMinimumSize(new java.awt.Dimension(350, 250));
         setPreferredSize(new java.awt.Dimension(350, 273));
@@ -127,8 +127,7 @@ public class BadConsequenceView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(specificVisible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(specificHidden, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(specificHidden, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -37,7 +37,7 @@ public class PlayerView extends javax.swing.JPanel {
         this.stealTreasure.setEnabled(true);
     }
     
-    public void enableMakeVisble() {
+    public void enableMakeVisible() {
         this.makeVisible.setEnabled(true);
     }
     
@@ -50,7 +50,7 @@ public class PlayerView extends javax.swing.JPanel {
         this.stealTreasure.setEnabled(false);
     }
     
-    public void disableMakeVisble() {
+    public void disableMakeVisible() {
         this.makeVisible.setEnabled(true);
     }
     

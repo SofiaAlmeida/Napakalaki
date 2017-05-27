@@ -21,8 +21,7 @@ public class NapakalakiView extends javax.swing.JFrame {
         napakalakiModel = napakalaki;
         currentPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
         currentMonster.setMonster(napakalakiModel.getCurrentMonster());
-        currentMonster.setVisible(false);
-        
+        currentMonster.setVisible(false);        
         currentPlayer.setNapakalaki(napakalakiModel);
         repaint();
         revalidate();
@@ -36,20 +35,20 @@ public class NapakalakiView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        currentMonster = new GUI.MonsterView();
         meetMonster = new javax.swing.JButton();
         combat = new javax.swing.JButton();
         nextTurn = new javax.swing.JButton();
         currentPlayer = new GUI.PlayerView();
         showCombatResult = new javax.swing.JLabel();
+        currentMonster = new GUI.MonsterView();
+        pendingBadConsequenceView1 = new GUI.PendingBadConsequenceView();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1103, 738));
+        setMinimumSize(new java.awt.Dimension(1103, 738));
+        setPreferredSize(new java.awt.Dimension(1103, 738));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        currentMonster.setMaximumSize(new java.awt.Dimension(268, 225));
-        currentMonster.setMinimumSize(new java.awt.Dimension(268, 225));
-        getContentPane().add(currentMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 250, 240));
 
         meetMonster.setBackground(new java.awt.Color(249, 159, 236));
         meetMonster.setFont(new java.awt.Font("Khmer OS System", 1, 12)); // NOI18N
@@ -60,7 +59,7 @@ public class NapakalakiView extends javax.swing.JFrame {
                 meetMonsterActionPerformed(evt);
             }
         });
-        getContentPane().add(meetMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, 160, -1));
+        getContentPane().add(meetMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 610, 160, -1));
 
         combat.setBackground(new java.awt.Color(249, 159, 236));
         combat.setFont(new java.awt.Font("Khmer OS System", 1, 12)); // NOI18N
@@ -71,7 +70,7 @@ public class NapakalakiView extends javax.swing.JFrame {
                 combatActionPerformed(evt);
             }
         });
-        getContentPane().add(combat, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 510, -1, -1));
+        getContentPane().add(combat, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 610, -1, -1));
 
         nextTurn.setBackground(new java.awt.Color(249, 159, 236));
         nextTurn.setFont(new java.awt.Font("Khmer OS System", 1, 12)); // NOI18N
@@ -82,13 +81,16 @@ public class NapakalakiView extends javax.swing.JFrame {
                 nextTurnActionPerformed(evt);
             }
         });
-        getContentPane().add(nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 510, -1, -1));
+        getContentPane().add(nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 610, -1, -1));
 
         currentPlayer.setPreferredSize(new java.awt.Dimension(600, 600));
         getContentPane().add(currentPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 650, 580));
 
         showCombatResult.setMaximumSize(new java.awt.Dimension(280, 200));
-        getContentPane().add(showCombatResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, 280, 200));
+        showCombatResult.setMinimumSize(new java.awt.Dimension(280, 200));
+        getContentPane().add(showCombatResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 610, 400, 70));
+        getContentPane().add(currentMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 290, 250));
+        getContentPane().add(pendingBadConsequenceView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -100,8 +102,10 @@ public class NapakalakiView extends javax.swing.JFrame {
     private void meetMonsterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetMonsterActionPerformed
         currentMonster.setMonster(napakalakiModel.getCurrentMonster());
         currentMonster.setVisible(true);
-        currentPlayer.disableMakeVisble();
+        currentPlayer.disableMakeVisible();
         currentPlayer.disableDiscards();
+        nextTurn.setEnabled(false);
+        combat.setEnabled(true);
     }//GEN-LAST:event_meetMonsterActionPerformed
 
     /**
@@ -110,7 +114,7 @@ public class NapakalakiView extends javax.swing.JFrame {
      */
     private void combatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combatActionPerformed
        CombatResult combatResult = napakalakiModel.developCombat();
-       String text = "";
+       String text = "<html>";
        switch (combatResult) {
             case WINGAME : 
               text += "\n\n       " + currentPlayer.getName();
@@ -132,6 +136,8 @@ public class NapakalakiView extends javax.swing.JFrame {
        showCombatResult.setText(text);
        currentPlayer.enableDiscards();
        currentPlayer.enableSteal();
+       currentPlayer.enableMakeVisible();
+       nextTurn.setEnabled(true);
        
        setNapakalaki(napakalakiModel);
     }//GEN-LAST:event_combatActionPerformed
@@ -158,6 +164,7 @@ public class NapakalakiView extends javax.swing.JFrame {
     private GUI.PlayerView currentPlayer;
     private javax.swing.JButton meetMonster;
     private javax.swing.JButton nextTurn;
+    private GUI.PendingBadConsequenceView pendingBadConsequenceView1;
     private javax.swing.JLabel showCombatResult;
     // End of variables declaration//GEN-END:variables
 }
