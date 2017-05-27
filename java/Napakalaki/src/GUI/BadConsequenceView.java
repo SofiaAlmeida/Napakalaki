@@ -39,12 +39,16 @@ public class BadConsequenceView extends javax.swing.JPanel {
                         ((NumericBadConsequence) bcModel).getNHiddenTreasures());
         }
         else if (bcModel instanceof SpecificBadConsequence) {
-            
+            //No se si basta con ponerlo con un jLabel y mostrar cada uno de los tipos
+            //De tesoros que sean por que con jPanel creo que no hace falta puesto que 
+            //Que solamente es el nombre y no la vista entera del tesoro como player
+            //this.specificVisible.setText
         }
         
         repaint();
     }
-        
+      
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
