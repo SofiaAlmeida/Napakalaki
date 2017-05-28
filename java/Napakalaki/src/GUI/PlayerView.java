@@ -23,14 +23,14 @@ public class PlayerView extends javax.swing.JPanel {
         this.treasureSteal.setVisible(false);
         this.cultist.setVisible(false);
         //No se permite pulsar el botón antes de combatir 
-        this.stealTreasure.enableInputMethods(false);
-        this.discardAll.enableInputMethods(false);
-        this.discardTreasures.enableInputMethods(false);
+        this.stealTreasure.setEnabled(false);
+        this.discardAll.setEnabled(false);
+        this.discardTreasures.setEnabled(false);
     }
     
     public void enableDiscards() {
         this.discardAll.setEnabled(true);
-        this.discardTreasures.setEnabled(true);;
+        this.discardTreasures.setEnabled(true);
     }
     
     public void enableSteal() {
@@ -51,9 +51,9 @@ public class PlayerView extends javax.swing.JPanel {
     }
     
     public void disableMakeVisible() {
-        this.makeVisible.setEnabled(true);
+        this.makeVisible.setEnabled(false);
     }
-    
+        
     /**
      * 
      * Muestra la lista en el panel ambos pasados como parámetro
@@ -64,7 +64,7 @@ public class PlayerView extends javax.swing.JPanel {
         //Elimina la información anterior
         aPanel.removeAll();
         //Recorremos la lista y añadimos cada una de las vistas para cada tesoro
-        for (Treasure t : aList){
+        for (Treasure t : aList) {
             TreasureView aTreasureView = new TreasureView();
             aTreasureView.setTreasure(t);
             aTreasureView.setVisible(true);

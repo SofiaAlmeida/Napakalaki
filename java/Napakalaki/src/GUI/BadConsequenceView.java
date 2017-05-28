@@ -16,17 +16,20 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author victoria
+ * @author Sofía Almeida Bruno
+ * @author María Victoria Granados Pozo
  */
 public class BadConsequenceView extends javax.swing.JPanel {
     BadConsequence bcModel;
+    
     /**
      * Creates new form BadConsequenceView
      */
     public BadConsequenceView() {
         initComponents();
     }
-     //REVIEEEEW
+    
+     //REVIEW
     public void setBadConsequence(BadConsequence bc){
         bcModel = bc;
         this.text.setText(bcModel.getText());
@@ -39,10 +42,14 @@ public class BadConsequenceView extends javax.swing.JPanel {
                         ((NumericBadConsequence) bcModel).getNHiddenTreasures());
         }
         else if (bcModel instanceof SpecificBadConsequence) {
-            //No se si basta con ponerlo con un jLabel y mostrar cada uno de los tipos
-            //De tesoros que sean por que con jPanel creo que no hace falta puesto que 
+            //No sé si basta con ponerlo con un jLabel y mostrar cada uno de los tipos
+            //De tesoros que sean porque con jPanel creo que no hace falta puesto que 
             //Que solamente es el nombre y no la vista entera del tesoro como player
-            //this.specificVisible.setText
+            
+            // Creo que tienes razón y además pienso que si esto va a ser así podemos usar
+            // el mismo jLabel en los dos casos 
+            this.specificVisible.setText("Tesoros visibles: " + ((SpecificBadConsequence) bcModel).getSpecificVisibleTreasures());
+            this.specificVisible.setText("Tesoros visibles: " + ((SpecificBadConsequence) bcModel).getSpecificVisibleTreasures());
         }
         
         repaint();
@@ -63,7 +70,7 @@ public class BadConsequenceView extends javax.swing.JPanel {
         nVisibleTreasures = new javax.swing.JLabel();
         nHiddenTreasures = new javax.swing.JLabel();
         specificHidden = new javax.swing.JPanel();
-        specificVisible = new javax.swing.JPanel();
+        specificVisible = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bad Consequence\n", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         setMaximumSize(new java.awt.Dimension(385, 273));
@@ -86,18 +93,7 @@ public class BadConsequenceView extends javax.swing.JPanel {
 
         specificHidden.setBorder(javax.swing.BorderFactory.createTitledBorder("Hidden Treasures\n"));
 
-        specificVisible.setBorder(javax.swing.BorderFactory.createTitledBorder("Visible Treasures\n\n"));
-
-        javax.swing.GroupLayout specificVisibleLayout = new javax.swing.GroupLayout(specificVisible);
-        specificVisible.setLayout(specificVisibleLayout);
-        specificVisibleLayout.setHorizontalGroup(
-            specificVisibleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        specificVisibleLayout.setVerticalGroup(
-            specificVisibleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
+        specificVisible.setBorder(javax.swing.BorderFactory.createTitledBorder("Visible Treasures"));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -106,11 +102,11 @@ public class BadConsequenceView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(specificVisible, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(specificHidden, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(specificVisible, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(nVisibleTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
@@ -129,7 +125,7 @@ public class BadConsequenceView extends javax.swing.JPanel {
                     .addComponent(nVisibleTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nHiddenTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(specificVisible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(specificVisible, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(specificHidden, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -141,7 +137,7 @@ public class BadConsequenceView extends javax.swing.JPanel {
     private javax.swing.JLabel nHiddenTreasures;
     private javax.swing.JLabel nVisibleTreasures;
     private javax.swing.JPanel specificHidden;
-    private javax.swing.JPanel specificVisible;
+    private javax.swing.JLabel specificVisible;
     private javax.swing.JLabel text;
     // End of variables declaration//GEN-END:variables
 }

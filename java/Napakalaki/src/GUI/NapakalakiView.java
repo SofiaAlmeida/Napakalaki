@@ -17,9 +17,10 @@ public class NapakalakiView extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void setNapakalaki(Napakalaki napakalaki){
+    public void setNapakalaki(Napakalaki napakalaki) {
         napakalakiModel = napakalaki;
         currentPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
+        combat.setEnabled(false); //No se permite combatir antes de ver al monstruo
         currentMonster.setMonster(napakalakiModel.getCurrentMonster());
         currentMonster.setVisible(false);        
         currentPlayer.setNapakalaki(napakalakiModel);
@@ -134,12 +135,14 @@ public class NapakalakiView extends javax.swing.JFrame {
                 break; 
           }
        showCombatResult.setText(text);
+       pendingBadConsequenceView1.setPendingBadConsequence(napakalakiModel.getCurrentPlayer().getPendingBc());
        currentPlayer.enableDiscards();
        currentPlayer.enableSteal();
        currentPlayer.enableMakeVisible();
+       meetMonster.setEnabled(false);
        nextTurn.setEnabled(true);
        
-       setNapakalaki(napakalakiModel);
+      // setNapakalaki(napakalakiModel);
     }//GEN-LAST:event_combatActionPerformed
 
     /**

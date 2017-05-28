@@ -79,6 +79,16 @@ public class Player {
     public Player getEnemy() {
         return enemy;
     }
+    
+    /**
+     * 
+     * Consultor del mal rollo
+     * @return mal rollo pendiente
+     */
+    public BadConsequence getPendingBc() {
+        return pendingBadConsequence;
+    }
+    
      /**
       * 
       * Da vida al jugador
@@ -256,7 +266,8 @@ public class Player {
         int monsterLevel = getOponentLevel(m);
         if (!canISteal) {
            Dice dice = Dice.getInstance();
-           int number = dice.nextNumber();
+           int number = dice.nextNumber("", 
+                                "Si sale un número menor que 3 se sumará el nivel de tu enemigo al del monstruo");
            
            if (number < 3){
                int enemyLevel = enemy.getCombatLevel();
@@ -344,7 +355,8 @@ public class Player {
         bringToLife();
         Treasure treasure = dealer.nextTreasure();
         hiddenTreasures.add(treasure);
-        int number = dice.nextNumber();
+        int number = dice.nextNumber("Si sacas un 1 tendrás un tesoro, si sacas un 6",
+                 " tres tesoros, en otro caso tendrás 2");
         
         if (number > 1){
             treasure = dealer.nextTreasure();
@@ -476,7 +488,7 @@ public class Player {
      */
     protected boolean shouldConvert() {
         Dice dice = Dice.getInstance();
-        int number = dice.nextNumber();
+        int number = dice.nextNumber("", "Si sacas un 6 te convertirás en sectario");
         
         return number == 6;
     } 

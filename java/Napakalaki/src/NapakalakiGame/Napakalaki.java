@@ -163,7 +163,6 @@ public class Napakalaki {
         nextTurn();
     }
     
-    
     /**
      * 
      * Consultor del jugador actual
