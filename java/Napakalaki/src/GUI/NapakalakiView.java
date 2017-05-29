@@ -21,6 +21,7 @@ public class NapakalakiView extends javax.swing.JFrame {
         napakalakiModel = napakalaki;
         currentPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
         combat.setEnabled(false); //No se permite combatir antes de ver al monstruo
+        nextTurn.setEnabled(false); //No se permite pasar de turno antes de ver al monstruo
         currentMonster.setMonster(napakalakiModel.getCurrentMonster());
         currentMonster.setVisible(false);        
         currentPlayer.setNapakalaki(napakalakiModel);
@@ -42,7 +43,6 @@ public class NapakalakiView extends javax.swing.JFrame {
         currentPlayer = new GUI.PlayerView();
         showCombatResult = new javax.swing.JLabel();
         currentMonster = new GUI.MonsterView();
-        pendingBadConsequenceView1 = new GUI.PendingBadConsequenceView();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1103, 738));
@@ -91,7 +91,6 @@ public class NapakalakiView extends javax.swing.JFrame {
         showCombatResult.setMinimumSize(new java.awt.Dimension(280, 200));
         getContentPane().add(showCombatResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 610, 400, 70));
         getContentPane().add(currentMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 290, 250));
-        getContentPane().add(pendingBadConsequenceView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -134,11 +133,12 @@ public class NapakalakiView extends javax.swing.JFrame {
                " el mal rollo"; 
                 break; 
           }
+       
        showCombatResult.setText(text);
-       pendingBadConsequenceView1.setPendingBadConsequence(napakalakiModel.getCurrentPlayer().getPendingBc());
        currentPlayer.enableDiscards();
        currentPlayer.enableSteal();
        currentPlayer.enableMakeVisible();
+       combat.setEnabled(false);
        meetMonster.setEnabled(false);
        nextTurn.setEnabled(true);
        
@@ -150,8 +150,11 @@ public class NapakalakiView extends javax.swing.JFrame {
      * @param evt 
      */
     private void nextTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTurnActionPerformed
-        if(napakalakiModel.nextTurn())
+        if(napakalakiModel.nextTurn()) {
             setNapakalaki(napakalakiModel);
+            meetMonster.setEnabled(true);
+            showCombatResult.setVisible(false);
+        }
     }//GEN-LAST:event_nextTurnActionPerformed
 
     /**
@@ -167,7 +170,6 @@ public class NapakalakiView extends javax.swing.JFrame {
     private GUI.PlayerView currentPlayer;
     private javax.swing.JButton meetMonster;
     private javax.swing.JButton nextTurn;
-    private GUI.PendingBadConsequenceView pendingBadConsequenceView1;
     private javax.swing.JLabel showCombatResult;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 
 import NapakalakiGame.BadConsequence;
@@ -36,9 +31,9 @@ public class BadConsequenceView extends javax.swing.JPanel {
         this.level.setText("Niveles: " + bcModel.getLevels());
         if (bcModel instanceof NumericBadConsequence) {
             // Este caso es el utilizado también para los DeathBadConsequence
-            this.nVisibleTreasures.setText("Tesoros visibles: " + 
+            this.visibleTreasures.setText("Tesoros visibles: " + 
                         ((NumericBadConsequence) bcModel).getNVisibleTreasures());
-            this.nHiddenTreasures.setText("Tesoros ocultos: " + 
+            this.hiddenTreasures.setText("Tesoros ocultos: " + 
                         ((NumericBadConsequence) bcModel).getNHiddenTreasures());
         }
         else if (bcModel instanceof SpecificBadConsequence) {
@@ -48,8 +43,8 @@ public class BadConsequenceView extends javax.swing.JPanel {
             
             // Creo que tienes razón y además pienso que si esto va a ser así podemos usar
             // el mismo jLabel en los dos casos 
-            this.specificVisible.setText("Tesoros visibles: " + ((SpecificBadConsequence) bcModel).getSpecificVisibleTreasures());
-            this.specificVisible.setText("Tesoros visibles: " + ((SpecificBadConsequence) bcModel).getSpecificVisibleTreasures());
+            this.visibleTreasures.setText("Tesoros visibles: " + ((SpecificBadConsequence) bcModel).getSpecificVisibleTreasures());
+            this.visibleTreasures.setText("Tesoros visibles: " + ((SpecificBadConsequence) bcModel).getSpecificVisibleTreasures());
         }
         
         repaint();
@@ -67,10 +62,8 @@ public class BadConsequenceView extends javax.swing.JPanel {
 
         text = new javax.swing.JLabel();
         level = new javax.swing.JLabel();
-        nVisibleTreasures = new javax.swing.JLabel();
-        nHiddenTreasures = new javax.swing.JLabel();
-        specificHidden = new javax.swing.JPanel();
-        specificVisible = new javax.swing.JLabel();
+        visibleTreasures = new javax.swing.JLabel();
+        hiddenTreasures = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bad Consequence\n", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         setMaximumSize(new java.awt.Dimension(385, 273));
@@ -82,18 +75,9 @@ public class BadConsequenceView extends javax.swing.JPanel {
 
         level.setFont(new java.awt.Font("Khmer OS", 0, 12)); // NOI18N
 
-        nVisibleTreasures.setBorder(javax.swing.BorderFactory.createTitledBorder("Visible Treasures\n"));
-        nVisibleTreasures.setMaximumSize(new java.awt.Dimension(33, 143));
-        nVisibleTreasures.setMinimumSize(new java.awt.Dimension(33, 143));
-        nVisibleTreasures.setPreferredSize(new java.awt.Dimension(33, 143));
+        visibleTreasures.setBorder(javax.swing.BorderFactory.createTitledBorder("Visible Treasures"));
 
-        nHiddenTreasures.setBorder(javax.swing.BorderFactory.createTitledBorder("Hidden Treasures\n"));
-        nHiddenTreasures.setMaximumSize(new java.awt.Dimension(33, 143));
-        nHiddenTreasures.setMinimumSize(new java.awt.Dimension(33, 143));
-
-        specificHidden.setBorder(javax.swing.BorderFactory.createTitledBorder("Hidden Treasures\n"));
-
-        specificVisible.setBorder(javax.swing.BorderFactory.createTitledBorder("Visible Treasures"));
+        hiddenTreasures.setBorder(javax.swing.BorderFactory.createTitledBorder("Hidden Treasures"));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -102,42 +86,38 @@ public class BadConsequenceView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(specificVisible, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(specificHidden, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(nVisibleTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(nHiddenTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(visibleTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hiddenTreasures, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nVisibleTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nHiddenTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(specificVisible, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(specificHidden, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(visibleTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(hiddenTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(54, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel hiddenTreasures;
     private javax.swing.JLabel level;
-    private javax.swing.JLabel nHiddenTreasures;
-    private javax.swing.JLabel nVisibleTreasures;
-    private javax.swing.JPanel specificHidden;
-    private javax.swing.JLabel specificVisible;
     private javax.swing.JLabel text;
+    private javax.swing.JLabel visibleTreasures;
     // End of variables declaration//GEN-END:variables
 }

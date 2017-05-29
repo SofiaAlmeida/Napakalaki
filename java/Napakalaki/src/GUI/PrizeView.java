@@ -9,7 +9,8 @@ import NapakalakiGame.Prize;
 
 /**
  *
- * @author victoria
+ * @author Sofía Almeida Bruno
+ * @author María Victoria Granados Pozo
  */
 public class PrizeView extends javax.swing.JPanel {
     Prize prizeModel;
