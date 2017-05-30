@@ -37,9 +37,9 @@ public class TreasureView extends javax.swing.JPanel {
     
     public void setTreasure(Treasure aTreasure) {
         treasureModel = aTreasure;
-        this.name.setText("<html>" + treasureModel.getName());
-        this.bonus.setText("<html>Bonus: " + treasureModel.getBonus());
-        this.type.setText("<html>Tipo: " + treasureModel.getType());
+        this.name.setText("<html>" + treasureModel.getName() + "</html>");
+        this.bonus.setText("<html>" + treasureModel.getBonus());
+        this.type.setText("<html>" + treasureModel.getType());
         repaint();
     }
     /**
@@ -55,14 +55,13 @@ public class TreasureView extends javax.swing.JPanel {
         bonus = new javax.swing.JLabel();
         type = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(181, 173, 246));
-        setBorder(null);
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(177, 20, 40)));
         setForeground(new java.awt.Color(177, 20, 40));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFont(new java.awt.Font("Khmer OS", 0, 15)); // NOI18N
-        setMaximumSize(new java.awt.Dimension(173, 125));
-        setMinimumSize(new java.awt.Dimension(173, 125));
-        setPreferredSize(new java.awt.Dimension(173, 125));
+        setMaximumSize(new java.awt.Dimension(142, 91));
+        setMinimumSize(new java.awt.Dimension(142, 91));
+        setPreferredSize(new java.awt.Dimension(142, 91));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -70,29 +69,32 @@ public class TreasureView extends javax.swing.JPanel {
         });
         setLayout(null);
 
+        name.setFont(new java.awt.Font("Khmer OS", 0, 12)); // NOI18N
         name.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         add(name);
-        name.setBounds(10, 10, 150, 30);
+        name.setBounds(10, 10, 120, 30);
 
+        bonus.setFont(new java.awt.Font("Khmer OS", 0, 12)); // NOI18N
         bonus.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         add(bonus);
-        bonus.setBounds(10, 90, 150, 30);
+        bonus.setBounds(100, 50, 30, 30);
 
+        type.setFont(new java.awt.Font("Khmer OS", 0, 12)); // NOI18N
         type.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         type.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(type);
-        type.setBounds(10, 50, 150, 30);
+        type.setBounds(10, 50, 80, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         this.setBackground(Color.lightGray);
         if (selected == true) {
             selected =false;
-            this.setOpaque(true);
+            this.setOpaque(false);
         }
         else{
             selected = true;
-            this.setOpaque(false);
+            this.setOpaque(true);
         }        
         repaint();
     }//GEN-LAST:event_formMouseClicked

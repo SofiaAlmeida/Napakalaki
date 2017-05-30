@@ -40,25 +40,25 @@ public class PendingBadConsequenceView extends javax.swing.JPanel {
         badConsequenceView = new GUI.BadConsequenceView();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pending", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        setMaximumSize(new java.awt.Dimension(385, 330));
-        setMinimumSize(new java.awt.Dimension(385, 330));
-        setPreferredSize(new java.awt.Dimension(385, 330));
+        setMaximumSize(new java.awt.Dimension(356, 236));
+        setMinimumSize(new java.awt.Dimension(356, 236));
+        setPreferredSize(new java.awt.Dimension(356, 236));
 
-        badConsequenceView.setMinimumSize(new java.awt.Dimension(385, 273));
+        badConsequenceView.setPreferredSize(new java.awt.Dimension(326, 190));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(badConsequenceView, javax.swing.GroupLayout.PREFERRED_SIZE, 363, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(badConsequenceView, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(badConsequenceView, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(badConsequenceView, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -24,27 +24,24 @@ public class BadConsequenceView extends javax.swing.JPanel {
         initComponents();
     }
     
-     //REVIEW
     public void setBadConsequence(BadConsequence bc){
         bcModel = bc;
-        this.text.setText(bcModel.getText());
-        this.level.setText("Niveles: " + bcModel.getLevels());
+        if (bcModel instanceof DeathBadConsequence) {
+            this.death.setText("¡¡¡MUERTE!!!");
+        }
+        
         if (bcModel instanceof NumericBadConsequence) {
             // Este caso es el utilizado también para los DeathBadConsequence
-            this.visibleTreasures.setText("Tesoros visibles: " + 
+            this.visibleTreasures.setText("<html>" + 
                         ((NumericBadConsequence) bcModel).getNVisibleTreasures());
-            this.hiddenTreasures.setText("Tesoros ocultos: " + 
+            this.hiddenTreasures.setText("<html>" + 
                         ((NumericBadConsequence) bcModel).getNHiddenTreasures());
         }
         else if (bcModel instanceof SpecificBadConsequence) {
-            //No sé si basta con ponerlo con un jLabel y mostrar cada uno de los tipos
-            //De tesoros que sean porque con jPanel creo que no hace falta puesto que 
-            //Que solamente es el nombre y no la vista entera del tesoro como player
-            
-            // Creo que tienes razón y además pienso que si esto va a ser así podemos usar
-            // el mismo jLabel en los dos casos 
-            this.visibleTreasures.setText("Tesoros visibles: " + ((SpecificBadConsequence) bcModel).getSpecificVisibleTreasures());
-            this.visibleTreasures.setText("Tesoros visibles: " + ((SpecificBadConsequence) bcModel).getSpecificVisibleTreasures());
+            this.visibleTreasures.setText("<html>" + 
+                       ((SpecificBadConsequence) bcModel).getSpecificVisibleTreasures().toString() + "</html>");
+            this.visibleTreasures.setText("<html>" + 
+                       ((SpecificBadConsequence) bcModel).getSpecificVisibleTreasures().toString() + "</html>");
         }
         
         repaint();
@@ -60,64 +57,36 @@ public class BadConsequenceView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        text = new javax.swing.JLabel();
-        level = new javax.swing.JLabel();
         visibleTreasures = new javax.swing.JLabel();
         hiddenTreasures = new javax.swing.JLabel();
+        death = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bad Consequence\n", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        setMaximumSize(new java.awt.Dimension(385, 273));
-        setMinimumSize(new java.awt.Dimension(350, 250));
-        setPreferredSize(new java.awt.Dimension(350, 273));
-
-        text.setFont(new java.awt.Font("Khmer OS", 0, 12)); // NOI18N
-        text.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        level.setFont(new java.awt.Font("Khmer OS", 0, 12)); // NOI18N
+        setMaximumSize(new java.awt.Dimension(326, 190));
+        setMinimumSize(new java.awt.Dimension(326, 190));
+        setPreferredSize(new java.awt.Dimension(326, 190));
+        setLayout(null);
 
         visibleTreasures.setBorder(javax.swing.BorderFactory.createTitledBorder("Visible Treasures"));
+        add(visibleTreasures);
+        visibleTreasures.setBounds(17, 29, 300, 54);
 
         hiddenTreasures.setBorder(javax.swing.BorderFactory.createTitledBorder("Hidden Treasures"));
+        add(hiddenTreasures);
+        hiddenTreasures.setBounds(17, 133, 304, 52);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(visibleTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(hiddenTreasures, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(visibleTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(hiddenTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(54, Short.MAX_VALUE))))
-        );
+        death.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        death.setMaximumSize(new java.awt.Dimension(8, 21));
+        death.setMinimumSize(new java.awt.Dimension(8, 21));
+        death.setPreferredSize(new java.awt.Dimension(8, 21));
+        add(death);
+        death.setBounds(17, 89, 300, 32);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel death;
     private javax.swing.JLabel hiddenTreasures;
-    private javax.swing.JLabel level;
-    private javax.swing.JLabel text;
     private javax.swing.JLabel visibleTreasures;
     // End of variables declaration//GEN-END:variables
 }

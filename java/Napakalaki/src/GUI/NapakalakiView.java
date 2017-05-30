@@ -2,6 +2,8 @@ package GUI;
 import NapakalakiGame.CombatResult;
 import NapakalakiGame.Monster;
 import NapakalakiGame.Napakalaki;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -60,7 +62,7 @@ public class NapakalakiView extends javax.swing.JFrame {
                 meetMonsterActionPerformed(evt);
             }
         });
-        getContentPane().add(meetMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 610, 160, -1));
+        getContentPane().add(meetMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 160, -1));
 
         combat.setBackground(new java.awt.Color(249, 159, 236));
         combat.setFont(new java.awt.Font("Khmer OS System", 1, 12)); // NOI18N
@@ -71,7 +73,7 @@ public class NapakalakiView extends javax.swing.JFrame {
                 combatActionPerformed(evt);
             }
         });
-        getContentPane().add(combat, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 610, -1, -1));
+        getContentPane().add(combat, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 400, -1, -1));
 
         nextTurn.setBackground(new java.awt.Color(249, 159, 236));
         nextTurn.setFont(new java.awt.Font("Khmer OS System", 1, 12)); // NOI18N
@@ -82,17 +84,19 @@ public class NapakalakiView extends javax.swing.JFrame {
                 nextTurnActionPerformed(evt);
             }
         });
-        getContentPane().add(nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 610, -1, -1));
+        getContentPane().add(nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 480, -1, -1));
 
         currentPlayer.setPreferredSize(new java.awt.Dimension(600, 600));
-        getContentPane().add(currentPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 650, 580));
+        getContentPane().add(currentPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 720));
 
+        showCombatResult.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         showCombatResult.setMaximumSize(new java.awt.Dimension(280, 200));
         showCombatResult.setMinimumSize(new java.awt.Dimension(280, 200));
-        getContentPane().add(showCombatResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 610, 400, 70));
+        getContentPane().add(showCombatResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 540, 280, 140));
         getContentPane().add(currentMonster, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 290, 250));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -102,10 +106,12 @@ public class NapakalakiView extends javax.swing.JFrame {
     private void meetMonsterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetMonsterActionPerformed
         currentMonster.setMonster(napakalakiModel.getCurrentMonster());
         currentMonster.setVisible(true);
+        currentPlayer.disableSteal();
         currentPlayer.disableMakeVisible();
         currentPlayer.disableDiscards();
         nextTurn.setEnabled(false);
         combat.setEnabled(true);
+        meetMonster.setEnabled(false);
     }//GEN-LAST:event_meetMonsterActionPerformed
 
     /**
@@ -114,6 +120,7 @@ public class NapakalakiView extends javax.swing.JFrame {
      */
     private void combatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combatActionPerformed
        CombatResult combatResult = napakalakiModel.developCombat();
+       currentPlayer.setPendingBadConsequence(napakalakiModel.getCurrentPlayer().getPendingBc());
        String text = "<html>";
        switch (combatResult) {
             case WINGAME : 
@@ -122,6 +129,7 @@ public class NapakalakiView extends javax.swing.JFrame {
               break;
             case WIN :
               text += "\n\n Ganaste el combate";
+            //  currentPlayer.invisibleBadConsequence();
               break;
             case LOSE :
               text += "\n\n Has perdido el combate, te toca cumplir el mal rollo";
@@ -135,14 +143,14 @@ public class NapakalakiView extends javax.swing.JFrame {
           }
        
        showCombatResult.setText(text);
+       showCombatResult.setVisible(true);
        currentPlayer.enableDiscards();
        currentPlayer.enableSteal();
        currentPlayer.enableMakeVisible();
        combat.setEnabled(false);
        meetMonster.setEnabled(false);
        nextTurn.setEnabled(true);
-       
-      // setNapakalaki(napakalakiModel);
+       currentPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
     }//GEN-LAST:event_combatActionPerformed
 
     /**
@@ -152,6 +160,10 @@ public class NapakalakiView extends javax.swing.JFrame {
     private void nextTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTurnActionPerformed
         if(napakalakiModel.nextTurn()) {
             setNapakalaki(napakalakiModel);
+            //Actualizamos la habilitación de los botones
+            currentPlayer.disableDiscards();
+            currentPlayer.disableSteal();
+            currentPlayer.enableMakeVisible();
             meetMonster.setEnabled(true);
             showCombatResult.setVisible(false);
         }
