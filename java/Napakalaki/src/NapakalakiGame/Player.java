@@ -266,8 +266,8 @@ public class Player {
         int monsterLevel = getOponentLevel(m);
         if (!canISteal) {
            Dice dice = Dice.getInstance();
-           int number = dice.nextNumber("", 
-                                "Si sale un número menor que 3 se sumará el nivel de tu enemigo al del monstruo");
+           int number = dice.nextNumber("Si sale un número menor que 3 se sumará el", 
+                                " nivel de tu enemigo al del monstruo");
            
            if (number < 3){
                int enemyLevel = enemy.getCombatLevel();

@@ -51,10 +51,6 @@ public class PlayerView extends javax.swing.JPanel {
     public void disableMakeVisible() {
         this.makeVisible.setEnabled(false);
     }
-    
-    public void invisibleBadConsequence() {
-        this.pendingBadConsequenceView1.setVisible(false);
-    }
         
     /**
      * 

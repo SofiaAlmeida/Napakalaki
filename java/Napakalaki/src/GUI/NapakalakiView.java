@@ -4,6 +4,8 @@ import NapakalakiGame.Monster;
 import NapakalakiGame.Napakalaki;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -47,9 +49,7 @@ public class NapakalakiView extends javax.swing.JFrame {
         currentMonster = new GUI.MonsterView();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1103, 738));
         setMinimumSize(new java.awt.Dimension(1103, 738));
-        setPreferredSize(new java.awt.Dimension(1103, 738));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -124,25 +124,36 @@ public class NapakalakiView extends javax.swing.JFrame {
        String text = "<html>";
        switch (combatResult) {
             case WINGAME : 
-              text += "\n\n       " + currentPlayer.getName();
+              text += "\n\n       " + napakalakiModel.getCurrentPlayer().getName();
               text += "\n\n ¡¡¡ H A S   G A N A D O   L A   P A R T I D A !!!";
+              currentPlayer.disableSteal();
+              currentPlayer.disableDiscards();
+              currentPlayer.disableMakeVisible();
+              combat.setEnabled(false);
+              meetMonster.setEnabled(false);
+              nextTurn.setEnabled(false);
               break;
             case WIN :
               text += "\n\n Ganaste el combate";
-            //  currentPlayer.invisibleBadConsequence();
+              enableButtonsAfterCombat();
               break;
             case LOSE :
               text += "\n\n Has perdido el combate, te toca cumplir el mal rollo";
+              enableButtonsAfterCombat();
               break;
             case LOSEANDCONVERT : 
                 text += "\n\n Has perdido el combate, y te" +
                                      " has convertido en sectario"; 
                 text += "\n No obstante, tienes que cumplir" + 
                " el mal rollo"; 
+                enableButtonsAfterCombat();
                 break; 
           }
        
        showCombatResult.setText(text);
+    }//GEN-LAST:event_combatActionPerformed
+
+    private void enableButtonsAfterCombat() {
        showCombatResult.setVisible(true);
        currentPlayer.enableDiscards();
        currentPlayer.enableSteal();
@@ -151,8 +162,8 @@ public class NapakalakiView extends javax.swing.JFrame {
        meetMonster.setEnabled(false);
        nextTurn.setEnabled(true);
        currentPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
-    }//GEN-LAST:event_combatActionPerformed
-
+    }
+    
     /**
      * Pasar de turno
      * @param evt 
