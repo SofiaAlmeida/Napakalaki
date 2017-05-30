@@ -72,18 +72,18 @@ public class TreasureView extends javax.swing.JPanel {
         name.setFont(new java.awt.Font("Khmer OS", 0, 12)); // NOI18N
         name.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         add(name);
-        name.setBounds(10, 10, 120, 30);
+        name.setBounds(10, 10, 120, 40);
 
         bonus.setFont(new java.awt.Font("Khmer OS", 0, 12)); // NOI18N
         bonus.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         add(bonus);
-        bonus.setBounds(100, 50, 30, 30);
+        bonus.setBounds(100, 60, 30, 30);
 
         type.setFont(new java.awt.Font("Khmer OS", 0, 12)); // NOI18N
         type.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         type.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(type);
-        type.setBounds(10, 50, 80, 30);
+        type.setBounds(10, 60, 80, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked

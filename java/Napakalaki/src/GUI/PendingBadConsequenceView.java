@@ -24,7 +24,6 @@ public class PendingBadConsequenceView extends javax.swing.JPanel {
         badConsequenceView.setVisible(true);
 
         repaint();
-        revalidate();
     }
     
     

@@ -26,10 +26,7 @@ public class BadConsequenceView extends javax.swing.JPanel {
     
     public void setBadConsequence(BadConsequence bc){
         bcModel = bc;
-        if (bcModel instanceof DeathBadConsequence) {
-            this.death.setText("¡¡¡MUERTE!!!");
-        }
-        
+        this.death.setVisible(false);
         if (bcModel instanceof NumericBadConsequence) {
             // Este caso es el utilizado también para los DeathBadConsequence
             this.visibleTreasures.setText("<html>" + 
@@ -38,10 +35,13 @@ public class BadConsequenceView extends javax.swing.JPanel {
                         ((NumericBadConsequence) bcModel).getNHiddenTreasures());
         }
         else if (bcModel instanceof SpecificBadConsequence) {
-            this.visibleTreasures.setText("<html>" + 
-                       ((SpecificBadConsequence) bcModel).getSpecificVisibleTreasures().toString() + "</html>");
-            this.visibleTreasures.setText("<html>" + 
-                       ((SpecificBadConsequence) bcModel).getSpecificVisibleTreasures().toString() + "</html>");
+            this.visibleTreasures.setText(
+                       ((SpecificBadConsequence) bcModel).getSpecificVisibleTreasures().toString());
+            this.hiddenTreasures.setText( 
+                       ((SpecificBadConsequence) bcModel).getSpecificHiddenTreasures().toString());
+        }
+        if (bcModel instanceof DeathBadConsequence) {
+            this.death.setVisible(true);
         }
         
         repaint();
@@ -62,9 +62,9 @@ public class BadConsequenceView extends javax.swing.JPanel {
         death = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bad Consequence\n", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        setMaximumSize(new java.awt.Dimension(326, 190));
-        setMinimumSize(new java.awt.Dimension(326, 190));
-        setPreferredSize(new java.awt.Dimension(326, 190));
+        setMaximumSize(new java.awt.Dimension(336, 204));
+        setMinimumSize(new java.awt.Dimension(336, 204));
+        setPreferredSize(new java.awt.Dimension(336, 204));
         setLayout(null);
 
         visibleTreasures.setBorder(javax.swing.BorderFactory.createTitledBorder("Visible Treasures"));
@@ -76,9 +76,9 @@ public class BadConsequenceView extends javax.swing.JPanel {
         hiddenTreasures.setBounds(17, 133, 304, 52);
 
         death.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        death.setText("¡¡¡MUERTO!!!");
         death.setMaximumSize(new java.awt.Dimension(8, 21));
         death.setMinimumSize(new java.awt.Dimension(8, 21));
-        death.setPreferredSize(new java.awt.Dimension(8, 21));
         add(death);
         death.setBounds(17, 89, 300, 32);
     }// </editor-fold>//GEN-END:initComponents

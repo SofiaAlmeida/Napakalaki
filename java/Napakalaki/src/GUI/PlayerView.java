@@ -89,14 +89,18 @@ public class PlayerView extends javax.swing.JPanel {
         this.enemy.setText("Enemigo: " + playerModel.getEnemy().getName());
         fillTreasurePanel(visibleTreasures, playerModel.getVisibleTreasures());
         fillTreasurePanel(hiddenTreasures, playerModel.getHiddenTreasures());
+        this.cultist.setVisible(false);
         if (playerModel instanceof CultistPlayer){
             this.cultist.setText("Sectario");
             this.cultist.setVisible(true);
         }
         
-        this.cultist.setVisible(false);
+        
         if(aPlayer.getPendingBc() == null || aPlayer.getPendingBc().isEmpty())
             this.pendingBadConsequenceView1.setVisible(false);
+        else {
+            setPendingBadConsequence(aPlayer.getPendingBc());
+        }
         
         if(playerModel.getHiddenTreasures().isEmpty())
             this.disableMakeVisible();
