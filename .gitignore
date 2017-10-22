@@ -1,5 +1,13 @@
-/ruby/Napakalaki/nbproject/private/*
-/ruby/Napakalaki/nbproject/project.properties
-/ruby/Napakalaki/lib/examen.rb
+# NetBeans' files
+nbproject/
+build/
+dist/
+manifest.mf
+build.xml
 
+# Temporary files
+*~
+
+# Examen
+examen.rb
 
